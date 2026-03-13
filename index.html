@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,8 +22,6 @@
       --badge-text: #111827;
       --input-bg: #ffffff;
       --input-border: #d1d5db;
-      --header-bg: rgba(255,255,255,0.72);
-      --header-border: rgba(0,0,0,0.06);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
@@ -42,12 +41,12 @@
       --badge-text: #ffffff;
       --input-bg: #171717;
       --input-border: rgba(255, 255, 255, 0.12);
-      --header-bg: rgba(10,10,10,0.72);
-      --header-border: rgba(255,255,255,0.08);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html, body {
       margin: 0;
@@ -56,10 +55,12 @@
       background: var(--bg);
       color: var(--text);
       transition: background 0.25s ease, color 0.25s ease;
-      scroll-behavior: smooth;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .container {
       max-width: 1180px;
@@ -70,37 +71,23 @@
     .header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--header-border);
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.55);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark .header {
+      background: rgba(10, 10, 10, 0.65);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .header-inner {
-      min-height: 76px;
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-    }
-
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      background: var(--text);
-      color: var(--bg);
-      flex-shrink: 0;
     }
 
     .brand-title {
@@ -115,62 +102,21 @@
       margin-top: 3px;
     }
 
-    .nav-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav a {
-      padding: 10px 14px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover {
-      background: var(--badge-bg);
-      color: var(--text);
-    }
-
-    .theme-btn,
-    .menu-btn,
-    .btn-main,
-    .btn-sub {
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-weight: 800;
-    }
-
-    .theme-btn,
-    .menu-btn {
+    .theme-btn {
       border: 1px solid var(--button-sub-border);
       background: var(--button-sub);
       color: var(--button-sub-text);
       border-radius: 16px;
       padding: 12px 16px;
       font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .theme-btn:hover,
-    .menu-btn:hover,
-    .btn-main:hover,
-    .btn-sub:hover {
+    .theme-btn:hover {
       transform: translateY(-1px);
-    }
-
-    .menu-btn {
-      display: none;
+      opacity: 0.96;
     }
 
     .hero {
@@ -179,7 +125,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 28px;
       align-items: center;
     }
@@ -221,6 +167,9 @@
       padding: 15px 22px;
       border-radius: 18px;
       font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
     .btn-main {
@@ -235,12 +184,16 @@
       color: var(--button-sub-text);
     }
 
+    .btn-main:hover,
+    .btn-sub:hover {
+      transform: translateY(-1px);
+    }
+
     .hero-card,
     .feature-card,
     .info-card,
     .form-card,
-    .product-card,
-    .image-card {
+    .product-card {
       background: var(--card);
       border: 1px solid var(--card-border);
       box-shadow: var(--shadow);
@@ -304,74 +257,8 @@
       white-space: nowrap;
     }
 
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .image-card {
-      border-radius: 22px;
-      overflow: hidden;
-    }
-
-    .image-box {
-      height: 180px;
-      background: linear-gradient(135deg, #dbeafe, #e5e7eb);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #374151;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    body.dark .image-box {
-      background: linear-gradient(135deg, #27272a, #3f3f46);
-      color: #e5e7eb;
-    }
-
-    .image-meta {
-      padding: 14px;
-    }
-
-    .image-title {
-      font-size: 16px;
-      font-weight: 800;
-      margin: 0 0 6px;
-    }
-
-    .image-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-
     .section {
       padding: 18px 0 28px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin: 0;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      margin: 8px 0 0;
-      line-height: 1.7;
     }
 
     .feature-grid,
@@ -456,8 +343,7 @@
       margin-top: 18px;
     }
 
-    .form-input,
-    .form-textarea {
+    .form-input {
       width: 100%;
       border: 1px solid var(--input-border);
       background: var(--input-bg);
@@ -468,29 +354,12 @@
       outline: none;
     }
 
-    .form-textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .form-input::placeholder,
-    .form-textarea::placeholder {
+    .form-input::placeholder {
       color: var(--muted);
     }
 
-    .contact-note {
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .footer-space { height: 50px; }
-
-    @media (max-width: 1100px) {
-      .image-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .footer-space {
+      height: 50px;
     }
 
     @media (max-width: 980px) {
@@ -503,52 +372,14 @@
       .hero h1 {
         font-size: 40px;
       }
-
-      .section-title {
-        font-size: 28px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .menu-btn {
-        display: inline-flex;
-      }
-
-      .nav {
-        display: none;
-        position: absolute;
-        top: 76px;
-        left: 20px;
-        right: 20px;
-        padding: 12px;
-        border: 1px solid var(--card-border);
-        background: var(--card);
-        border-radius: 18px;
-        box-shadow: var(--shadow);
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav.open {
-        display: flex;
-      }
-
-      .nav a {
-        width: 100%;
-      }
     }
 
     @media (max-width: 600px) {
       .header-inner {
-        min-height: auto;
+        height: auto;
         padding: 14px 0;
         align-items: flex-start;
         flex-direction: column;
-      }
-
-      .nav-wrap {
-        width: 100%;
-        justify-content: space-between;
       }
 
       .hero {
@@ -560,7 +391,6 @@
       }
 
       .theme-btn,
-      .menu-btn,
       .btn-main,
       .btn-sub {
         width: 100%;
@@ -573,33 +403,17 @@
       .product-top {
         flex-direction: column;
       }
-
-      .image-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="container header-inner">
-      <div class="brand-wrap">
-        <div class="brand-mark">TH</div>
-        <div>
-          <div class="brand-title">타일허브</div>
-          <div class="brand-sub">Tile sourcing platform MVP</div>
-        </div>
+      <div>
+        <div class="brand-title">타일허브</div>
+        <div class="brand-sub">Tile sourcing platform MVP</div>
       </div>
-
-      <div class="nav-wrap">
-        <button id="menuToggle" class="menu-btn">메뉴</button>
-        <nav id="mainNav" class="nav">
-          <a href="#products">제품</a>
-          <a href="#project">프로젝트</a>
-          <a href="#quote">문의</a>
-        </nav>
-        <button id="themeToggle" class="theme-btn">화이트모드</button>
-      </div>
+      <button id="themeToggle" class="theme-btn">화이트모드</button>
     </div>
   </header>
 
@@ -619,8 +433,8 @@
           </p>
 
           <div class="button-row">
-            <a class="btn-main" href="#products">가격 확인하기</a>
-            <a class="btn-sub" href="#quote">프로젝트 견적 요청</a>
+            <button class="btn-main">가격 확인하기</button>
+            <button class="btn-sub">프로젝트 견적 요청</button>
           </div>
         </div>
 
@@ -673,52 +487,7 @@
       </div>
     </section>
 
-    <section id="products" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">대표 상품 이미지 섹션</h2>
-            <p class="section-sub">지금은 연습용 박스지만, 나중에는 실제 상품 이미지로 교체하면 된다.</p>
-          </div>
-        </div>
-
-        <div class="image-grid">
-          <div class="image-card">
-            <div class="image-box">600×600 스톤룩</div>
-            <div class="image-meta">
-              <p class="image-title">French Stone Series</p>
-              <p class="image-desc">프로젝트용 범용성이 높은 대표 상품 라인</p>
-            </div>
-          </div>
-
-          <div class="image-card">
-            <div class="image-box">600×1200 콘크리트룩</div>
-            <div class="image-meta">
-              <p class="image-title">Concrete Modern</p>
-              <p class="image-desc">상업공간과 주거공간 모두 적용 가능한 무드</p>
-            </div>
-          </div>
-
-          <div class="image-card">
-            <div class="image-box">마블룩 폴리싱</div>
-            <div class="image-meta">
-              <p class="image-title">Marble Vein White</p>
-              <p class="image-desc">로비, 실내 포인트 공간용 프리미엄 스타일</p>
-            </div>
-          </div>
-
-          <div class="image-card">
-            <div class="image-box">테라스용 아웃도어</div>
-            <div class="image-meta">
-              <p class="image-title">Rustic Outdoor</p>
-              <p class="image-desc">외부 공간과 테라스 시공에 맞춘 질감형 제품</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="project" class="section">
+    <section class="section">
       <div class="container feature-grid">
         <div class="feature-card">
           <div class="feature-icon">🏭</div>
@@ -740,7 +509,7 @@
       </div>
     </section>
 
-    <section id="quote" class="section">
+    <section class="section">
       <div class="container bottom-grid">
         <div class="info-card">
           <h3>왜 타일허브인가</h3>
@@ -754,16 +523,12 @@
 
         <div class="form-card">
           <h3>견적 요청 폼 예시</h3>
-          <form class="form-grid" onsubmit="sendQuote(event)">
-            <input class="form-input" id="projectName" placeholder="프로젝트명" />
-            <input class="form-input" id="tileSize" placeholder="필요 사이즈 (예: 600×600)" />
-            <input class="form-input" id="quantity" placeholder="대략 수량 / 면적" />
-            <input class="form-input" id="contact" placeholder="연락처 또는 이메일" />
-            <textarea class="form-textarea" id="memo" placeholder="추가 요청사항"></textarea>
-            <button class="btn-main" type="submit">견적 요청 보내기</button>
-          </form>
-          <div class="contact-note" id="contactNote">
-            현재는 연습용 버튼이다. 다음 단계에서 이메일 전송 또는 폼 수집으로 연결하면 된다.
+          <div class="form-grid">
+            <input class="form-input" placeholder="프로젝트명" />
+            <input class="form-input" placeholder="필요 사이즈 (예: 600×600)" />
+            <input class="form-input" placeholder="대략 수량 / 면적" />
+            <input class="form-input" placeholder="연락처" />
+            <button class="btn-main">견적 요청 보내기</button>
           </div>
         </div>
       </div>
@@ -775,9 +540,6 @@
   <script>
     const body = document.body;
     const themeToggle = document.getElementById("themeToggle");
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-    const contactNote = document.getElementById("contactNote");
 
     function applyTheme(theme) {
       if (theme === "dark") {
@@ -801,30 +563,6 @@
       const isDark = body.classList.contains("dark");
       applyTheme(isDark ? "light" : "dark");
     });
-
-    menuToggle.addEventListener("click", function () {
-      mainNav.classList.toggle("open");
-    });
-
-    document.querySelectorAll('.nav a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        mainNav.classList.remove('open');
-      });
-    });
-
-    function sendQuote(event) {
-      event.preventDefault();
-      const projectName = document.getElementById("projectName").value.trim();
-      const tileSize = document.getElementById("tileSize").value.trim();
-      const quantity = document.getElementById("quantity").value.trim();
-      const contact = document.getElementById("contact").value.trim();
-      const memo = document.getElementById("memo").value.trim();
-
-      contactNote.textContent = "견적 요청이 접수된 것으로 가정한 연습 상태입니다. 다음 단계에서 이 데이터를 이메일이나 DB로 연결하면 됩니다.";
-      console.log({ projectName, tileSize, quantity, contact, memo });
-      alert("연습용 견적 요청이 접수되었습니다.");
-    }
   </script>
 </body>
 </html>
-
