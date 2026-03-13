@@ -25,25 +25,6 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
-    body.dark {
-      --bg: #0a0a0a;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --card: rgba(255, 255, 255, 0.04);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --hero-bg: linear-gradient(135deg, #171717, #262626);
-      --button-main: #ffffff;
-      --button-main-text: #111827;
-      --button-sub: rgba(255, 255, 255, 0.08);
-      --button-sub-text: #ffffff;
-      --button-sub-border: rgba(255, 255, 255, 0.1);
-      --badge-bg: rgba(255, 255, 255, 0.08);
-      --badge-text: #ffffff;
-      --input-bg: #171717;
-      --input-border: rgba(255, 255, 255, 0.12);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
     * {
       box-sizing: border-box;
     }
@@ -77,11 +58,6 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
 
-    body.dark .header {
-      background: rgba(10, 10, 10, 0.65);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
     .header-inner {
       height: 76px;
       display: flex;
@@ -100,23 +76,6 @@
       font-size: 14px;
       color: var(--muted);
       margin-top: 3px;
-    }
-
-    .theme-btn {
-      border: 1px solid var(--button-sub-border);
-      background: var(--button-sub);
-      color: var(--button-sub-text);
-      border-radius: 16px;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .theme-btn:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
     }
 
     .hero {
@@ -295,10 +254,6 @@
       background: rgba(0, 0, 0, 0.05);
     }
 
-    body.dark .feature-icon {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
     .feature-card h3,
     .info-card h3,
     .form-card h3 {
@@ -390,7 +345,6 @@
         font-size: 32px;
       }
 
-      .theme-btn,
       .btn-main,
       .btn-sub {
         width: 100%;
@@ -413,7 +367,6 @@
         <div class="brand-title">타일허브</div>
         <div class="brand-sub">Tile sourcing platform MVP</div>
       </div>
-      <button id="themeToggle" class="theme-btn">화이트모드</button>
     </div>
   </header>
 
@@ -536,33 +489,5 @@
 
     <div class="footer-space"></div>
   </main>
-
-  <script>
-    const body = document.body;
-    const themeToggle = document.getElementById("themeToggle");
-
-    function applyTheme(theme) {
-      if (theme === "dark") {
-        body.classList.add("dark");
-        themeToggle.textContent = "화이트모드";
-      } else {
-        body.classList.remove("dark");
-        themeToggle.textContent = "다크모드";
-      }
-      localStorage.setItem("tilehub-theme", theme);
-    }
-
-    const savedTheme = localStorage.getItem("tilehub-theme");
-    if (savedTheme === "dark") {
-      applyTheme("dark");
-    } else {
-      applyTheme("light");
-    }
-
-    themeToggle.addEventListener("click", function () {
-      const isDark = body.classList.contains("dark");
-      applyTheme(isDark ? "light" : "dark");
-    });
-  </script>
 </body>
 </html>
