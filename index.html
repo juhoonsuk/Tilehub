@@ -185,17 +185,19 @@
 
     .eyebrow{
       display:inline-flex;
-      padding:9px 14px;
+      padding:8px 18px;
       border-radius:999px;
       background:var(--soft-2);
       color:#36404a;
       font-size:.88rem;
       font-weight:700;
       box-shadow:inset 0 0 0 1px rgba(17,19,24,.03);
+      margin-top:40px;
+      margin-bottom:28px;
     }
 
     .hero{
-      padding:64px 0 54px;
+      padding:84px 0 92px;
       position:relative;
     }
 
@@ -211,13 +213,13 @@
     .hero-copy{
       text-align:center;
       max-width:980px;
-      margin:0 auto 48px;
+      margin:0 auto 64px;
       position:relative;
       z-index:1;
     }
 
     .hero-copy h1{
-      margin:18px 0 16px;
+      margin:0 0 20px;
       font-size:clamp(2.9rem,7vw,6rem);
       line-height:.96;
       letter-spacing:-0.06em;
@@ -226,23 +228,23 @@
 
     .hero-copy p{
       margin:0 auto;
-      max-width:720px;
+      max-width:760px;
       font-size:clamp(1.05rem,2.2vw,1.35rem);
       color:var(--muted);
-      line-height:1.65;
+      line-height:1.72;
     }
 
     .hero-actions{
       display:flex;
       justify-content:center;
-      gap:12px;
-      margin-top:28px;
+      gap:14px;
+      margin-top:56px;
       flex-wrap:wrap;
     }
 
     .hero-visual{
-      margin-top:42px;
-      border-radius:42px;
+      margin-top:96px;
+      border-radius:44px;
       overflow:hidden;
       background:var(--soft);
       box-shadow:var(--hero-shadow);
@@ -261,7 +263,7 @@
 
     .hero-visual img{
       width:100%;
-      height:min(72vh,860px);
+      height:min(70vh,820px);
       object-fit:cover;
       transform:scale(1.03);
       transition:transform 1.4s ease;
@@ -272,20 +274,20 @@
     }
 
     section{
-      padding:130px 0;
+      padding:144px 0;
       position:relative;
     }
 
     .section-head{
       max-width:860px;
-      margin:0 auto 38px;
+      margin:0 auto 52px;
       text-align:center;
     }
 
     .section-head h2{
-      margin:0 0 12px;
+      margin:0 0 20px;
       font-size:clamp(2rem,4.8vw,3.8rem);
-      line-height:1.03;
+      line-height:1.05;
       letter-spacing:-0.05em;
     }
 
@@ -293,7 +295,7 @@
       margin:0;
       color:var(--muted);
       font-size:1.05rem;
-      line-height:1.7;
+      line-height:1.78;
     }
 
     .statement{
@@ -302,12 +304,105 @@
       border-bottom:1px solid var(--line);
     }
 
+    .finder{
+      padding:24px 0 52px;
+    }
+
+    .finder-panel{
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:linear-gradient(180deg, rgba(246,246,244,.92) 0%, rgba(255,255,255,.98) 100%);
+      box-shadow:0 20px 56px rgba(0,0,0,.06);
+      padding:42px 44px;
+      display:grid;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+      gap:36px;
+      align-items:center;
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .finder-panel:hover{
+      transform:translateY(-4px);
+      box-shadow:0 28px 70px rgba(0,0,0,.08);
+      border-color:#dfe3e8;
+    }
+
+    .finder-copy h2{
+      margin:0 0 20px;
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.04;
+      letter-spacing:-0.05em;
+    }
+
+    .finder-copy p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.8;
+      max-width:450px;
+    }
+
+    .finder-groups{
+      display:grid;
+      gap:18px;
+    }
+
+    .filter-group{
+      display:grid;
+      grid-template-columns:92px minmax(0,1fr);
+      align-items:center;
+      gap:22px;
+      min-width:0;
+    }
+
+    .filter-group strong{
+      font-size:.92rem;
+      letter-spacing:-0.02em;
+      color:var(--text);
+    }
+
+    .filter-chips{
+      display:flex;
+      flex-wrap:nowrap;
+      gap:8px;
+      align-items:center;
+      min-width:0;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:40px;
+      padding:0 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--line);
+      color:#48515c;
+      font-size:.9rem;
+      font-weight:600;
+      white-space:nowrap;
+      transition:background .22s ease, border-color .22s ease, color .22s ease, transform .22s ease;
+    }
+
+    .chip:hover{
+      background:var(--soft);
+      border-color:#d8dde3;
+      color:var(--text);
+      transform:translateY(-1px);
+    }
+
+    .finder-actions{
+      margin-top:34px;
+      padding-left:114px;
+    }
+
     .statement-inner{
       max-width:1000px;
       margin:0 auto;
       text-align:center;
       font-size:clamp(1.9rem,4vw,3.4rem);
-      line-height:1.15;
+      line-height:1.18;
       font-weight:800;
       letter-spacing:-0.05em;
     }
@@ -316,8 +411,9 @@
       color:var(--muted);
       display:block;
       font-weight:600;
-      margin-top:14px;
+      margin-top:20px;
       font-size:clamp(1rem,1.8vw,1.2rem);
+      line-height:1.75;
       letter-spacing:-0.02em;
     }
 
@@ -393,7 +489,7 @@
     .feature-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:22px;
+      gap:26px;
       align-items:stretch;
     }
 
@@ -402,7 +498,7 @@
       overflow:hidden;
       background:var(--soft);
       border:1px solid var(--line);
-      min-height:640px;
+      min-height:660px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -421,13 +517,13 @@
     }
 
     .feature-panel .text{
-      padding:36px;
+      padding:42px 38px 34px;
     }
 
     .feature-panel h3{
-      margin:0 0 12px;
+      margin:0 0 16px;
       font-size:2rem;
-      line-height:1.05;
+      line-height:1.08;
       letter-spacing:-0.045em;
     }
 
@@ -436,12 +532,12 @@
       color:inherit;
       opacity:.82;
       max-width:470px;
-      line-height:1.7;
+      line-height:1.78;
     }
 
     .feature-panel img{
       width:100%;
-      height:430px;
+      height:410px;
       object-fit:cover;
       transition:transform 1.2s ease;
     }
@@ -453,7 +549,7 @@
     .product-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:20px;
+      gap:24px;
     }
 
     .product-card{
@@ -482,7 +578,7 @@
     }
 
     .product-card .body{
-      padding:22px;
+      padding:24px 24px 26px;
     }
 
     .meta{
@@ -490,7 +586,7 @@
       justify-content:space-between;
       gap:10px;
       align-items:flex-start;
-      margin-bottom:8px;
+      margin-bottom:10px;
     }
 
     .product-card h4{
@@ -508,10 +604,10 @@
     }
 
     .product-card p{
-      margin:10px 0 18px;
+      margin:12px 0 22px;
       color:var(--muted);
       font-size:.95rem;
-      line-height:1.65;
+      line-height:1.72;
       min-height:48px;
     }
 
@@ -525,7 +621,7 @@
     .supply-wrap{
       display:grid;
       grid-template-columns:1.1fr .9fr;
-      gap:28px;
+      gap:40px;
       align-items:center;
     }
 
@@ -550,31 +646,31 @@
     }
 
     .supply-copy h2{
-      margin:0 0 16px;
+      margin:0 0 20px;
       font-size:clamp(2.1rem,5vw,4rem);
       line-height:1.02;
       letter-spacing:-0.05em;
     }
 
     .supply-copy p{
-      margin:0 0 20px;
+      margin:0 0 24px;
       color:var(--muted);
       font-size:1.06rem;
-      line-height:1.75;
+      line-height:1.82;
     }
 
     .bullets{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      margin-top:26px;
+      gap:18px;
+      margin-top:30px;
     }
 
     .bullet{
       border:1px solid var(--line);
       border-radius:22px;
       background:#fff;
-      padding:18px 18px 20px;
+      padding:20px 20px 22px;
       transition:transform .28s ease, box-shadow .28s ease;
     }
 
@@ -600,7 +696,7 @@
     .references{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:22px;
     }
 
     .reference-card{
@@ -628,11 +724,11 @@
     }
 
     .reference-card .body{
-      padding:20px 22px 24px;
+      padding:22px 24px 26px;
     }
 
     .reference-card h4{
-      margin:0 0 8px;
+      margin:0 0 10px;
       font-size:1.12rem;
       letter-spacing:-0.02em;
     }
@@ -641,21 +737,21 @@
       margin:0;
       color:var(--muted);
       font-size:.95rem;
-      line-height:1.65;
+      line-height:1.72;
     }
 
     .future-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:18px;
+      gap:22px;
     }
 
     .future-card{
       background:#101217;
       color:#fff;
       border-radius:26px;
-      padding:24px;
-      min-height:220px;
+      padding:28px;
+      min-height:236px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -675,21 +771,21 @@
     }
 
     .future-card h4{
-      margin:14px 0 0;
+      margin:18px 0 0;
       font-size:1.35rem;
       line-height:1.15;
       letter-spacing:-0.03em;
     }
 
     .future-card p{
-      margin:18px 0 0;
+      margin:20px 0 0;
       color:rgba(255,255,255,.76);
       font-size:.95rem;
-      line-height:1.65;
+      line-height:1.72;
     }
 
     .cta{
-      padding:150px 0;
+      padding:164px 0;
       background:radial-gradient(circle at top, #f6f7f9 0%, #ffffff 52%);
       border-top:1px solid var(--line);
     }
@@ -698,7 +794,7 @@
       max-width:980px;
       margin:0 auto;
       text-align:center;
-      padding:62px 30px;
+      padding:72px 34px;
       border-radius:36px;
       background:#fff;
       border:1px solid var(--line);
@@ -712,7 +808,7 @@
     }
 
     .cta-box h2{
-      margin:0 0 14px;
+      margin:0 0 18px;
       font-size:clamp(2.1rem,5vw,4.3rem);
       line-height:1.02;
       letter-spacing:-0.055em;
@@ -723,11 +819,11 @@
       max-width:680px;
       color:var(--muted);
       font-size:1.06rem;
-      line-height:1.75;
+      line-height:1.82;
     }
 
     .cta-box .hero-actions{
-      margin-top:26px;
+      margin-top:34px;
     }
 
     footer{
@@ -768,7 +864,7 @@
 
     @media (max-width:1100px){
       section{
-        padding:108px 0;
+        padding:116px 0;
       }
 
       .size-grid,
@@ -781,6 +877,7 @@
         grid-template-columns:1fr;
       }
 
+      .finder-panel,
       .supply-wrap,
       .feature-grid{
         grid-template-columns:1fr;
@@ -788,6 +885,14 @@
 
       .hero-copy h1{
         font-size:clamp(2.8rem,8vw,5rem);
+      }
+
+      .hero{
+        padding:72px 0 80px;
+      }
+
+      .finder{
+        padding:14px 0 44px;
       }
 
       .supply-copy{
@@ -817,15 +922,15 @@
       }
 
       section{
-        padding:86px 0;
+        padding:92px 0;
       }
 
       .hero{
-        padding-top:24px;
+        padding:36px 0 52px;
       }
 
       .hero-copy{
-        margin-bottom:30px;
+        margin-bottom:40px;
       }
 
       .hero-copy h1{
@@ -835,14 +940,16 @@
 
       .hero-copy p{
         font-size:1rem;
+        line-height:1.74;
       }
 
       .hero-visual{
         border-radius:28px;
+        margin-top:72px;
       }
 
       .hero-visual img{
-        height:58vh;
+        height:54vh;
       }
 
       .size-grid,
@@ -861,6 +968,33 @@
         min-height:auto;
       }
 
+      .finder{
+        padding:6px 0 34px;
+      }
+
+      .finder-panel{
+        padding:28px 24px;
+        border-radius:28px;
+      }
+
+      .finder-groups{
+        gap:16px;
+      }
+
+      .filter-group{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .filter-chips{
+        flex-wrap:wrap;
+      }
+
+      .finder-actions{
+        padding-left:0;
+        margin-top:28px;
+      }
+
       .feature-panel img{
         height:320px;
       }
@@ -870,11 +1004,11 @@
       }
 
       .cta{
-        padding:100px 0;
+        padding:110px 0;
       }
 
       .cta-box{
-        padding:38px 22px;
+        padding:46px 22px;
         border-radius:28px;
       }
 
@@ -885,6 +1019,7 @@
       .hero-actions{
         flex-direction:column;
         align-items:stretch;
+        gap:10px;
       }
     }
 
@@ -939,6 +1074,65 @@
         </div>
         <div class="hero-visual reveal show reveal-delay-1">
           <img src="./images/hero-main.jpg" alt="타일허브 애플 스타일 메인 비주얼">
+        </div>
+      </div>
+    </section>
+
+    <section class="finder">
+      <div class="container">
+        <div class="finder-panel reveal">
+          <div class="finder-copy">
+            <span class="eyebrow">Tile Finder</span>
+            <h2>원하는 조건의 타일을 찾아보세요</h2>
+            <p>사이즈, 스타일, 가격 조건에 맞는 타일을 빠르게 탐색하고<br>프로젝트에 맞는 공급 가능성까지 연결할 수 있습니다.</p>
+          </div>
+
+          <div>
+            <div class="finder-groups">
+              <div class="filter-group">
+                <strong>사이즈</strong>
+                <div class="filter-chips">
+                  <span class="chip">600×600</span>
+                  <span class="chip">600×1200</span>
+                  <span class="chip">800×800</span>
+                  <span class="chip">1200×1200</span>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <strong>스타일</strong>
+                <div class="filter-chips">
+                  <span class="chip">Marble</span>
+                  <span class="chip">Stone</span>
+                  <span class="chip">Concrete</span>
+                  <span class="chip">Travertine</span>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <strong>컬러톤</strong>
+                <div class="filter-chips">
+                  <span class="chip">Light</span>
+                  <span class="chip">Gray</span>
+                  <span class="chip">Beige</span>
+                  <span class="chip">Dark</span>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <strong>가격대</strong>
+                <div class="filter-chips">
+                  <span class="chip">Economy</span>
+                  <span class="chip">Standard</span>
+                  <span class="chip">Premium</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="finder-actions">
+              <a class="btn btn-dark" href="#designs">타일 찾기</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1065,6 +1259,7 @@
             <div class="body">
               <div class="meta"><h4>Graphite Silk</h4><span class="size">1200×1200</span></div>
               <p>짙고 세련된 그래파이트. 포인트 존에 강한 인상.</p>
+
               <a class="btn btn-light" href="#projects">자세히 보기</a>
             </div>
           </article>
