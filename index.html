@@ -3,772 +3,1258 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>타일허브 | 타일 직수입 가격을 확인하세요</title>
-  <meta name="description" content="타일허브는 타일 직수입 가격 확인, 대표 디자인 탐색, 프로젝트 견적 요청을 위한 공급망 플랫폼입니다." />
+  <title>타일허브 | 애플 스타일 쇼룸형 메인 시안</title>
+  <meta name="description" content="직수입 가격 공개, 대표 디자인, 프로젝트 견적, 공급망 연결을 강조한 타일허브 애플 스타일 메인 시안" />
   <style>
-    * {
-      box-sizing: border-box;
+    :root{
+      --bg:#ffffff;
+      --soft:#f6f6f4;
+      --soft-2:#f2f3f5;
+      --line:#e9ebee;
+      --text:#111318;
+      --muted:#68707c;
+      --accent:#111318;
+      --max:1440px;
+      --radius:28px;
+      --shadow:0 18px 50px rgba(0,0,0,.07);
+      --shadow-hover:0 28px 70px rgba(0,0,0,.12);
+      --hero-shadow:0 35px 90px rgba(0,0,0,.12);
     }
 
-    body {
-      margin: 0;
-      font-family: "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
-      background: #f7f7f8;
-      color: #1f2328;
-      line-height: 1.6;
+    *{
+      box-sizing:border-box;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    html{
+      scroll-behavior:smooth;
     }
 
-    .container {
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      letter-spacing:-0.02em;
+      overflow-x:hidden;
     }
 
-    .topbar {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    img{
+      max-width:100%;
+      display:block;
     }
 
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 28px;
     }
 
-    .logo span {
-      color: #ff6a2b;
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid rgba(17,19,24,.06);
+      transition:all .28s ease;
     }
 
-    .nav {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-      color: #4b5563;
-      flex-wrap: wrap;
+    .site-header.scrolled{
+      background:rgba(255,255,255,.92);
+      border-bottom:1px solid rgba(17,19,24,.08);
+      box-shadow:0 10px 30px rgba(0,0,0,.04);
     }
 
-    .hero {
-      padding: 72px 0 48px;
-      background: linear-gradient(180deg, #ffffff 0%, #f7f7f8 100%);
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:72px;
+      gap:20px;
+      transition:min-height .28s ease;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
+    .site-header.scrolled .nav{
+      min-height:62px;
     }
 
-    .hero h1 {
-      margin: 0 0 16px;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.15;
-      letter-spacing: -1.6px;
+    .brand{
+      font-size:1.1rem;
+      font-weight:700;
+      letter-spacing:-0.03em;
+      transition:transform .25s ease;
     }
 
-    .hero p {
-      margin: 0 0 26px;
-      color: #4b5563;
-      font-size: 18px;
+    .brand:hover{
+      transform:translateY(-1px);
     }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 26px;
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-size:.74rem;
+      font-weight:500;
+      letter-spacing:0;
     }
 
-    .badge {
-      background: #fff2eb;
-      color: #d94b0d;
-      border: 1px solid #ffd8c2;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
+    .nav-links{
+      display:flex;
+      gap:26px;
+      color:#373c44;
+      font-size:.96rem;
+      align-items:center;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .nav-links a{
+      position:relative;
+      transition:color .2s ease;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 15px;
-      border: 1px solid transparent;
-      cursor: pointer;
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:#111318;
+      border-radius:999px;
+      transition:width .25s ease;
     }
 
-    .btn-primary {
-      background: #ff6a2b;
-      color: #fff;
+    .nav-links a:hover{
+      color:#111318;
     }
 
-    .btn-primary:hover {
-      background: #e45d21;
+    .nav-links a:hover::after{
+      width:100%;
     }
 
-    .btn-secondary {
-      background: #fff;
-      color: #1f2328;
-      border-color: #d1d5db;
+    .nav-cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
     }
 
-    .hero-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:700;
+      font-size:.98rem;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+      cursor:pointer;
+      white-space:nowrap;
     }
 
-    .hero-card h3 {
-      margin: 0 0 16px;
-      font-size: 20px;
+    .btn:hover{
+      transform:translateY(-2px);
     }
 
-    .hero-price-list {
-      display: grid;
-      gap: 12px;
+    .btn-dark{
+      background:var(--accent);
+      color:#fff;
     }
 
-    .hero-price-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #f9fafb;
-      border: 1px solid #eceff3;
-      border-radius: 14px;
-      padding: 14px 16px;
+    .btn-dark:hover{
+      box-shadow:var(--shadow);
+      background:#1b1f26;
     }
 
-    .hero-price-item strong {
-      display: block;
-      font-size: 16px;
+    .btn-light{
+      background:#fff;
+      border-color:var(--line);
+      color:var(--text);
     }
 
-    .hero-price-item span {
-      color: #6b7280;
-      font-size: 13px;
+    .btn-light:hover{
+      background:var(--soft);
+      box-shadow:0 10px 30px rgba(0,0,0,.05);
     }
 
-    .price-tag {
-      color: #ff6a2b;
-      font-weight: 800;
-      font-size: 16px;
+    .eyebrow{
+      display:inline-flex;
+      padding:9px 14px;
+      border-radius:999px;
+      background:var(--soft-2);
+      color:#36404a;
+      font-size:.88rem;
+      font-weight:700;
+      box-shadow:inset 0 0 0 1px rgba(17,19,24,.03);
     }
 
-    .price-tag:hover {
-      text-decoration: underline;
+    .hero{
+      padding:64px 0 54px;
+      position:relative;
     }
 
-    .section {
-      padding: 36px 0 24px;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:460px;
+      background:radial-gradient(circle at top center, rgba(17,19,24,.05) 0%, rgba(255,255,255,0) 70%);
+      pointer-events:none;
     }
 
-    .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
+    .hero-copy{
+      text-align:center;
+      max-width:980px;
+      margin:0 auto 48px;
+      position:relative;
+      z-index:1;
     }
 
-    .section-header h2 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.8px;
+    .hero-copy h1{
+      margin:18px 0 16px;
+      font-size:clamp(2.9rem,7vw,6rem);
+      line-height:.96;
+      letter-spacing:-0.06em;
+      font-weight:800;
     }
 
-    .section-header p {
-      margin: 0;
-      color: #6b7280;
-      max-width: 740px;
+    .hero-copy p{
+      margin:0 auto;
+      max-width:720px;
+      font-size:clamp(1.05rem,2.2vw,1.35rem);
+      color:var(--muted);
+      line-height:1.65;
     }
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+    .hero-actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:28px;
+      flex-wrap:wrap;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+    .hero-visual{
+      margin-top:42px;
+      border-radius:42px;
+      overflow:hidden;
+      background:var(--soft);
+      box-shadow:var(--hero-shadow);
+      position:relative;
     }
 
-    .card {
-      display: block;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    .hero-visual::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:140px;
+      background:linear-gradient(to top, rgba(0,0,0,.12), rgba(0,0,0,0));
+      pointer-events:none;
+      opacity:.28;
     }
 
-    .card h3, .card h4 {
-      margin: 0 0 8px;
+    .hero-visual img{
+      width:100%;
+      height:min(72vh,860px);
+      object-fit:cover;
+      transform:scale(1.03);
+      transition:transform 1.4s ease;
     }
 
-    .card p {
-      margin: 0 0 14px;
-      color: #6b7280;
-      font-size: 14px;
+    .hero-visual:hover img{
+      transform:scale(1.07);
     }
 
-    .card ul {
-      margin: 0;
-      padding-left: 18px;
-      color: #4b5563;
-      font-size: 14px;
+    section{
+      padding:130px 0;
+      position:relative;
     }
 
-    .price-card .size {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      margin-bottom: 4px;
+    .section-head{
+      max-width:860px;
+      margin:0 auto 38px;
+      text-align:center;
     }
 
-    .price-card .range {
-      color: #ff6a2b;
-      font-weight: 800;
-      margin-bottom: 10px;
-      font-size: 18px;
+    .section-head h2{
+      margin:0 0 12px;
+      font-size:clamp(2rem,4.8vw,3.8rem);
+      line-height:1.03;
+      letter-spacing:-0.05em;
     }
 
-    .price-card .meta {
-      color: #6b7280;
-      font-size: 13px;
-      margin-bottom: 14px;
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.7;
     }
 
-    .price-card .mini-btn {
-      display: inline-block;
-      background: #111827;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
+    .statement{
+      background:linear-gradient(180deg,#fafafa 0%, #f4f5f7 100%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
     }
 
-    .feature-highlight {
-      background: #111827;
-      color: #fff;
-      border-radius: 24px;
-      padding: 28px;
+    .statement-inner{
+      max-width:1000px;
+      margin:0 auto;
+      text-align:center;
+      font-size:clamp(1.9rem,4vw,3.4rem);
+      line-height:1.15;
+      font-weight:800;
+      letter-spacing:-0.05em;
     }
 
-    .feature-highlight h2 {
-      margin: 0 0 12px;
-      font-size: 30px;
-      letter-spacing: -0.8px;
+    .statement-inner span{
+      color:var(--muted);
+      display:block;
+      font-weight:600;
+      margin-top:14px;
+      font-size:clamp(1rem,1.8vw,1.2rem);
+      letter-spacing:-0.02em;
     }
 
-    .feature-highlight p {
-      margin: 0 0 18px;
-      color: #d1d5db;
+    .size-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
     }
 
-    .feature-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .size-card{
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:30px;
+      background:#fff;
+      min-height:228px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .3s ease, box-shadow .3s ease, border-color .25s ease;
     }
 
-    .feature-item {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 16px;
+    .size-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow-hover);
+      border-color:#dfe3e8;
     }
 
-    .feature-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 15px;
+    .size-card .top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
     }
 
-    .feature-item span {
-      color: #d1d5db;
-      font-size: 13px;
+    .size-card .label{
+      font-size:.9rem;
+      color:var(--muted);
+      font-weight:700;
     }
 
-    .quote-box {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 22px;
-      padding: 28px;
+    .size-card h3{
+      margin:0;
+      font-size:2.3rem;
+      line-height:.94;
+      letter-spacing:-0.05em;
     }
 
-    .quote-box h2 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      letter-spacing: -0.8px;
+    .size-card p{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:.98rem;
+      line-height:1.65;
     }
 
-    .quote-box p {
-      margin: 0 0 20px;
-      color: #6b7280;
+    .size-card .card-link{
+      margin-top:20px;
+      color:var(--text);
+      font-size:.92rem;
+      font-weight:700;
     }
 
-    .quote-form {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 11px;
+      border-radius:999px;
+      background:var(--soft);
+      font-size:.8rem;
+      font-weight:700;
+      color:#37404a;
     }
 
-    .quote-form .full {
-      grid-column: 1 / -1;
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      align-items:stretch;
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .feature-panel{
+      border-radius:34px;
+      overflow:hidden;
+      background:var(--soft);
+      border:1px solid var(--line);
+      min-height:640px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .32s ease, box-shadow .32s ease;
     }
 
-    .field label {
-      font-size: 13px;
-      color: #4b5563;
-      font-weight: 700;
+    .feature-panel:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow-hover);
     }
 
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      padding: 14px 14px;
-      font-size: 14px;
-      background: #fff;
+    .feature-panel.dark{
+      background:#101217;
+      color:#fff;
+      border-color:#101217;
     }
 
-    .field textarea {
-      min-height: 120px;
-      resize: vertical;
+    .feature-panel .text{
+      padding:36px;
     }
 
-    .submit-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 18px;
-      flex-wrap: wrap;
+    .feature-panel h3{
+      margin:0 0 12px;
+      font-size:2rem;
+      line-height:1.05;
+      letter-spacing:-0.045em;
     }
 
-    .submit-note {
-      color: #6b7280;
-      font-size: 13px;
+    .feature-panel p{
+      margin:0;
+      color:inherit;
+      opacity:.82;
+      max-width:470px;
+      line-height:1.7;
     }
 
-    .footer {
-      margin-top: 56px;
-      padding: 32px 0 60px;
-      border-top: 1px solid #e5e7eb;
-      color: #6b7280;
-      font-size: 14px;
+    .feature-panel img{
+      width:100%;
+      height:430px;
+      object-fit:cover;
+      transition:transform 1.2s ease;
     }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .grid-4,
-      .grid-3,
-      .feature-list,
-      .quote-form {
-        grid-template-columns: 1fr;
+    .feature-panel:hover img{
+      transform:scale(1.04);
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .product-card{
+      border-radius:28px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid var(--line);
+      transition:transform .32s ease, box-shadow .32s ease, border-color .25s ease;
+    }
+
+    .product-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow-hover);
+      border-color:#dfe3e8;
+    }
+
+    .product-card img{
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      transition:transform 1.1s ease;
+    }
+
+    .product-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .product-card .body{
+      padding:22px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:8px;
+    }
+
+    .product-card h4{
+      margin:0;
+      font-size:1.2rem;
+      line-height:1.15;
+      letter-spacing:-0.03em;
+    }
+
+    .product-card .size{
+      color:var(--muted);
+      font-size:.92rem;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .product-card p{
+      margin:10px 0 18px;
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.65;
+      min-height:48px;
+    }
+
+    .supply{
+      background:linear-gradient(180deg,#f7f8fa 0%, #fff 100%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .supply-wrap{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .supply-visual{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform .35s ease, box-shadow .35s ease;
+    }
+
+    .supply-visual:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .supply-visual img{
+      transition:transform 1.3s ease;
+    }
+
+    .supply-visual:hover img{
+      transform:scale(1.05);
+    }
+
+    .supply-copy h2{
+      margin:0 0 16px;
+      font-size:clamp(2.1rem,5vw,4rem);
+      line-height:1.02;
+      letter-spacing:-0.05em;
+    }
+
+    .supply-copy p{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:1.06rem;
+      line-height:1.75;
+    }
+
+    .bullets{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:26px;
+    }
+
+    .bullet{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:#fff;
+      padding:18px 18px 20px;
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+
+    .bullet:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 40px rgba(0,0,0,.06);
+    }
+
+    .bullet strong{
+      display:block;
+      font-size:1rem;
+      margin-bottom:6px;
+      letter-spacing:-0.02em;
+    }
+
+    .bullet span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.65;
+    }
+
+    .references{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .reference-card{
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+
+    .reference-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .reference-card img{
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      transition:transform 1.15s ease;
+    }
+
+    .reference-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .reference-card .body{
+      padding:20px 22px 24px;
+    }
+
+    .reference-card h4{
+      margin:0 0 8px;
+      font-size:1.12rem;
+      letter-spacing:-0.02em;
+    }
+
+    .reference-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.65;
+    }
+
+    .future-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .future-card{
+      background:#101217;
+      color:#fff;
+      border-radius:26px;
+      padding:24px;
+      min-height:220px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+
+    .future-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 30px 70px rgba(16,18,23,.25);
+      background:#171b22;
+    }
+
+    .future-card small{
+      color:rgba(255,255,255,.58);
+      font-weight:700;
+      letter-spacing:-0.01em;
+    }
+
+    .future-card h4{
+      margin:14px 0 0;
+      font-size:1.35rem;
+      line-height:1.15;
+      letter-spacing:-0.03em;
+    }
+
+    .future-card p{
+      margin:18px 0 0;
+      color:rgba(255,255,255,.76);
+      font-size:.95rem;
+      line-height:1.65;
+    }
+
+    .cta{
+      padding:150px 0;
+      background:radial-gradient(circle at top, #f6f7f9 0%, #ffffff 52%);
+      border-top:1px solid var(--line);
+    }
+
+    .cta-box{
+      max-width:980px;
+      margin:0 auto;
+      text-align:center;
+      padding:62px 30px;
+      border-radius:36px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+
+    .cta-box:hover{
+      transform:translateY(-4px);
+      box-shadow:0 28px 70px rgba(0,0,0,.09);
+    }
+
+    .cta-box h2{
+      margin:0 0 14px;
+      font-size:clamp(2.1rem,5vw,4.3rem);
+      line-height:1.02;
+      letter-spacing:-0.055em;
+    }
+
+    .cta-box p{
+      margin:0 auto;
+      max-width:680px;
+      color:var(--muted);
+      font-size:1.06rem;
+      line-height:1.75;
+    }
+
+    .cta-box .hero-actions{
+      margin-top:26px;
+    }
+
+    footer{
+      padding:28px 0 44px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    /* 안정형 스크롤 등장 */
+    .reveal{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .js-motion .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s ease, transform .7s ease;
+      will-change:opacity, transform;
+    }
+
+    .js-motion .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal-delay-1{transition-delay:.06s}
+    .reveal-delay-2{transition-delay:.12s}
+    .reveal-delay-3{transition-delay:.18s}
+    .reveal-delay-4{transition-delay:.24s}
+
+    @media (max-width:1100px){
+      section{
+        padding:108px 0;
       }
 
-      .nav {
-        display: none;
+      .size-grid,
+      .product-grid,
+      .future-grid{
+        grid-template-columns:repeat(2,1fr);
       }
 
-      .hero {
-        padding-top: 48px;
+      .references{
+        grid-template-columns:1fr;
+      }
+
+      .supply-wrap,
+      .feature-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-copy h1{
+        font-size:clamp(2.8rem,8vw,5rem);
+      }
+
+      .supply-copy{
+        order:1;
+      }
+
+      .supply-visual{
+        order:2;
+      }
+    }
+
+    @media (max-width:760px){
+      .container{
+        padding:0 20px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .nav{
+        min-height:66px;
+      }
+
+      .site-header.scrolled .nav{
+        min-height:58px;
+      }
+
+      section{
+        padding:86px 0;
+      }
+
+      .hero{
+        padding-top:24px;
+      }
+
+      .hero-copy{
+        margin-bottom:30px;
+      }
+
+      .hero-copy h1{
+        font-size:clamp(2.35rem,12vw,3.5rem);
+        line-height:1;
+      }
+
+      .hero-copy p{
+        font-size:1rem;
+      }
+
+      .hero-visual{
+        border-radius:28px;
+      }
+
+      .hero-visual img{
+        height:58vh;
+      }
+
+      .size-grid,
+      .product-grid,
+      .future-grid,
+      .bullets{
+        grid-template-columns:1fr;
+      }
+
+      .size-card,
+      .future-card{
+        min-height:auto;
+      }
+
+      .feature-panel{
+        min-height:auto;
+      }
+
+      .feature-panel img{
+        height:320px;
+      }
+
+      .statement-inner{
+        line-height:1.2;
+      }
+
+      .cta{
+        padding:100px 0;
+      }
+
+      .cta-box{
+        padding:38px 22px;
+        border-radius:28px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{
+        scroll-behavior:auto;
+      }
+
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+      }
+
+      .reveal,
+      .js-motion .reveal{
+        opacity:1 !important;
+        transform:none !important;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="logo">
-        <a href="index.html">타일<span>허브</span></a>
-      </div>
-      <nav class="nav">
-        <a href="price.html">컨테이너 가격</a>
-        <a href="design.html">대표 디자인</a>
-        <a href="new.html">중국 신제품</a>
-        <a href="projects.html">프로젝트 사례</a>
-        <a href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-        <a href="factory.html">공장 연결</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="#" class="brand">타일허브<small>The Hub of Tile Distribution</small></a>
+      <nav class="nav-links">
+        <a href="#prices">직수입 가격</a>
+        <a href="#designs">대표 디자인</a>
+        <a href="#supply">공급망</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#future">AI 확장</a>
       </nav>
+      <div class="nav-cta">
+        <a class="btn btn-light" href="#projects">견적 요청</a>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-badges">
-            <span class="badge">직수입 가격</span>
-            <span class="badge">프로젝트 견적</span>
-            <span class="badge">주문 제작 가능</span>
-            <span class="badge">중국 공급망 연결</span>
-          </div>
-          <h1>타일 직수입 가격을<br>확인하세요</h1>
-          <p>
-            타일허브는 재고 중심 유통이 아니라 공급망 중심으로 움직입니다.
-            컨테이너 기준 가격, 대표 디자인, 프로젝트 견적을 빠르게 확인하고
-            가격 데이터와 거래 데이터를 기반으로 시장을 선점하는 플랫폼을 목표로 합니다.
-          </p>
+      <div class="container">
+        <div class="hero-copy reveal show">
+          <span class="eyebrow">직수입 가격 공개 · 중국 공장 공급망 연결</span>
+          <h1>중국 공장 타일을<br>가장 빠르게 연결합니다.</h1>
+          <p>타일허브는 재고 경쟁이 아니라 공급망 경쟁으로 움직입니다. 대표 상품을 먼저 보여주고, 프로젝트 물량과 주문제작까지 빠르게 연결합니다.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="price.html">컨테이너 가격 보기</a>
-            <a class="btn btn-secondary" href="https://help.pay.naver.com/" target="_blank">프로젝트 견적 요청</a>
+            <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
+            <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
           </div>
         </div>
-
-        <div class="hero-card">
-          <h3>대표 사이즈 컨테이너 가격</h3>
-          <div class="hero-price-list">
-            <div class="hero-price-item">
-              <div>
-                <strong>600×600</strong>
-                <span>포세린 / 바닥 타일 기준</span>
-              </div>
-              <a class="price-tag" href="price.html">10,000/1.44㎡(VAT포함)~</a>
-            </div>
-            <div class="hero-price-item">
-              <div>
-                <strong>600×1200</strong>
-                <span>대형 타일 / 프로젝트 중심</span>
-              </div>
-              <a class="price-tag" href="price.html">14,000/1.44㎡(VAT포함)~</a>
-            </div>
-            <div class="hero-price-item">
-              <div>
-                <strong>300×600</strong>
-                <span>벽 타일 / 욕실 중심</span>
-              </div>
-              <a class="price-tag" href="price.html">8,000/1.44㎡(VAT포함)~</a>
-            </div>
-            <div class="hero-price-item">
-              <div>
-                <strong>300×300</strong>
-                <span>소형 타일 / 특수 공간</span>
-              </div>
-              <a class="price-tag" href="price.html">8,000/1.44㎡(VAT포함)~</a>
-            </div>
-          </div>
+        <div class="hero-visual reveal show reveal-delay-1">
+          <img src="./images/hero-main.jpg" alt="타일허브 애플 스타일 메인 비주얼">
         </div>
       </div>
     </section>
 
-    <section class="section" id="prices">
+    <section class="statement">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>대표 사이즈별 가격 진입</h2>
-            <p>
-              시장 진입은 가격이 중요합니다. 초기에는 가격 신뢰를 만들고,
-              이후 디자인·프로젝트·수요 데이터를 축적하여 플랫폼의 방어력을 키웁니다.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-4">
-          <div class="card price-card">
-            <div class="size">600×600</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 30% / 바닥 타일 중심</div>
-            <p>가장 대중적인 프로젝트용 바닥 타일. 가격 비교와 디자인 탐색의 핵심 진입 상품입니다.</p>
-            <a class="mini-btn" href="tile-600x600.html">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">600×1200</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 20% / 대형 타일 중심</div>
-            <p>상업시설, 호텔, 고급 인테리어에 맞는 대형 타일. 디자인 경쟁력과 프로젝트성이 강합니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">300×600</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 30% / 벽 타일 중심</div>
-            <p>욕실, 벽체, 실내 마감에 많이 쓰이는 대표 규격입니다. 안정적인 공급과 빠른 비교가 중요합니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">300×300</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 10% / 소형 특수 수요</div>
-            <p>특정 공간과 욕실 시공에 적합한 소형 규격입니다. 대표 상품과 함께 서브 수요 대응에 활용됩니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">750×1500</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 15% / 프리미엄 대형 중심</div>
-            <p>대형 상업공간과 고급 주거 프로젝트에 맞는 프리미엄 규격입니다. 시그니처 공간 제안에 적합합니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">800×800</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 12% / 균형형 바닥 타일</div>
-            <p>주거와 상업 공간 모두에 활용하기 좋은 중대형 규격입니다. 시공 효율과 디자인 밸런스가 좋습니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">1200×1200</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 8% / 초대형 프로젝트 수요</div>
-            <p>로비, 쇼룸, 하이엔드 공간에 어울리는 초대형 규격입니다. 대형 면적에서 존재감이 강한 제품군입니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
-
-          <div class="card price-card">
-            <div class="size">200×1200</div>
-            <div class="range">컨테이너 기준 가격 확인</div>
-            <div class="meta">대표 비중 9% / 우드룩 특화 수요</div>
-            <p>우드 패턴 바닥과 포인트 공간에 적합한 장방형 규격입니다. 카페와 주거 공간 제안에 활용도가 높습니다.</p>
-            <a class="mini-btn" href="https://help.pay.naver.com/" target="_blank">견적 요청</a>
-          </div>
+        <div class="statement-inner reveal">
+          가격만 보여주는 사이트가 아닙니다.<br>공급망을 연결하는 플랫폼입니다.
+          <span>타일을 앵커 상품으로 시작해 가격 → 트래픽 → 데이터 축적 구조를 만듭니다.</span>
         </div>
       </div>
     </section>
 
-    <section class="section" id="designs">
+    <section id="prices">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>대표 디자인 + 다양성 + 주문 제작</h2>
-            <p>
-              전면에는 대표 디자인을 내세우고, 뒤에서는 중국 공장의 생산 유연성과
-              커스텀 제작 기능으로 다양성을 확장합니다. 재고가 아니라 생산 가능성이 핵심입니다.
-            </p>
-          </div>
+        <div class="section-head reveal">
+          <span class="eyebrow">Price First</span>
+          <h2>먼저, 가격을 공개합니다.</h2>
+          <p>복잡한 문의보다 빠른 판단이 먼저입니다. 타일허브는 대표 규격의 직수입 가격 구조를 전면에 보여줍니다.</p>
         </div>
 
-        <div class="grid-3">
-          <a href="design.html" class="card">
-            <h3>대표 디자인</h3>
-            <p>지금 실제 유통 중인 검증된 디자인을 중심으로 시작합니다.</p>
-            <ul>
-              <li>콘크리트 스타일</li>
-              <li>스톤 스타일</li>
-              <li>대리석 스타일</li>
-              <li>테라조 스타일</li>
-            </ul>
+        <div class="size-grid">
+          <a class="size-card reveal reveal-delay-1" href="price.html">
+            <div class="top"><span class="tag">핵심 규격</span><span class="label">Anchor Size</span></div>
+            <div>
+              <h3>600×600</h3>
+              <p>가장 빠르게 비교되는 대표 규격. 유통과 프로젝트 양쪽에서 판단 기준이 되는 엔트리 사이즈.</p>
+              <p class="card-link">핵심규격 카드 보기 →</p>
+            </div>
           </a>
 
-          <a href="design.html" class="card">
-            <h3>디자인 라이브러리</h3>
-            <p>대표 상품은 빠른 선택용, 그 아래에는 다양한 확장 디자인을 제시합니다.</p>
-            <ul>
-              <li>중국 신제품 반영</li>
-              <li>사이즈별 디자인 확장</li>
-              <li>프로젝트 맞춤 탐색</li>
-            </ul>
-          </a>
+          <article class="size-card reveal reveal-delay-2">
+            <div class="top"><span class="tag">프로젝트 중심</span><span class="label">Project</span></div>
+            <div><h3>600×1200</h3><p>공간 밀도와 고급감을 동시에 가져가는 메인 규격. 프리미엄 주거와 상업 공간에 강합니다.</p></div>
+          </article>
 
-          <a href="design.html" class="card">
-            <h3>주문 제작</h3>
-            <p>이미지 기반 생산 가능성을 활용해 주문 제작과 커스텀 대응을 강화합니다.</p>
-            <ul>
-              <li>특수 패턴</li>
-              <li>신상품 대응</li>
-              <li>이미지 기반 커스텀</li>
-            </ul>
-          </a>
+          <article class="size-card reveal reveal-delay-3">
+            <div class="top"><span class="tag">임팩트</span><span class="label">Visual</span></div>
+            <div><h3>800×800</h3><p>큰 판형의 존재감이 필요한 구간에 적합합니다. 쇼룸형 전시에 특히 강한 규격입니다.</p></div>
+          </article>
+
+          <article class="size-card reveal reveal-delay-4">
+            <div class="top"><span class="tag">대형 판형</span><span class="label">Premium</span></div>
+            <div><h3>1200×1200</h3><p>상징성 있는 규격. 대표 상품 노출과 고급 프로젝트 레퍼런스에 최적화된 대형 사이즈입니다.</p></div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container feature-highlight">
-        <h2>가격으로 시장을 열고, 데이터로 시장을 지배한다</h2>
-        <p>
-          타일허브의 핵심 전략입니다. 초기에는 직수입 가격으로 트래픽과 거래를 만들고,
-          이후 가격·디자인·프로젝트·수요 데이터를 축적해 따라오기 어려운 플랫폼 방어력을 만듭니다.
-        </p>
-        <div class="feature-list">
-          <div class="feature-item">
-            <strong>가격 데이터</strong>
-            <span>중국 공장 기준 단가, MOQ, 납기, 컨테이너 기준 정보</span>
-          </div>
-          <div class="feature-item">
-            <strong>디자인 데이터</strong>
-            <span>신제품 패턴, 표면감, 스타일 분류, 생산 가능성</span>
-          </div>
-          <div class="feature-item">
-            <strong>프로젝트 데이터</strong>
-            <span>기존 납품 사례와 향후 플랫폼 거래 사례 축적</span>
-          </div>
-          <div class="feature-item">
-            <strong>수요 데이터</strong>
-            <span>사이즈별 검색, 지역별 수요, 프로젝트 물량 패턴 분석</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="feed">
+    <section id="designs">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>중국 신제품 피드</h2>
-            <p>
-              가격만으로 끝나지 않고, 포산·샤먼·즈보 등 중국 시장의 최신 정보를 계속 올려
-              업계 사람들이 반복 방문하게 만드는 트래픽 엔진 역할을 합니다.
-            </p>
-          </div>
+        <div class="section-head reveal">
+          <span class="eyebrow">Signature Collection</span>
+          <h2>먼저 보아야 할 대표 디자인</h2>
+          <p>대표 상품을 전면에 노출하고, 서브 다양성과 커스텀은 뒤에서 확장합니다. 애플식 쇼룸 구조를 타일에 맞춰 재해석했습니다.</p>
         </div>
 
-        <div class="grid-3">
-          <a href="new.html" class="card">
-            <h4>포산 신제품</h4>
-            <p>600×1200 콘크리트 시리즈 / 프로젝트 대응형</p>
-          </a>
-          <a href="new.html" class="card">
-            <h4>샤먼 신제품</h4>
-            <p>외장 및 특수 마감용 확장 제품군</p>
-          </a>
-          <a href="new.html" class="card">
-            <h4>즈보 신제품</h4>
-            <p>가격 경쟁형 바닥 타일 및 대형 수요 제품</p>
-          </a>
+        <div class="product-grid">
+          <article class="product-card reveal reveal-delay-1">
+            <img src="./images/tile-01.jpg" alt="Calm Ivory">
+            <div class="body">
+              <div class="meta"><h4>Calm Ivory</h4><span class="size">600×600</span></div>
+              <p>따뜻한 아이보리 결. 시작점을 잡아주는 대표 디자인.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-2">
+            <img src="./images/tile-02.jpg" alt="Pure Limestone">
+            <div class="body">
+              <div class="meta"><h4>Pure Limestone</h4><span class="size">600×1200</span></div>
+              <p>밝고 절제된 미니멀 톤. 프로젝트 주력 라인업.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-3">
+            <img src="./images/tile-03.jpg" alt="Soft Greige">
+            <div class="body">
+              <div class="meta"><h4>Soft Greige</h4><span class="size">800×800</span></div>
+              <p>그레이지 계열의 안정감. 공간 전체 톤을 단정하게 정리.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-4">
+            <img src="./images/tile-04.jpg" alt="Mist Stone">
+            <div class="body">
+              <div class="meta"><h4>Mist Stone</h4><span class="size">1200×1200</span></div>
+              <p>안개 낀 그레이 질감. 큰 판형에서 존재감이 살아납니다.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-1">
+            <img src="./images/tile-05.jpg" alt="Urban Ash">
+            <div class="body">
+              <div class="meta"><h4>Urban Ash</h4><span class="size">600×1200</span></div>
+              <p>도시적인 애쉬 톤. 상업 공간에 강한 모던 결감.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-2">
+            <img src="./images/tile-06.jpg" alt="Sand Vein">
+            <div class="body">
+              <div class="meta"><h4>Sand Vein</h4><span class="size">600×600</span></div>
+              <p>따뜻한 샌드 베이스. 호텔·리조트 계열 분위기에 적합.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-3">
+            <img src="./images/tile-07.jpg" alt="Moon Pearl">
+            <div class="body">
+              <div class="meta"><h4>Moon Pearl</h4><span class="size">800×800</span></div>
+              <p>차분하고 미세한 펄감. 프리미엄 쇼룸형 연출에 유리.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
+
+          <article class="product-card reveal reveal-delay-4">
+            <img src="./images/tile-08.jpg" alt="Graphite Silk">
+            <div class="body">
+              <div class="meta"><h4>Graphite Silk</h4><span class="size">1200×1200</span></div>
+              <p>짙고 세련된 그래파이트. 포인트 존에 강한 인상.</p>
+              <a class="btn btn-light" href="#projects">자세히 보기</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="cases">
+    <section class="supply" id="supply">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>프로젝트 납품 사례</h2>
-            <p>
-              수요를 먼저 노출하기보다 거래 후 사례를 공개하는 구조가 맞습니다.
-              B2B 시장에서는 레퍼런스가 곧 신뢰입니다.
-            </p>
+        <div class="supply-wrap">
+          <div class="supply-copy reveal">
+            <span class="eyebrow">Supply Chain First</span>
+            <h2>재고보다<br>공급망이 중요합니다.</h2>
+            <p>타일허브는 중국 공장 네트워크를 기반으로 프로젝트·유통 물량을 빠르게 연결합니다. 초기에는 직수입 가격 공개로 진입하고, 이후 가격과 거래 데이터를 축적해 플랫폼의 방어력을 만듭니다.</p>
+            <div class="bullets">
+              <div class="bullet reveal reveal-delay-1"><strong>중국 공장 네트워크</strong><span>재고 경쟁보다 구조적 공급 우위에 집중</span></div>
+              <div class="bullet reveal reveal-delay-2"><strong>프로젝트 견적 중심</strong><span>컨테이너 단위와 유통 물량 대응</span></div>
+              <div class="bullet reveal reveal-delay-3"><strong>대표 상품 전면 노출</strong><span>서브 다양성 + 주문제작은 뒤에서 확장</span></div>
+              <div class="bullet reveal reveal-delay-4"><strong>데이터 기반 확장</strong><span>가격 → 트래픽 → 데이터 축적 구조</span></div>
+            </div>
           </div>
-        </div>
-
-        <div class="grid-3">
-          <a href="projects.html" class="card">
-            <h4>서울 ○○호텔</h4>
-            <p>600×600 타일 / 컨테이너 3대 납품</p>
-          </a>
-          <a href="projects.html" class="card">
-            <h4>부산 ○○상가</h4>
-            <p>600×1200 타일 / 컨테이너 2대 납품</p>
-          </a>
-          <a href="projects.html" class="card">
-            <h4>○○프로젝트</h4>
-            <p>벽 타일 + 바닥 타일 복합 공급 사례</p>
-          </a>
+          <div class="supply-visual reveal reveal-delay-2">
+            <img src="./images/supply-chain.jpg" alt="타일허브 공급망 추상 이미지">
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="quote">
-      <div class="container quote-box">
-        <h2>프로젝트 견적 요청</h2>
-        <p>
-          컨테이너 단위 프로젝트, 유통 물량, 주문 제작까지 빠르게 검토할 수 있도록
-          기본 정보를 남겨 주세요. 타일허브는 단순 쇼핑몰이 아니라 공급망 플랫폼입니다.
-        </p>
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Project Flow</span>
+          <h2>프로젝트는 견적으로 시작합니다.</h2>
+          <p>대량 물량, 컨테이너 단위, 유통 프로젝트, 현장 맞춤 요청까지. 타일허브는 프로젝트 견적 중심으로 움직입니다.</p>
+        </div>
 
-        <form class="quote-form">
-          <div class="field">
-            <label for="company">회사명</label>
-            <input id="company" type="text" placeholder="회사명을 입력하세요" />
-          </div>
+        <div class="feature-grid">
+          <article class="feature-panel reveal reveal-delay-1">
+            <div class="text">
+              <h3>대표 상품을 먼저, 결정은 더 빠르게.</h3>
+              <p>복잡한 카탈로그보다 빠른 선택 구조가 중요합니다. 타일허브는 대표 디자인을 먼저 보여주고, 그 다음 커스텀과 서브 라인으로 확장합니다.</p>
+            </div>
+            <img src="./images/reference-01.jpg" alt="타일 레퍼런스 프로젝트 1">
+          </article>
 
-          <div class="field">
-            <label for="name">담당자명</label>
-            <input id="name" type="text" placeholder="담당자명을 입력하세요" />
-          </div>
-2
-          <div class="field">
-            <label for="phone">연락처</label>
-            <input id="phone" type="text" placeholder="연락처를 입력하세요" />
-          </div>
+          <article class="feature-panel dark reveal reveal-delay-2">
+            <div class="text">
+              <h3>표준 규격을 넘어 주문제작까지.</h3>
+              <p>사이즈, 질감, 패턴, 프로젝트 요구 조건에 맞춘 커스텀 흐름을 준비합니다. 유통 구조가 아니라 공급망 구조로 대응합니다.</p>
+            </div>
+            <img src="./images/reference-02.jpg" alt="타일 레퍼런스 프로젝트 2">
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <div class="field">
-            <label for="email">이메일</label>
-            <input id="email" type="email" placeholder="이메일을 입력하세요" />
-          </div>
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Reference</span>
+          <h2>거래는 끝나지 않습니다.<br>레퍼런스로 남습니다.</h2>
+          <p>실제 프로젝트 적용 사례와 납품 구조가 신뢰를 만듭니다. 제품보다 결과가 먼저 설득합니다.</p>
+        </div>
 
-          <div class="field">
-            <label for="size">관심 사이즈</label>
-            <select id="size">
-              <option>600×600</option>
-              <option>600×1200</option>
-              <option>300×600</option>
-              <option>300×300</option>
-              <option>기타</option>
-            </select>
-          </div>
+        <div class="references">
+          <article class="reference-card reveal reveal-delay-1">
+            <img src="./images/reference-01.jpg" alt="프리미엄 주거 레퍼런스">
+            <div class="body">
+              <h4>프리미엄 주거 프로젝트</h4>
+              <p>밝은 결감과 큰 판형을 중심으로 쇼룸형 주거 공간을 완성한 사례.</p>
+            </div>
+          </article>
 
-          <div class="field">
-            <label for="qty">예상 물량</label>
-            <input id="qty" type="text" placeholder="예: 1컨테이너, 2컨테이너" />
-          </div>
+          <article class="reference-card reveal reveal-delay-2">
+            <img src="./images/reference-02.jpg" alt="상업 공간 레퍼런스">
+            <div class="body">
+              <h4>상업 공간 적용 사례</h4>
+              <p>동선이 긴 상업 공간에서 600×1200 주력 제품으로 통일감을 만든 구조.</p>
+            </div>
+          </article>
 
-          <div class="field full">
-            <label for="message">요청 내용</label>
-            <textarea id="message" placeholder="프로젝트명, 납기, 디자인 방향, 주문 제작 여부 등을 입력하세요"></textarea>
-          </div>
-        </form>
+          <article class="reference-card reveal reveal-delay-3">
+            <img src="./images/reference-03.jpg" alt="호텔 라운지 레퍼런스">
+            <div class="body">
+              <h4>호텔·라운지 톤앤매너</h4>
+              <p>질감이 과하지 않고 깊이가 있는 석재 계열 디자인을 적용한 장면.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <div class="submit-row">
-          <div class="submit-note">
-            현재는 테스트 메인페이지입니다. 실제 배포 후에는 DB와 연결하여 견적 요청이 저장되도록 확장합니다.
+    <section id="future">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Next Layer</span>
+          <h2>다음은 더 빨라집니다.</h2>
+          <p>타일허브는 단순 가격 사이트로 멈추지 않습니다. 이미지, 도면, 프로젝트 데이터를 기반으로 더 빠른 선택 구조를 준비합니다.</p>
+        </div>
+
+        <div class="future-grid">
+          <article class="future-card reveal reveal-delay-1">
+            <small>AI Visual Search</small>
+            <div>
+              <h4>타일 이미지를 올리면 비슷한 제품 추천</h4>
+              <p>현장 사진과 레퍼런스 이미지를 기반으로 패턴과 톤이 가까운 제품을 자동 매칭.</p>
+            </div>
+          </article>
+
+          <article class="future-card reveal reveal-delay-2">
+            <small>Drawing Analysis</small>
+            <div>
+              <h4>도면 기반 수량 계산과 프로젝트 분류</h4>
+              <p>면적 계산, 규격 추천, 예상 소요량 도출까지 이어지는 AI 보조 흐름.</p>
+            </div>
+          </article>
+
+          <article class="future-card reveal reveal-delay-3">
+            <small>China New Feed</small>
+            <div>
+              <h4>중국 현지 신제품을 가장 먼저 확인</h4>
+              <p>공장 네트워크에서 올라오는 신제품 피드를 빠르게 공개하는 구조.</p>
+            </div>
+          </article>
+
+          <article class="future-card reveal reveal-delay-4">
+            <small>Admin Studio</small>
+            <div>
+              <h4>이미지 드롭 중심 관리자 페이지 확장</h4>
+              <p>상품 사진 업로드, 카드 순서 조정, 크기 변경, 노출 제어까지 운영 효율 중심으로 설계.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>타일을 찾는 가장 빠른 방법.<br>타일허브.</h2>
+          <p>직수입 가격 공개, 대표 상품 전면 노출, 프로젝트 견적 중심 거래, 중국 공장 공급망 연결. 타일허브는 그 구조 자체를 바꿉니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
+            <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
           </div>
-          <a class="btn btn-primary" href="https://help.pay.naver.com/" target="_blank">견적 요청 페이지로 이동</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <strong>타일허브</strong> · 테스트 메인페이지
-      <div>타일 앵커 전략으로 시작해 가격, 디자인, 프로젝트, 수요 데이터를 축적하는 공급망 플랫폼</div>
+  <footer>
+    <div class="container footer-row">
+      <div>타일허브 | The Hub of Tile Distribution</div>
+      <div>애플식 쇼룸형 메인 시안 · 이미지 포함 목업 버전</div>
     </div>
   </footer>
+
+  <script>
+    const header = document.getElementById("siteHeader");
+    const revealItems = document.querySelectorAll(".reveal");
+
+    function handleHeader() {
+      if (window.scrollY > 16) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+
+    function handleReveal() {
+      const trigger = window.innerHeight * 0.94;
+
+      revealItems.forEach((item) => {
+        const top = item.getBoundingClientRect().top;
+        if (top < trigger) {
+          item.classList.add("show");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", () => {
+      handleHeader();
+      handleReveal();
+    });
+
+    window.addEventListener("load", () => {
+      document.body.classList.add("js-motion");
+      handleHeader();
+      handleReveal();
+    });
+  </script>
 </body>
 </html>
