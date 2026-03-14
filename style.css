@@ -249,12 +249,22 @@ button:active,
   gap: 18px;
 }
 
+.tile-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .tile-card {
   overflow: hidden;
   border-radius: 24px;
   background: var(--panel-strong);
   border: 2px solid #e53935;
   box-shadow: 0 18px 42px rgba(34, 47, 77, 0.08);
+}
+
+.upload-card .tile-image {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0)),
+    #ebe3d8;
 }
 
 .tile-image {
@@ -335,6 +345,10 @@ button:active,
   }
 
   .tile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tile-grid-4 {
     grid-template-columns: 1fr;
   }
 
