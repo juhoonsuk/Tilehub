@@ -92,6 +92,10 @@
       transition:transform .25s ease;
     }
 
+    .brand-hub{
+      color:#E53935;
+    }
+
     .brand:hover{
       transform:translateY(-1px);
     }
@@ -221,13 +225,17 @@
     .hero-copy h1{
       margin:0 0 20px;
       font-size:clamp(2.9rem,7vw,6rem);
-      line-height:.96;
+      line-height:1.18;
       letter-spacing:-0.06em;
       font-weight:800;
     }
 
+    .hero-brand-hub{
+      color:#E53935;
+    }
+
     .hero-copy p{
-      margin:0 auto;
+      margin:72px auto 0;
       max-width:760px;
       font-size:clamp(1.05rem,2.2vw,1.35rem);
       color:var(--muted);
@@ -402,7 +410,7 @@
       margin:0 auto;
       text-align:center;
       font-size:clamp(1.9rem,4vw,3.4rem);
-      line-height:1.18;
+      line-height:1.77;
       font-weight:800;
       letter-spacing:-0.05em;
     }
@@ -1046,7 +1054,7 @@
 <body>
   <header class="site-header" id="siteHeader">
     <div class="container nav">
-      <a href="#" class="brand">타일허브<small>The Hub of Tile Distribution</small></a>
+      <a href="#" class="brand">타일<span class="brand-hub">허브</span><small>The <span class="brand-hub">Hub</span> of Tile Distribution</small></a>
       <nav class="nav-links">
         <a href="#prices">직수입 가격</a>
         <a href="#designs">대표 디자인</a>
@@ -1065,8 +1073,8 @@
       <div class="container">
         <div class="hero-copy reveal show">
           <span class="eyebrow">직수입 가격 공개 · 중국 공장 공급망 연결</span>
-          <h1>중국 공장 타일을<br>가장 빠르게 연결합니다.</h1>
-          <p>타일허브는 재고 경쟁이 아니라 공급망 경쟁으로 움직입니다. 대표 상품을 먼저 보여주고, 프로젝트 물량과 주문제작까지 빠르게 연결합니다.</p>
+          <h1>타일 유통의 새로운 기준<br>TILE<span class="hero-brand-hub">HUB</span></h1>
+          <p>디자인 선택부터 프로젝트 공급까지<br>중국 공장 타일 공급망을 직접 연결합니다.</p>
           <div class="hero-actions">
             <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
             <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
@@ -1084,7 +1092,7 @@
           <div class="finder-copy">
             <span class="eyebrow">Tile Finder</span>
             <h2>원하는 조건의 타일을 찾아보세요</h2>
-            <p>사이즈, 스타일, 가격 조건에 맞는 타일을 빠르게 탐색하고<br>프로젝트에 맞는 공급 가능성까지 연결할 수 있습니다.</p>
+          <p>사이즈, 스타일, 가격 조건에 맞는 타일을 빠르게 탐색하고<br>프로젝트에 맞는 공급 가능성까지 연결할 수 있습니다.</p>
           </div>
 
           <div>
@@ -1140,8 +1148,8 @@
     <section class="statement">
       <div class="container">
         <div class="statement-inner reveal">
-          가격만 보여주는 사이트가 아닙니다.<br>공급망을 연결하는 플랫폼입니다.
-          <span>타일을 앵커 상품으로 시작해 가격 → 트래픽 → 데이터 축적 구조를 만듭니다.</span>
+          가격만 보여주는 사이트가 아닙니다.<br>공급망을 혁신하는 플랫폼입니다.
+          <span>중국 타일 공장 → 타일허브 → 타일수요자 구조로 유통합니다.</span>
         </div>
       </div>
     </section>
@@ -1150,8 +1158,8 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Price First</span>
-          <h2>먼저, 가격을 공개합니다.</h2>
-          <p>복잡한 문의보다 빠른 판단이 먼저입니다. 타일허브는 대표 규격의 직수입 가격 구조를 전면에 보여줍니다.</p>
+          <h2>가격을 가장 먼저 공개합니다</h2>
+          <p>문의 없이 가격을 확인할 수 있습니다.  타일허브는 중국 공장 직수입 가격 구조를 전면에 공개합니다.</p>
         </div>
 
         <div class="size-grid">
@@ -1281,7 +1289,7 @@
             </div>
           </div>
           <div class="supply-visual reveal reveal-delay-2">
-            <img src="./images/supply-chain.jpg" alt="타일허브 공급망 추상 이미지">
+            <img src="./images/supply-chain.jpg?v=20260315-0237" alt="타일허브 공급망 추상 이미지">
           </div>
         </div>
       </div>
@@ -1301,7 +1309,7 @@
               <h3>대표 상품을 먼저, 결정은 더 빠르게.</h3>
               <p>복잡한 카탈로그보다 빠른 선택 구조가 중요합니다. 타일허브는 대표 디자인을 먼저 보여주고, 그 다음 커스텀과 서브 라인으로 확장합니다.</p>
             </div>
-            <img src="./images/reference-01.jpg" alt="타일 레퍼런스 프로젝트 1">
+            <img src="./images/reference-01.jpg?v=20260315-0302" alt="타일 레퍼런스 프로젝트 1">
           </article>
 
           <article class="feature-panel dark reveal reveal-delay-2">
@@ -1325,7 +1333,7 @@
 
         <div class="references">
           <article class="reference-card reveal reveal-delay-1">
-            <img src="./images/reference-01.jpg" alt="프리미엄 주거 레퍼런스">
+            <img src="./images/reference-01.jpg?v=20260315-0302" alt="프리미엄 주거 레퍼런스">
             <div class="body">
               <h4>프리미엄 주거 프로젝트</h4>
               <p>밝은 결감과 큰 판형을 중심으로 쇼룸형 주거 공간을 완성한 사례.</p>
