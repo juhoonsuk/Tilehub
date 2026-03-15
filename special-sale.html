@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>타일허브 | 재고 특판</title>
+  <meta
+    name="description"
+    content="타일허브 재고 특판 페이지에서 수입가 이하 특판 상품과 특이사항을 한 번에 확인하세요."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .sale-shell {
+      width: min(1280px, calc(100% - 32px));
+    }
+
+    .sale-hero {
+      padding: 36px;
+    }
+
+    .sale-hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 1.02;
+    }
+
+    .sale-hero p {
+      margin: 0;
+      max-width: 760px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .sale-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .sale-board {
+      margin-top: 22px;
+      padding: 30px;
+    }
+
+    .sale-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .sale-card {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
+      min-height: 360px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--panel-strong);
+      border: 1px solid rgba(23, 32, 51, 0.08);
+    }
+
+    .sale-card-image {
+      height: 100%;
+    }
+
+    .sale-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sale-card-body {
+      padding: 32px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .sale-card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .sale-card-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: #fff0e8;
+      color: #c74414;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .sale-card h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.1;
+    }
+
+    .sale-card-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .sale-notes {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sale-notes li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(23, 32, 51, 0.04);
+      color: var(--text);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .sale-notes strong {
+      color: #c74414;
+    }
+
+    @media (max-width: 900px) {
+      .sale-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .sale-card-image {
+        min-height: 260px;
+      }
+
+      .sale-card-body {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell sale-shell">
+    <section class="hero-card sale-hero">
+      <p class="eyebrow">Special Sale Board</p>
+      <h1>재고 특판 상품을<br />빠르게 확인하세요.</h1>
+      <p>
+        일부 재고 상품을 수입가 이하 특판가로 정리하는 페이지입니다.
+        각 카드 우측 영역에는 현장 적용 조건, 최소 발주 단위, 특이사항을 정리할 수 있게 구성했습니다.
+      </p>
+      <div class="sale-actions">
+        <a class="action-link primary-button" href="index.html">메인으로 이동</a>
+        <a class="action-link secondary-button" href="price.html">가격 페이지 보기</a>
+      </div>
+    </section>
+
+    <section class="board-card sale-board">
+      <div class="board-header">
+        <div>
+          <p class="section-label">Inventory Sale</p>
+          <h2>수입가 이하 특판 상품</h2>
+        </div>
+        <p class="timestamp">총 5개 카드 · 이미지 좌측 1/3 · 특이사항 우측 2/3</p>
+      </div>
+
+      <div class="sale-list">
+        <article class="sale-card">
+          <div class="sale-card-image">
+            <img src="./images/tile-01.jpg?v=20260315-1316" alt="재고 특판 타일 이미지 01" />
+          </div>
+          <div class="sale-card-body">
+            <div class="sale-card-top">
+              <span class="sale-card-badge">SPECIAL LOT 01</span>
+              <span class="set-summary">600×600 / 즉시 출고 가능</span>
+            </div>
+            <h2>웜 아이보리 포세린 특판</h2>
+            <p class="sale-card-copy">
+              프로젝트 현장에서 바로 사용할 수 있는 기본 톤 재고입니다.
+              특판 조건과 현장 적용 유의사항을 우측 메모 영역에 정리하는 형식입니다.
+            </p>
+            <ul class="sale-notes">
+              <li><strong>특이사항</strong> 재고 수량 한정 / 창고 보관분 즉시 출고</li>
+              <li><strong>권장 용도</strong> 주거 바닥, 공용부, 쇼룸형 내부 공간</li>
+              <li><strong>비고</strong> 동일 LOT 우선 출고 / 소진 시 마감</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sale-card">
+          <div class="sale-card-image">
+            <img src="./images/tile-01.jpg?v=20260315-1316" alt="재고 특판 타일 이미지 02" />
+          </div>
+          <div class="sale-card-body">
+            <div class="sale-card-top">
+              <span class="sale-card-badge">SPECIAL LOT 02</span>
+              <span class="set-summary">600×1200 / 프로젝트 잔량 정리</span>
+            </div>
+            <h2>라이트 스톤 대형 타일 특판</h2>
+            <p class="sale-card-copy">
+              잔량 프로젝트 물량을 빠르게 정리할 수 있도록 만든 전폭 카드입니다.
+              이미지와 함께 적용 가능 공간, 발주 단위, 특수 조건을 정리할 수 있습니다.
+            </p>
+            <ul class="sale-notes">
+              <li><strong>특이사항</strong> 파손 체크 완료 / pallet 단위 출고 우선</li>
+              <li><strong>권장 용도</strong> 상업 공간 바닥, 대형 홀, 라운지 구역</li>
+              <li><strong>비고</strong> 커팅 사용 가능 / 수량 확인 후 견적</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sale-card">
+          <div class="sale-card-image">
+            <img src="./images/tile-01.jpg?v=20260315-1316" alt="재고 특판 타일 이미지 03" />
+          </div>
+          <div class="sale-card-body">
+            <div class="sale-card-top">
+              <span class="sale-card-badge">SPECIAL LOT 03</span>
+              <span class="set-summary">300×600 / 벽 타일 특판</span>
+            </div>
+            <h2>욕실 벽 타일 긴급 특가</h2>
+            <p class="sale-card-copy">
+              현장 전개가 빠른 벽체용 타일 재고를 특판으로 정리하는 카드입니다.
+              같은 구조 안에 색상 편차, 재고 위치, 샘플 보유 여부를 적을 수 있습니다.
+            </p>
+            <ul class="sale-notes">
+              <li><strong>특이사항</strong> 일부 박스 외관 훼손 / 제품 상태 양호</li>
+              <li><strong>권장 용도</strong> 욕실 벽체, 포인트 벽, 세면 공간</li>
+              <li><strong>비고</strong> 시공 전 수량 검수 권장</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sale-card">
+          <div class="sale-card-image">
+            <img src="./images/tile-01.jpg?v=20260315-1316" alt="재고 특판 타일 이미지 04" />
+          </div>
+          <div class="sale-card-body">
+            <div class="sale-card-top">
+              <span class="sale-card-badge">SPECIAL LOT 04</span>
+              <span class="set-summary">20T 외부용 / 현장 납기 우선</span>
+            </div>
+            <h2>외부용 20T 세라믹 재고 정리</h2>
+            <p class="sale-card-copy">
+              두께감 있는 외부용 재고를 빠르게 매칭하기 위한 카드입니다.
+              공사 일정, 현장 납품 가능일, 야적 보관 가능 여부 등 특이사항 입력에 적합합니다.
+            </p>
+            <ul class="sale-notes">
+              <li><strong>특이사항</strong> 외부 적재 가능 / forklift 하역 권장</li>
+              <li><strong>권장 용도</strong> 테라스, 외부 데크, 조경 연계 구간</li>
+              <li><strong>비고</strong> 미끄럼 등급 별도 문의</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sale-card">
+          <div class="sale-card-image">
+            <img src="./images/tile-01.jpg?v=20260315-1316" alt="재고 특판 타일 이미지 05" />
+          </div>
+          <div class="sale-card-body">
+            <div class="sale-card-top">
+              <span class="sale-card-badge">SPECIAL LOT 05</span>
+              <span class="set-summary">혼합 재고 / 일괄 정리</span>
+            </div>
+            <h2>혼합 LOT 특판 묶음 제안</h2>
+            <p class="sale-card-copy">
+              동일 이미지 구조를 유지하면서 여러 재고 LOT를 특이사항 중심으로 정리할 수 있도록 만든 카드입니다.
+              실제 운영 시에는 품목명과 수량, 납품 위치만 바꿔 재사용하면 됩니다.
+            </p>
+            <ul class="sale-notes">
+              <li><strong>특이사항</strong> 혼합 LOT / 현장별 분리 출고 가능</li>
+              <li><strong>권장 용도</strong> 임시 현장, 예산 조정 프로젝트, 빠른 소진 품목</li>
+              <li><strong>비고</strong> 카드 우측 영역에 추가 메모 입력 가능</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

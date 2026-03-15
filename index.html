@@ -1028,6 +1028,132 @@
       text-align:center;
     }
 
+    .popup-overlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,.65);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+
+    .popup-box{
+      width:800px;
+      height:520px;
+      max-width:90%;
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      box-shadow:0 30px 70px rgba(0,0,0,.3);
+      position:relative;
+    }
+
+    .popup-close{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:36px;
+      height:36px;
+      border:none;
+      border-radius:50%;
+      background:#fff;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .popup-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .popup-image{
+      height:100%;
+      min-height:0;
+    }
+
+    .popup-content{
+      height:100%;
+      padding:40px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .popup-badge{
+      background:#d62828;
+      color:#fff;
+      font-size:12px;
+      padding:6px 12px;
+      border-radius:20px;
+      width:max-content;
+      margin-bottom:15px;
+      font-weight:700;
+    }
+
+    .popup-content h2{
+      font-size:32px;
+      margin:0 0 15px;
+    }
+
+    .popup-text{
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .popup-text strong{
+      color:#d62828;
+    }
+
+    .blink{
+      margin-top:10px;
+      font-weight:700;
+      color:#d62828;
+      animation:blink 1.2s infinite;
+    }
+
+    @keyframes blink{
+      0%{opacity:1}
+      50%{opacity:.3}
+      100%{opacity:1}
+    }
+
+    .popup-buttons{
+      margin-top:25px;
+      display:flex;
+      gap:10px;
+    }
+
+    .btn-main{
+      background:#111;
+      color:#fff;
+      padding:14px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .btn-sub{
+      background:#eee;
+      border:none;
+      padding:14px 18px;
+      border-radius:10px;
+      cursor:pointer;
+      font:inherit;
+    }
+
+    .hide-today{
+      margin-top:15px;
+      font-size:14px;
+      color:#666;
+    }
+
     /* 안정형 스크롤 등장 */
     .reveal{
       opacity:1;
@@ -1229,6 +1355,23 @@
       .cta-box{
         padding:46px 22px;
         border-radius:28px;
+      }
+
+      .popup-box{
+        grid-template-columns:1fr;
+        height:auto;
+      }
+
+      .popup-image{
+        height:260px;
+      }
+
+      .popup-content{
+        padding:25px;
+      }
+
+      .popup-buttons{
+        flex-direction:column;
       }
 
       .reference-head h2{
@@ -1463,7 +1606,7 @@
 
         <div class="product-grid">
           <article class="product-card reveal reveal-delay-1">
-            <img src="./images/tile-01.jpg" alt="Calm Ivory">
+            <img src="./images/tile-01.jpg?v=20260315-1316" alt="Calm Ivory">
             <div class="body">
               <div class="meta"><h4>Calm Ivory</h4><span class="size">300X300</span></div>
               <p>따뜻한 아이보리 결. 시작점을 잡아주는 대표 디자인.</p>
@@ -1726,6 +1869,40 @@
     </section>
   </main>
 
+  <!-- ===== 재고 특판 팝업 ===== -->
+  <div id="salePopup" class="popup-overlay" onclick="overlayClose(event)">
+    <div class="popup-box">
+      <button class="popup-close" onclick="closePopup()">×</button>
+      <div class="popup-image">
+        <img src="images/tile-01.jpg?v=20260315-1316" alt="타일 특판">
+      </div>
+      <div class="popup-content">
+        <div class="popup-badge">SPECIAL SALE</div>
+        <h2>재고 특판</h2>
+        <p class="popup-text">
+          재고가 쳐진 일부 상품을<br>
+          <strong>수입가 이하 특판가</strong>로 정리합니다.
+        </p>
+        <p class="blink">
+          한정 수량 · 빠른 출고 · 조기 마감
+        </p>
+        <div class="popup-buttons">
+          <a href="special-sale.html" class="btn-main">
+            특판 상품 보러가기
+          </a>
+          <button class="btn-sub" onclick="closePopup()">
+            닫기
+          </button>
+        </div>
+        <label class="hide-today">
+          <input type="checkbox" id="hideToday">
+          오늘 하루 보지 않기
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- ===== 팝업 끝 ===== -->
+
   <footer>
     <div class="container footer-row">
       <div>타일<span class="brand-hub">허브</span> | The <span class="brand-hub">Hub</span> of Tile Distribution</div>
@@ -1735,6 +1912,7 @@
   <script>
     const header = document.getElementById("siteHeader");
     const revealItems = document.querySelectorAll(".reveal");
+    const salePopup = document.getElementById("salePopup");
 
     function handleHeader() {
       if (window.scrollY > 16) {
@@ -1755,6 +1933,24 @@
       });
     }
 
+    function closePopup() {
+      const hideToday = document.getElementById("hideToday");
+
+      if (hideToday.checked) {
+        const today = new Date();
+        const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+        localStorage.setItem("popupHide", tomorrow.getTime());
+      }
+
+      salePopup.style.display = "none";
+    }
+
+    function overlayClose(event) {
+      if (event.target.id === "salePopup") {
+        closePopup();
+      }
+    }
+
     window.addEventListener("scroll", () => {
       handleHeader();
       handleReveal();
@@ -1764,6 +1960,11 @@
       document.body.classList.add("js-motion");
       handleHeader();
       handleReveal();
+
+      const hideUntil = localStorage.getItem("popupHide");
+      if (!hideUntil || new Date().getTime() > hideUntil) {
+        salePopup.style.display = "flex";
+      }
     });
   </script>
 </body>
