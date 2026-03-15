@@ -578,7 +578,8 @@
     .product-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:24px;
+      column-gap:24px;
+      row-gap:48px;
     }
 
     .product-card{
@@ -769,6 +770,100 @@
       line-height:1.72;
     }
 
+    .hub-target-section{
+      padding:120px 24px;
+      background:#f5f5f7;
+    }
+
+    .hub-target-wrap{
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .hub-target-head{
+      max-width:760px;
+      margin:0 auto 52px;
+      text-align:center;
+    }
+
+    .hub-target-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#e9eaee;
+      color:#6b7280;
+      font-size:12px;
+      font-weight:600;
+      line-height:1;
+      margin-bottom:18px;
+    }
+
+    .hub-target-head h2{
+      margin:0 0 14px;
+      font-size:clamp(34px,4.8vw,56px);
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      color:#111111;
+    }
+
+    .hub-target-head p{
+      margin:0;
+      font-size:18px;
+      line-height:1.7;
+      color:#6b7280;
+    }
+
+    .hub-target-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .hub-target-card{
+      min-height:180px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      padding:32px 28px;
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius:28px;
+      text-decoration:none;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .hub-target-card:hover{
+      transform:translateY(-4px);
+      border-color:#d1d5db;
+      box-shadow:0 18px 40px rgba(17,17,17,.06);
+    }
+
+    .hub-target-no{
+      display:inline-block;
+      margin-bottom:18px;
+      color:#b42318;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.14em;
+    }
+
+    .hub-target-card h3{
+      margin:0 0 12px;
+      font-size:25px;
+      line-height:1.2;
+      letter-spacing:-0.03em;
+      color:#111111;
+    }
+
+    .hub-target-card p{
+      margin:0;
+      font-size:16px;
+      line-height:1.7;
+      color:#6b7280;
+    }
+
     .future-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -912,6 +1007,10 @@
         grid-template-columns:1fr;
       }
 
+      .hub-target-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
       .hero-copy h1{
         font-size:clamp(2.8rem,8vw,5rem);
       }
@@ -986,6 +1085,32 @@
       .future-grid,
       .bullets{
         grid-template-columns:1fr;
+      }
+
+      .hub-target-section{
+        padding:88px 20px;
+      }
+
+      .hub-target-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hub-target-head h2{
+        font-size:34px;
+      }
+
+      .hub-target-head p{
+        font-size:16px;
+      }
+
+      .hub-target-card{
+        min-height:auto;
+        padding:24px;
+        border-radius:24px;
+      }
+
+      .hub-target-card h3{
+        font-size:22px;
       }
 
       .size-card,
@@ -1392,12 +1517,50 @@
       </div>
     </section>
 
+    <section class="hub-target-section">
+      <div class="hub-target-wrap">
+        <div class="hub-target-head reveal">
+          <span class="hub-target-eyebrow">Who TileHub Is For</span>
+          <h2>이런 고객을 위한 플랫폼입니다</h2>
+          <p>
+            타일허브는 낱개 구매보다 프로젝트 · 유통 · 직수입 수요에 맞춘 공급 플랫폼입니다.
+          </p>
+        </div>
+
+        <div class="hub-target-grid">
+          <a href="#" class="hub-target-card reveal reveal-delay-1">
+            <span class="hub-target-no">01</span>
+            <h3>건설사 · 개발 프로젝트</h3>
+            <p>아파트, 상업시설, 개발 프로젝트에 필요한 대량 타일 공급과 가격 비교</p>
+          </a>
+
+          <a href="#" class="hub-target-card reveal reveal-delay-2">
+            <span class="hub-target-no">02</span>
+            <h3>프로젝트 자재 납품업체</h3>
+            <p>직수입 가격 확인과 안정적인 중국 공장 공급망 연결이 필요한 고객</p>
+          </a>
+
+          <a href="#" class="hub-target-card reveal reveal-delay-3">
+            <span class="hub-target-no">03</span>
+            <h3>인테리어 · 시공 업체</h3>
+            <p>상업공간과 주거 현장에 맞는 타일을 빠르게 비교하고 선택하는 고객</p>
+          </a>
+
+          <a href="#" class="hub-target-card reveal reveal-delay-4">
+            <span class="hub-target-no">04</span>
+            <h3>신축 건축주</h3>
+            <p>주택, 상가, 펜션 등 신축 프로젝트에 맞는 타일을 찾는 고객</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Reference</span>
-          <h2>거래는 끝나지 않습니다.<br>레퍼런스로 남습니다.</h2>
-          <p>실제 프로젝트 적용 사례와 납품 구조가 신뢰를 만듭니다. 제품보다 결과가 먼저 설득합니다.</p>
+          <h2>프로젝트는 끝나도 신뢰는 현장에 남습니다.</h2>
+          <p>실제 프로젝트 적용 사례와 납품 구조가 다음 프로젝트의 기준이 됩니다.</p>
         </div>
 
         <div class="references">
