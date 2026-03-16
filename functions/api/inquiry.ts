@@ -3,6 +3,7 @@ interface Env {
   MAIL_FROM_NAME?: string;
   MAIL_TO?: string;
   MAILCHANNELS_ENDPOINT?: string;
+  MAILCHANNELS_API_KEY?: string;
 }
 
 type InquiryType = "project" | "custom" | "sales" | "partners" | "inquiry";
@@ -95,6 +96,16 @@ function validatePayload(payload: InquiryPayload) {
   }
 
   return null;
+}
+
+function resolveMailChannelsEndpoint(configuredEndpoint?: string) {
+  const normalized = normalizeValue(configuredEndpoint) || "https://api.mailchannels.net/tx/v1/send";
+
+  if (normalized === "https://api.mailchannels.net/tx") {
+    return "https://api.mailchannels.net/tx/v1/send";
+  }
+
+  return normalized;
 }
 
 function buildSubject(payload: InquiryPayload) {
@@ -219,14 +230,28 @@ async function sendEmail(payload: InquiryPayload, env: Env) {
   const toEmail = env.MAIL_TO || EMAIL_MAP[payload.inquiryType];
   const fromEmail = env.MAIL_FROM_EMAIL || "no-reply@tilehub.kr";
   const fromName = env.MAIL_FROM_NAME || "TileHub Inquiry Bot";
-  const endpoint = env.MAILCHANNELS_ENDPOINT || "https://api.mailchannels.net/tx/v1/send";
+  const endpoint = resolveMailChannelsEndpoint(env.MAILCHANNELS_ENDPOINT);
+  const apiKey = normalizeValue(env.MAILCHANNELS_API_KEY);
   const replyEmail = normalizeValue(payload.email);
   const replyName = normalizeValue(payload.manager_name) || fromName;
+
+  console.log("[inquiry] MailChannels config", {
+    endpoint,
+    hasFromEmail: Boolean(fromEmail),
+    hasFromName: Boolean(fromName),
+    hasMailTo: Boolean(toEmail),
+    hasApiKey: Boolean(apiKey),
+  });
+
+  if (!apiKey) {
+    throw new Error("MAILCHANNELS_API_KEY_MISSING");
+  }
 
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-Api-Key": apiKey,
     },
     body: JSON.stringify({
       personalizations: [
@@ -256,9 +281,23 @@ async function sendEmail(payload: InquiryPayload, env: Env) {
     }),
   });
 
+  console.log("[inquiry] MailChannels response", {
+    status: response.status,
+    ok: response.ok,
+  });
+
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`메일 전송 실패: ${errorText}`);
+    console.error("[inquiry] MailChannels send failed", {
+      status: response.status,
+      bodyPreview: errorText.slice(0, 160),
+    });
+
+    if (response.status === 401 || response.status === 403) {
+      throw new Error("MAILCHANNELS_AUTH_ERROR");
+    }
+
+    throw new Error("MAILCHANNELS_SEND_ERROR");
   }
 }
 
@@ -281,7 +320,22 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
     return jsonResponse({ ok: true, message: "문의가 정상적으로 접수되었습니다." });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.";
+    console.error("[inquiry] Request failed", error);
+
+    let message = "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.";
+
+    if (error instanceof SyntaxError) {
+      message = "문의 데이터 형식이 올바르지 않습니다. 다시 시도해주세요.";
+    } else if (error instanceof Error) {
+      if (error.message === "MAILCHANNELS_API_KEY_MISSING" || error.message === "MAILCHANNELS_AUTH_ERROR") {
+        message = "메일 전송 설정 문제로 접수가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.";
+      } else if (error.message === "MAILCHANNELS_SEND_ERROR") {
+        message = "메일 서버 연결 문제로 접수가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.";
+      } else {
+        message = error.message || message;
+      }
+    }
+
     return jsonResponse({ message }, 500);
   }
 };
