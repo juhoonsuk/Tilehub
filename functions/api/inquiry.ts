@@ -3,7 +3,6 @@ interface Env {
   MAIL_FROM_NAME?: string;
   MAIL_TO?: string;
   MAILCHANNELS_ENDPOINT?: string;
-  MAILCHANNELS_API_KEY?: string;
 }
 
 type InquiryType = "project" | "custom" | "sales" | "partners" | "inquiry";
@@ -231,27 +230,19 @@ async function sendEmail(payload: InquiryPayload, env: Env) {
   const fromEmail = env.MAIL_FROM_EMAIL || "no-reply@tilehub.kr";
   const fromName = env.MAIL_FROM_NAME || "TileHub Inquiry Bot";
   const endpoint = resolveMailChannelsEndpoint(env.MAILCHANNELS_ENDPOINT);
-  const apiKey = normalizeValue(env.MAILCHANNELS_API_KEY);
-  const replyEmail = normalizeValue(payload.email);
-  const replyName = normalizeValue(payload.manager_name) || fromName;
+  const messageBody = buildTextBody(payload);
 
   console.log("[inquiry] MailChannels config", {
     endpoint,
     hasFromEmail: Boolean(fromEmail),
     hasFromName: Boolean(fromName),
     hasMailTo: Boolean(toEmail),
-    hasApiKey: Boolean(apiKey),
   });
-
-  if (!apiKey) {
-    throw new Error("MAILCHANNELS_API_KEY_MISSING");
-  }
 
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Api-Key": apiKey,
     },
     body: JSON.stringify({
       personalizations: [
@@ -263,19 +254,11 @@ async function sendEmail(payload: InquiryPayload, env: Env) {
         email: fromEmail,
         name: fromName,
       },
-      reply_to: {
-        email: replyEmail,
-        name: replyName,
-      },
-      subject: buildSubject(payload),
+      subject: "TileHub Inquiry",
       content: [
         {
           type: "text/plain",
-          value: buildTextBody(payload),
-        },
-        {
-          type: "text/html",
-          value: buildHtmlBody(payload),
+          value: messageBody,
         },
       ],
     }),
@@ -327,7 +310,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     if (error instanceof SyntaxError) {
       message = "문의 데이터 형식이 올바르지 않습니다. 다시 시도해주세요.";
     } else if (error instanceof Error) {
-      if (error.message === "MAILCHANNELS_API_KEY_MISSING" || error.message === "MAILCHANNELS_AUTH_ERROR") {
+      if (error.message === "MAILCHANNELS_AUTH_ERROR") {
         message = "메일 전송 설정 문제로 접수가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.";
       } else if (error.message === "MAILCHANNELS_SEND_ERROR") {
         message = "메일 서버 연결 문제로 접수가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.";
