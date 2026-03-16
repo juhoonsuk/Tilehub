@@ -42,15 +42,6 @@ function jsonResponse(body: Record<string, unknown>, status = 200) {
   });
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
 function normalizeValue(value: unknown): string {
   if (Array.isArray(value)) {
     return value.map((item) => String(item).trim()).filter(Boolean).join(", ");
@@ -100,31 +91,9 @@ function validatePayload(payload: InquiryPayload) {
 function resolveMailChannelsEndpoint(configuredEndpoint?: string) {
   const normalized = normalizeValue(configuredEndpoint) || "https://api.mailchannels.net/tx/v1/send";
 
-  if (normalized === "https://api.mailchannels.net/tx") {
-    return "https://api.mailchannels.net/tx/v1/send";
-  }
-
-  return normalized;
-}
-
-function buildSubject(payload: InquiryPayload) {
-  const companyName = normalizeValue(payload.company_name) || "미기재";
-
-  if (payload.inquiryType === "project") {
-    const projectName = normalizeValue(payload.project_name) || "프로젝트명 미기재";
-    return `[TileHub 프로젝트 견적요청] ${companyName} - ${projectName}`;
-  }
-
-  if (payload.inquiryType === "custom") {
-    const requestProductType = normalizeValue(payload.request_product_type) || "요청 제품 유형 미기재";
-    return `[TileHub 커스텀 제작요청] ${companyName} - ${requestProductType}`;
-  }
-
-  if (payload.inquiryType === "partners") {
-    return `[TileHub 제휴/협업 문의] ${companyName}`;
-  }
-
-  return `[TileHub 일반 문의] ${companyName}`;
+  return normalized === "https://api.mailchannels.net/tx/v1/send"
+    ? normalized
+    : "https://api.mailchannels.net/tx/v1/send";
 }
 
 function buildRows(payload: InquiryPayload) {
@@ -202,27 +171,6 @@ function buildTextBody(payload: InquiryPayload) {
         : "일반 문의";
   const rows = buildRows(payload);
   return [`${title}이 접수되었습니다.`, "", ...rows.map((row) => `${row.label}: ${row.value}`)].join("\n");
-}
-
-function buildHtmlBody(payload: InquiryPayload) {
-  const title = payload.inquiryType === "project"
-    ? "프로젝트 견적 요청"
-    : payload.inquiryType === "custom"
-      ? "커스텀 타일 제작 요청"
-      : payload.inquiryType === "partners"
-        ? "제휴 / 협업 문의"
-        : "일반 문의";
-  const rows = buildRows(payload)
-    .map((row) => `<tr><td style="padding:10px 12px;border:1px solid #e9ebee;background:#f6f6f4;font-weight:700;">${escapeHtml(row.label)}</td><td style="padding:10px 12px;border:1px solid #e9ebee;">${escapeHtml(row.value)}</td></tr>`)
-    .join("");
-
-  return `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111318;">
-      <h2 style="margin:0 0 16px;">${escapeHtml(title)}</h2>
-      <p style="margin:0 0 20px;color:#68707c;">TileHub 웹사이트를 통해 새로운 문의가 접수되었습니다.</p>
-      <table style="width:100%;border-collapse:collapse;">${rows}</table>
-    </div>
-  `;
 }
 
 async function sendEmail(payload: InquiryPayload, env: Env) {
