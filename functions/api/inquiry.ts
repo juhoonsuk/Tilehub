@@ -4,7 +4,7 @@ interface Env {
   MAILCHANNELS_ENDPOINT?: string;
 }
 
-type InquiryType = "project" | "custom";
+type InquiryType = "project" | "custom" | "sales" | "partners" | "inquiry";
 
 type InquiryPayload = {
   inquiryType: InquiryType;
@@ -26,6 +26,9 @@ const CORS_HEADERS = {
 const EMAIL_MAP: Record<InquiryType, string> = {
   project: "project@tilehub.kr",
   custom: "factory@tilehub.kr",
+  sales: "sales@tilehub.kr",
+  partners: "partners@tilehub.kr",
+  inquiry: "sales@tilehub.kr",
 };
 
 function jsonResponse(body: Record<string, unknown>, status = 200) {
@@ -73,7 +76,7 @@ function validatePayload(payload: InquiryPayload) {
   const phone = normalizeValue(payload.phone);
   const email = normalizeValue(payload.email);
 
-  if (payload.inquiryType !== "project" && payload.inquiryType !== "custom") {
+  if (!["project", "custom", "sales", "partners", "inquiry"].includes(payload.inquiryType)) {
     return "잘못된 문의 유형입니다.";
   }
 
@@ -114,8 +117,16 @@ function buildSubject(payload: InquiryPayload) {
     return `[TileHub 프로젝트 견적요청] ${companyName} - ${projectName}`;
   }
 
-  const requestProductType = normalizeValue(payload.request_product_type) || "요청 제품 유형 미기재";
-  return `[TileHub 커스텀 제작요청] ${companyName} - ${requestProductType}`;
+  if (payload.inquiryType === "custom") {
+    const requestProductType = normalizeValue(payload.request_product_type) || "요청 제품 유형 미기재";
+    return `[TileHub 커스텀 제작요청] ${companyName} - ${requestProductType}`;
+  }
+
+  if (payload.inquiryType === "partners") {
+    return `[TileHub 제휴/협업 문의] ${companyName}`;
+  }
+
+  return `[TileHub 일반 문의] ${companyName}`;
 }
 
 function buildRows(payload: InquiryPayload) {
@@ -184,13 +195,25 @@ function buildRows(payload: InquiryPayload) {
 }
 
 function buildTextBody(payload: InquiryPayload) {
-  const title = payload.inquiryType === "project" ? "프로젝트 견적 요청" : "커스텀 타일 제작 요청";
+  const title = payload.inquiryType === "project"
+    ? "프로젝트 견적 요청"
+    : payload.inquiryType === "custom"
+      ? "커스텀 타일 제작 요청"
+      : payload.inquiryType === "partners"
+        ? "제휴 / 협업 문의"
+        : "일반 문의";
   const rows = buildRows(payload);
   return [`${title}이 접수되었습니다.`, "", ...rows.map((row) => `${row.label}: ${row.value}`)].join("\n");
 }
 
 function buildHtmlBody(payload: InquiryPayload) {
-  const title = payload.inquiryType === "project" ? "프로젝트 견적 요청" : "커스텀 타일 제작 요청";
+  const title = payload.inquiryType === "project"
+    ? "프로젝트 견적 요청"
+    : payload.inquiryType === "custom"
+      ? "커스텀 타일 제작 요청"
+      : payload.inquiryType === "partners"
+        ? "제휴 / 협업 문의"
+        : "일반 문의";
   const rows = buildRows(payload)
     .map((row) => `<tr><td style="padding:10px 12px;border:1px solid #e9ebee;background:#f6f6f4;font-weight:700;">${escapeHtml(row.label)}</td><td style="padding:10px 12px;border:1px solid #e9ebee;">${escapeHtml(row.value)}</td></tr>`)
     .join("");
