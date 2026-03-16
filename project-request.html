@@ -592,7 +592,10 @@
 
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
-            <form id="projectRequestForm" action="/api/inquiry" method="post" novalidate>
+            <form id="projectRequestForm" action="/api/inquiry" method="POST" novalidate>
+              <input type="hidden" name="name" id="project-alias-name" />
+              <input type="hidden" name="company" id="project-alias-company" />
+              <input type="hidden" name="message" id="project-alias-message" />
               <fieldset>
                 <legend>기본 정보</legend>
                 <div class="field-grid">
@@ -877,6 +880,9 @@
     const projectRequestDefaultText = projectRequestSubmit.textContent;
     const phoneInput = document.getElementById("phone");
     const tileTypeGroup = document.getElementById("tile-type-group");
+    const projectAliasName = document.getElementById("project-alias-name");
+    const projectAliasCompany = document.getElementById("project-alias-company");
+    const projectAliasMessage = document.getElementById("project-alias-message");
     let projectSuccessTimer = null;
 
     function isValidEmail(value) {
@@ -1014,6 +1020,10 @@
     }
 
     function collectFormPayload(form) {
+      projectAliasName.value = form.elements.manager_name.value.trim();
+      projectAliasCompany.value = form.elements.company_name.value.trim();
+      projectAliasMessage.value = form.elements.request_note.value.trim();
+
       const formData = new FormData(form);
       const payload = {};
 

@@ -613,7 +613,10 @@
 
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
-            <form id="customTileForm" action="/api/inquiry" method="post" novalidate>
+            <form id="customTileForm" action="/api/inquiry" method="POST" novalidate>
+              <input type="hidden" name="name" id="custom-alias-name" />
+              <input type="hidden" name="company" id="custom-alias-company" />
+              <input type="hidden" name="message" id="custom-alias-message" />
               <fieldset>
                 <legend>기본 정보</legend>
                 <div class="field-grid">
@@ -939,6 +942,9 @@
     const customTileDefaultText = customTileSubmit.textContent;
     const customPhoneInput = document.getElementById("custom-phone");
     const finishGroup = document.getElementById("finish-group");
+    const customAliasName = document.getElementById("custom-alias-name");
+    const customAliasCompany = document.getElementById("custom-alias-company");
+    const customAliasMessage = document.getElementById("custom-alias-message");
     let customSuccessTimer = null;
 
     function isValidEmail(value) {
@@ -1076,6 +1082,10 @@
     }
 
     function collectFormPayload(form) {
+      customAliasName.value = form.elements.manager_name.value.trim();
+      customAliasCompany.value = form.elements.company_name.value.trim();
+      customAliasMessage.value = form.elements.custom_note.value.trim();
+
       const formData = new FormData(form);
       const payload = {};
 
