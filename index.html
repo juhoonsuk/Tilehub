@@ -303,6 +303,10 @@
       padding:68px 0;
     }
 
+    #projects + .contact-preview{
+      padding-top:112px;
+    }
+
     #projects .section-head{
       margin:0 auto 28px;
     }
@@ -940,6 +944,162 @@
       color:#6b7280;
     }
 
+    .how-preview,
+    .contact-preview{
+      background:linear-gradient(180deg,#fafaf9 0%,#ffffff 100%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid rgba(17,19,24,.04);
+    }
+
+    .how-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+      margin-top:34px;
+    }
+
+    .how-card,
+    .contact-card{
+      padding:32px 30px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow);
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .how-card:hover,
+    .contact-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+      border-color:rgba(17,19,24,.1);
+    }
+
+    .how-card-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .how-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:52px;
+      height:34px;
+      padding:0 14px;
+      border-radius:999px;
+      background:var(--soft-2);
+      color:#111318;
+      font-size:.86rem;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+
+    .how-card h3,
+    .contact-card h3{
+      margin:0;
+      font-size:1.55rem;
+      line-height:1.2;
+      letter-spacing:-0.03em;
+    }
+
+    .how-card p,
+    .contact-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.76;
+    }
+
+    .section-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+      margin-top:34px;
+    }
+
+    .contact-card{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .contact-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 18px;
+      border-radius:20px;
+      background:var(--soft);
+      border:1px solid rgba(17,19,24,.05);
+      transition:background .24s ease, transform .24s ease;
+    }
+
+    .contact-item:hover{
+      background:#f1f2f4;
+      transform:translateY(-2px);
+    }
+
+    .contact-item strong{
+      font-size:.94rem;
+      letter-spacing:-0.01em;
+    }
+
+    .contact-item span{
+      color:var(--muted);
+      text-align:right;
+      font-size:.95rem;
+    }
+
+    .partner-label{
+      display:inline-flex;
+      margin-bottom:20px;
+      padding:7px 14px;
+      border-radius:999px;
+      background:#111318;
+      color:#fff;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.04em;
+    }
+
+    .partner-card h4{
+      margin:0;
+      font-size:2rem;
+      line-height:1.04;
+      letter-spacing:-0.05em;
+    }
+
+    .partner-meta{
+      margin:10px 0 18px;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .partner-note{
+      margin:0 0 18px;
+      color:#111318;
+      font-weight:700;
+    }
+
     .future-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -1038,6 +1198,22 @@
       gap:20px;
       flex-wrap:wrap;
       text-align:center;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .footer-links a{
+      color:#434b56;
+      transition:color .2s ease;
+    }
+
+    .footer-links a:hover{
+      color:#111318;
     }
 
     .popup-overlay{
@@ -1214,6 +1390,10 @@
         padding:116px 0;
       }
 
+      #projects + .contact-preview{
+        padding-top:92px;
+      }
+
       .size-grid,
       .product-grid,
       .future-grid{
@@ -1226,7 +1406,8 @@
 
       .finder-panel,
       .supply-wrap,
-      .feature-grid{
+      .feature-grid,
+      .contact-grid{
         grid-template-columns:1fr;
       }
 
@@ -1276,6 +1457,10 @@
         padding:92px 0;
       }
 
+      #projects + .contact-preview{
+        padding-top:76px;
+      }
+
       .hero{
         padding:36px 0 52px;
       }
@@ -1306,7 +1491,9 @@
       .size-grid,
       .product-grid,
       .future-grid,
-      .bullets{
+      .bullets,
+      .how-grid,
+      .contact-grid{
         grid-template-columns:1fr;
       }
 
@@ -1384,6 +1571,26 @@
         padding:110px 0;
       }
 
+      .how-card,
+      .contact-card{
+        padding:26px 22px;
+        border-radius:24px;
+      }
+
+      .how-card h3,
+      .contact-card h3{
+        font-size:1.32rem;
+      }
+
+      .contact-item{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .contact-item span{
+        text-align:left;
+      }
+
       .cta-box{
         padding:46px 22px;
         border-radius:28px;
@@ -1449,8 +1656,9 @@
         <a href="#prices">직수입 가격</a>
         <a href="#designs">대표 디자인</a>
         <a href="#supply">공급망</a>
+        <a href="/how-it-works.html">How it Works</a>
+        <a href="/contact.html">Contact</a>
         <a href="#projects">프로젝트</a>
-        <a href="#future">AI 확장</a>
       </nav>
       <div class="nav-cta">
         <a class="btn btn-light" href="#projects">견적 요청</a>
@@ -1736,6 +1944,55 @@
       </div>
     </section>
 
+    <section class="how-preview" id="how-it-works-preview">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it Works</span>
+          <h2>TileHub는 이렇게 연결됩니다</h2>
+          <p>디자인 탐색부터 공장 연결, 프로젝트 견적과 납품까지.<br>타일허브는 복잡한 직수입 과정을 더 단순한 흐름으로 정리합니다.</p>
+        </div>
+
+        <div class="how-grid">
+          <article class="how-card reveal reveal-delay-1">
+            <div class="how-card-top">
+              <span class="how-badge">01</span>
+              <h3>제품 탐색</h3>
+            </div>
+            <p>사이즈, 스타일, 컬러톤, 가격대 기준으로<br>프로젝트에 맞는 타일을 빠르게 찾습니다.</p>
+          </article>
+
+          <article class="how-card reveal reveal-delay-2">
+            <div class="how-card-top">
+              <span class="how-badge">02</span>
+              <h3>기준 가격 확인</h3>
+            </div>
+            <p>직수입 기준 가격을 먼저 확인하고<br>예산과 제품 범위를 바로 좁힙니다.</p>
+          </article>
+
+          <article class="how-card reveal reveal-delay-3">
+            <div class="how-card-top">
+              <span class="how-badge">03</span>
+              <h3>프로젝트 견적 요청</h3>
+            </div>
+            <p>컨테이너 단위, 대량 물량, 커스텀 요청까지<br>조건에 맞춰 견적을 접수합니다.</p>
+          </article>
+
+          <article class="how-card reveal reveal-delay-4">
+            <div class="how-card-top">
+              <span class="how-badge">04</span>
+              <h3>공장 연결 · 납품 진행</h3>
+            </div>
+            <p>중국 공장 네트워크와 연결해<br>생산·공급·납품 흐름을 빠르게 이어갑니다.</p>
+          </article>
+        </div>
+
+        <div class="section-actions reveal">
+          <a class="btn btn-light" href="/how-it-works.html">자세히 보기</a>
+          <a class="btn btn-dark" href="#projects">프로젝트 견적 요청</a>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
       <div class="container">
         <div class="section-head reveal">
@@ -1747,7 +2004,7 @@
         <div class="feature-grid">
           <article class="feature-panel reveal reveal-delay-1">
             <div class="text">
-              <a class="feature-link" href="price.html">프로젝트 견적 요청 →</a>
+              <a class="feature-link" href="/project-request.html">프로젝트 견적 요청 →</a>
               <p>프로젝트 규모와 조건에 맞는
                 타일 견적을 빠르게 확인합니다.</p>
             </div>
@@ -1756,7 +2013,7 @@
 
           <article class="feature-panel dark reveal reveal-delay-2">
             <div class="text">
-              <a class="feature-link" href="tile-600x600.html">커스텀 타일 제작 →</a>
+              <a class="feature-link" href="/custom-tile.html">커스텀 타일 제작 →</a>
               <p>사이즈, 패턴, 질감까지
                 프로젝트에 맞춰 타일을 제작합니다.</p>
             </div>
@@ -1766,139 +2023,52 @@
       </div>
     </section>
 
-    <section class="hub-target-section">
-      <div class="hub-target-wrap">
-        <div class="hub-target-head reveal">
-          <span class="hub-target-eyebrow">Who TileHub Is For</span>
-          <h2>이런 고객을 위한 플랫폼입니다</h2>
-          <p>
-            타일허브는 낱개 구매보다 프로젝트 · 유통 · 직수입 수요에 맞춘 공급 플랫폼입니다.
-          </p>
-        </div>
-
-        <div class="hub-target-grid">
-          <a href="#" class="hub-target-card reveal reveal-delay-1">
-            <span class="hub-target-no">01</span>
-            <h3>건설사 · 개발 프로젝트</h3>
-            <p>아파트, 상업시설, 개발 프로젝트에 필요한 대량 타일 공급과 가격 비교</p>
-          </a>
-
-          <a href="#" class="hub-target-card reveal reveal-delay-2">
-            <span class="hub-target-no">02</span>
-            <h3>프로젝트 자재 납품업체</h3>
-            <p>직수입 가격 확인과 안정적인 중국 공장 공급망 연결이 필요한 고객</p>
-          </a>
-
-          <a href="#" class="hub-target-card reveal reveal-delay-3">
-            <span class="hub-target-no">03</span>
-            <h3>인테리어 · 시공 업체</h3>
-            <p>상업공간과 주거 현장에 맞는 타일을 빠르게 비교하고 선택하는 고객</p>
-          </a>
-
-          <a href="#" class="hub-target-card reveal reveal-delay-4">
-            <span class="hub-target-no">04</span>
-            <h3>신축 건축주</h3>
-            <p>주택, 상가, 펜션 등 신축 프로젝트에 맞는 타일을 찾는 고객</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section>
+    <section class="contact-preview" id="contact-preview">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Reference</span>
-          <h2>프로젝트는 끝나도<br>신뢰는 현장에 남습니다.</h2>
-          <p>실제 프로젝트 적용 사례와 납품 구조가 다음 프로젝트의 기준이 됩니다.</p>
+          <span class="eyebrow">Contact</span>
+          <h2>프로젝트 문의와 공급망 연결을 바로 시작하세요</h2>
+          <p>타일허브는 플랫폼 문의, 프로젝트 견적, 중국 공장 연결 요청을<br>빠르게 받을 수 있도록 여러 채널을 열어둡니다.</p>
         </div>
 
-        <div class="references">
-          <article class="reference-card reveal reveal-delay-1">
-            <img src="./images/reference-01.jpg?v=1" alt="프리미엄 주거 레퍼런스">
-            <div class="body">
-              <h4>프리미엄 주거 프로젝트</h4>
-              <p>밝은 결감과 큰 판형을 중심으로 쇼룸형 주거 공간을 완성한 사례.</p>
+        <div class="contact-grid">
+          <article class="contact-card reveal reveal-delay-1">
+            <div>
+              <h3>Platform Inquiry</h3>
+              <p>플랫폼 제휴, 프로젝트 견적, 공장 연결, 커스텀 타일 문의</p>
+              <div class="contact-list">
+                <a class="contact-item" href="mailto:contact@tilehub.kr">
+                  <strong>Email</strong>
+                  <span>contact@tilehub.kr</span>
+                </a>
+                <a class="contact-item" href="/contact.html#kakaotalk-channel">
+                  <strong>KakaoTalk</strong>
+                  <span>상담 채널 연결 예정</span>
+                </a>
+                <a class="contact-item" href="/contact.html#wechat-channel">
+                  <strong>WeChat</strong>
+                  <span>중국 공장 연결 예정</span>
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="reference-card reveal reveal-delay-2">
-            <img src="./images/reference-02.jpg?v=1" alt="상업 공간 레퍼런스">
-            <div class="body">
-              <h4>상업 공간 적용 사례</h4>
-              <p>동선이 긴 상업 공간에서 600×1200 주력 제품으로 통일감을 만든 구조.</p>
+          <article class="contact-card partner-card reveal reveal-delay-2">
+            <div>
+              <span class="partner-label">Founding Partner</span>
+              <h4>ZEAL CERAMIC</h4>
+              <p class="partner-meta">Busan, Korea</p>
+              <p class="partner-note">TileHub의 초기 공급·유통 파트너</p>
+              <p>쇼룸 방문, 지역 유통, 프로젝트 상담은<br>ZEAL CERAMIC 네트워크와 함께 진행됩니다.</p>
             </div>
-          </article>
-
-          <article class="reference-card reveal reveal-delay-3">
-            <img src="./images/reference-03.jpg?v=1" alt="호텔 라운지 레퍼런스">
-            <div class="body">
-              <h4>호텔·라운지 톤앤매너</h4>
-              <p>질감이 과하지 않고 깊이가 있는 석재 계열 디자인을 적용한 장면.</p>
+            <div class="section-actions">
+              <a class="btn btn-light" href="/contact.html">Contact 페이지 보기</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="future">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Next Layer</span>
-          <h2>타일선택은 앞으로 더 쉬워집니다</h2>
-          <p>타일허브는 단순 가격 사이트가 아닙니다.
-            이미지, 도면, 프로젝트 데이터를 기반으로
-            더 빠른 선택 구조를 만들어갑니다.</p>
-        </div>
-
-        <div class="future-grid">
-          <article class="future-card reveal reveal-delay-1">
-            <small>AI Visual Search</small>
-            <div>
-              <h4>타일 이미지를 올리면 비슷한 제품 추천</h4>
-              <p>현장 사진과 레퍼런스 이미지를 기반으로 패턴과 톤이 가까운 제품을 자동 매칭.</p>
-            </div>
-          </article>
-
-          <article class="future-card reveal reveal-delay-2">
-            <small>Drawing Analysis</small>
-            <div>
-              <h4>도면 기반 수량 계산과 프로젝트 분류</h4>
-              <p>면적 계산, 규격 추천, 예상 소요량 도출까지 이어지는 AI 보조 흐름.</p>
-            </div>
-          </article>
-
-          <article class="future-card reveal reveal-delay-3">
-            <small>China New Feed</small>
-            <div>
-              <h4>중국 현지 신제품을 가장 먼저 확인</h4>
-              <p>공장 네트워크에서 올라오는 신제품 피드를 빠르게 공개하는 구조.</p>
-            </div>
-          </article>
-
-          <article class="future-card reveal reveal-delay-4">
-            <small>Admin Studio</small>
-            <div>
-              <h4>이미지 드롭 중심 관리자 페이지 확장</h4>
-              <p>상품 사진 업로드, 카드 순서 조정, 크기 변경, 노출 제어까지 운영 효율 중심으로 설계.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box reveal">
-          <h2>타일 유통의 새로운 기준<br>TILE<span class="brand-hub">HUB</span></h2>
-          <p>직수입 가격 공개, 프로젝트 견적 중심 거래,
-            중국 공장 공급망을 직접 연결합니다.</p>
-          <div class="hero-actions">
-            <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
-            <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- ===== 재고 특판 팝업 ===== -->
@@ -1941,6 +2111,10 @@
   <footer>
     <div class="container footer-row">
       <div>타일<span class="brand-hub">허브</span> | The <span class="brand-hub">Hub</span> of Tile Distribution</div>
+      <div class="footer-links">
+        <a href="/how-it-works.html">How it Works</a>
+        <a href="/contact.html">Contact</a>
+      </div>
     </div>
   </footer>
 

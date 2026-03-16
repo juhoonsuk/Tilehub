@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>타일허브 | Contact</title>
+  <meta name="description" content="타일허브 프로젝트 문의, 플랫폼 협업, 중국 공장 연결, 파트너 상담 채널을 확인하세요." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --soft:#f6f6f4;
+      --soft-2:#f2f3f5;
+      --line:#e9ebee;
+      --text:#111318;
+      --muted:#68707c;
+      --accent:#111318;
+      --max:1320px;
+      --radius:30px;
+      --shadow:0 18px 50px rgba(0,0,0,.07);
+      --shadow-hover:0 28px 70px rgba(0,0,0,.12);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      letter-spacing:-0.02em;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 28px}
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid rgba(17,19,24,.06);
+    }
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      font-size:1.1rem;
+      font-weight:700;
+      letter-spacing:-0.03em;
+    }
+    .brand-hub{color:#E53935}
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-size:.74rem;
+      font-weight:500;
+      letter-spacing:0;
+    }
+    .nav-links{
+      display:flex;
+      gap:26px;
+      align-items:center;
+      color:#373c44;
+      font-size:.96rem;
+    }
+    .nav-links a{position:relative}
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:#111318;
+      border-radius:999px;
+      transition:width .24s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after{width:100%}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:700;
+      font-size:.98rem;
+      transition:transform .24s ease, box-shadow .24s ease, background .24s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-dark{background:#111318;color:#fff}
+    .btn-dark:hover{box-shadow:var(--shadow)}
+    .btn-light{background:#fff;color:#111318;border-color:var(--line)}
+    .btn-light:hover{background:var(--soft)}
+    section{padding:118px 0}
+    .eyebrow{
+      display:inline-flex;
+      padding:8px 18px;
+      border-radius:999px;
+      background:var(--soft-2);
+      color:#36404a;
+      font-size:.88rem;
+      font-weight:700;
+      margin-bottom:28px;
+    }
+    .hero{
+      padding:86px 0 94px;
+      background:radial-gradient(circle at top, rgba(17,19,24,.05) 0%, rgba(255,255,255,0) 65%);
+    }
+    .hero-copy{
+      max-width:900px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .hero-copy h1{
+      margin:0;
+      font-size:clamp(2.8rem,7vw,5.2rem);
+      line-height:1.08;
+      letter-spacing:-0.06em;
+    }
+    .hero-copy p{
+      margin:28px auto 0;
+      max-width:720px;
+      font-size:1.08rem;
+      line-height:1.8;
+      color:var(--muted);
+    }
+    .section-head{
+      max-width:820px;
+      margin-bottom:34px;
+    }
+    .section-head h2{
+      margin:0 0 18px;
+      font-size:clamp(2.1rem,5vw,4rem);
+      line-height:1.16;
+      letter-spacing:-0.05em;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1.06rem;
+      line-height:1.8;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:34px;
+    }
+    .contact-card{
+      min-height:100%;
+      padding:32px 30px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .26s ease, box-shadow .26s ease;
+    }
+    .contact-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+    }
+    .contact-card h3{
+      margin:0 0 14px;
+      font-size:1.5rem;
+      line-height:1.2;
+      letter-spacing:-0.03em;
+    }
+    .contact-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.76;
+    }
+    .contact-list{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+    .contact-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 18px;
+      border-radius:20px;
+      background:var(--soft);
+      border:1px solid rgba(17,19,24,.05);
+    }
+    .contact-item strong{font-size:.94rem}
+    .contact-item span{color:var(--muted);text-align:right;font-size:.95rem}
+    .partner-label{
+      display:inline-flex;
+      margin-bottom:18px;
+      padding:7px 14px;
+      border-radius:999px;
+      background:#111318;
+      color:#fff;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.04em;
+    }
+    .partner-name{
+      margin:0;
+      font-size:2rem;
+      line-height:1.04;
+      letter-spacing:-0.05em;
+    }
+    .partner-meta{
+      margin:10px 0 14px;
+      color:var(--muted);
+    }
+    .partner-note{
+      margin:0;
+      color:#111318;
+      font-weight:700;
+    }
+    .checklist{
+      margin:34px 0 0;
+      display:grid;
+      gap:14px;
+    }
+    .check-item{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+    }
+    .check-item span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background:var(--soft-2);
+      font-weight:700;
+      flex:0 0 auto;
+    }
+    .check-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:1rem;
+    }
+    .cta{
+      padding:150px 0;
+      background:radial-gradient(circle at top, #f6f7f9 0%, #ffffff 52%);
+      border-top:1px solid var(--line);
+    }
+    .cta-box{
+      max-width:940px;
+      margin:0 auto;
+      text-align:center;
+      padding:68px 32px;
+      border-radius:36px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .cta-box h2{
+      margin:0 0 16px;
+      font-size:clamp(2rem,5vw,4rem);
+      line-height:1.2;
+      letter-spacing:-0.05em;
+    }
+    .cta-box p{
+      margin:0 auto;
+      max-width:680px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+    .hero-actions{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
+    footer{
+      padding:30px 0 44px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+    .footer-row{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      text-align:center;
+      flex-wrap:wrap;
+    }
+    .reveal{opacity:1;transform:none}
+    .js-motion .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .js-motion .reveal.show{opacity:1;transform:none}
+    .reveal-delay-1{transition-delay:.06s}
+    .reveal-delay-2{transition-delay:.12s}
+    .reveal-delay-3{transition-delay:.18s}
+    @media (max-width:1100px){
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .container{padding:0 20px}
+      .nav-links{display:none}
+      section{padding:92px 0}
+      .hero{padding:40px 0 56px}
+      .contact-card,.cta-box,.check-item{padding:26px 22px;border-radius:24px}
+      .contact-item{flex-direction:column;align-items:flex-start}
+      .contact-item span{text-align:left}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand">타일<span class="brand-hub">허브</span><small>The <span class="brand-hub">Hub</span> of Tile Distribution</small></a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/how-it-works.html">How it Works</a>
+        <a href="/contact.html" class="active">Contact</a>
+      </nav>
+      <a class="btn btn-dark" href="/project-request.html">프로젝트 견적 요청</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy reveal show">
+          <span class="eyebrow">Contact</span>
+          <h1>문의 채널을 한곳에 모았습니다</h1>
+          <p>프로젝트 견적, 플랫폼 제휴, 중국 공장 연결,<br>커스텀 타일 요청까지 목적에 맞는 채널로 바로 문의할 수 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Contact Channels</span>
+          <h2>프로젝트 성격에 맞는 채널로<br>바로 연결할 수 있습니다</h2>
+          <p>플랫폼 협업, 대량 프로젝트, 중국 공장 연결 요청을 빠르게 분류하고 응답할 수 있도록 기본 채널을 나눠두었습니다.</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card reveal reveal-delay-1">
+            <div>
+              <h3>Platform Inquiry</h3>
+              <p>플랫폼 협업 / 프로젝트 견적 / 공장 연결 문의</p>
+              <div class="contact-list">
+                <a class="contact-item" href="mailto:contact@tilehub.kr">
+                  <strong>Email</strong>
+                  <span>contact@tilehub.kr</span>
+                </a>
+                <a class="contact-item" id="kakaotalk-channel" href="#">
+                  <strong>KakaoTalk</strong>
+                  <span>상담 채널 연결 예정</span>
+                </a>
+                <a class="contact-item" id="wechat-channel" href="#">
+                  <strong>WeChat</strong>
+                  <span>중국 공장 연결 예정</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="contact-card reveal reveal-delay-2">
+            <div>
+              <h3>Project Request</h3>
+              <p>컨테이너 단위 물량, 프로젝트 납품, 맞춤 제작 요청</p>
+            </div>
+            <div class="hero-actions" style="justify-content:flex-start">
+              <a class="btn btn-dark" href="/project-request.html">프로젝트 견적 요청</a>
+            </div>
+          </article>
+
+          <article class="contact-card reveal reveal-delay-3">
+            <div>
+              <span class="partner-label">Founding Partner</span>
+              <h3 class="partner-name">ZEAL CERAMIC</h3>
+              <p class="partner-meta">Busan, Korea</p>
+              <p class="partner-note">TileHub의 초기 공급·유통 파트너</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:linear-gradient(180deg,#fafaf9 0%,#ffffff 100%);border-top:1px solid var(--line);border-bottom:1px solid rgba(17,19,24,.04);">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Before You Contact</span>
+          <h2>문의 전에 이런 정보를 알려주시면 더 빠릅니다</h2>
+          <p>기본 정보가 함께 오면 제품 탐색, 가격 확인, 견적 대응 속도를 더 높일 수 있습니다.</p>
+        </div>
+
+        <div class="checklist">
+          <div class="check-item reveal reveal-delay-1">
+            <span>01</span>
+            <div><strong>필요한 타일 종류</strong><div>벽타일, 바닥타일, 외장타일, 빅슬랩 등 목적을 먼저 알려주세요.</div></div>
+          </div>
+          <div class="check-item reveal reveal-delay-2">
+            <span>02</span>
+            <div><strong>사이즈</strong><div>300x600, 600x600, 600x1200 등 원하는 규격을 공유해 주세요.</div></div>
+          </div>
+          <div class="check-item reveal reveal-delay-3">
+            <span>03</span>
+            <div><strong>예상 물량</strong><div>프로젝트 규모와 예상 발주 수량을 알면 견적 범위를 빠르게 좁힐 수 있습니다.</div></div>
+          </div>
+          <div class="check-item reveal">
+            <span>04</span>
+            <div><strong>현장/프로젝트 유형</strong><div>주거, 상업공간, 개발 프로젝트, 자재 납품 등 현장 성격을 알려주세요.</div></div>
+          </div>
+          <div class="check-item reveal">
+            <span>05</span>
+            <div><strong>희망 일정</strong><div>납기 목표나 현장 일정이 있으면 생산 및 공급 흐름을 맞추기 쉽습니다.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>빠르게 연결하고, 정확하게 공급합니다</h2>
+          <p>플랫폼 문의든 프로젝트 견적이든, 필요한 채널을 통해 먼저 연결되면 이후 흐름을 더 짧고 정확하게 만들 수 있습니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="/">Home</a>
+            <a class="btn btn-light" href="/how-it-works.html">How it Works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>타일<span class="brand-hub">허브</span> | The <span class="brand-hub">Hub</span> of Tile Distribution</div>
+    </div>
+  </footer>
+
+  <script>
+    document.body.classList.add("js-motion");
+    const revealItems = document.querySelectorAll(".reveal");
+
+    function handleReveal() {
+      const trigger = window.innerHeight * 0.94;
+      revealItems.forEach((item) => {
+        if (item.getBoundingClientRect().top < trigger) {
+          item.classList.add("show");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", handleReveal, { passive: true });
+    window.addEventListener("load", handleReveal);
+    handleReveal();
+  </script>
+</body>
+</html>
