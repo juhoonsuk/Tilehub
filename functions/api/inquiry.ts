@@ -1,8 +1,8 @@
 interface Env {
+  RESEND_API_KEY?: string;
   MAIL_FROM_EMAIL?: string;
   MAIL_FROM_NAME?: string;
   MAIL_TO?: string;
-  MAILCHANNELS_ENDPOINT?: string;
 }
 
 type InquiryType = "project" | "custom" | "sales" | "partners" | "inquiry";
@@ -88,14 +88,6 @@ function validatePayload(payload: InquiryPayload) {
   return null;
 }
 
-function resolveMailChannelsEndpoint(configuredEndpoint?: string) {
-  const normalized = normalizeValue(configuredEndpoint) || "https://api.mailchannels.net/tx/v1/send";
-
-  return normalized === "https://api.mailchannels.net/tx/v1/send"
-    ? normalized
-    : "https://api.mailchannels.net/tx/v1/send";
-}
-
 function buildRows(payload: InquiryPayload) {
   const labels: Record<string, string> = {
     inquiryType: "문의 유형",
@@ -177,58 +169,55 @@ async function sendEmail(payload: InquiryPayload, env: Env) {
   const toEmail = env.MAIL_TO || EMAIL_MAP[payload.inquiryType];
   const fromEmail = env.MAIL_FROM_EMAIL || "no-reply@tilehub.kr";
   const fromName = env.MAIL_FROM_NAME || "TileHub Inquiry Bot";
-  const endpoint = resolveMailChannelsEndpoint(env.MAILCHANNELS_ENDPOINT);
+  const resendApiKey = normalizeValue(env.RESEND_API_KEY);
   const messageBody = buildTextBody(payload);
+  const endpoint = "https://api.resend.com/emails";
 
-  console.log("[inquiry] MailChannels config", {
-    endpoint,
+  console.log("[inquiry] Email provider config", {
+    provider: "resend",
     hasFromEmail: Boolean(fromEmail),
     hasFromName: Boolean(fromName),
     hasMailTo: Boolean(toEmail),
+    hasResendApiKey: Boolean(resendApiKey),
   });
+
+  if (!resendApiKey) {
+    throw new Error("RESEND_API_KEY_MISSING");
+  }
 
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
+      Authorization: `Bearer ${resendApiKey}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      personalizations: [
-        {
-          to: [{ email: toEmail }],
-        },
-      ],
-      from: {
-        email: fromEmail,
-        name: fromName,
-      },
+      from: `${fromName} <${fromEmail}>`,
+      to: [toEmail],
       subject: "TileHub Inquiry",
-      content: [
-        {
-          type: "text/plain",
-          value: messageBody,
-        },
-      ],
+      text: messageBody,
     }),
   });
 
-  console.log("[inquiry] MailChannels response", {
+  console.log("[inquiry] Provider response", {
+    provider: "resend",
     status: response.status,
     ok: response.ok,
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    console.error("[inquiry] MailChannels send failed", {
+    console.error("[inquiry] Provider send failed", {
+      provider: "resend",
       status: response.status,
       bodyPreview: errorText.slice(0, 160),
     });
 
     if (response.status === 401 || response.status === 403) {
-      throw new Error("MAILCHANNELS_AUTH_ERROR");
+      throw new Error("RESEND_AUTH_ERROR");
     }
 
-    throw new Error("MAILCHANNELS_SEND_ERROR");
+    throw new Error("RESEND_SEND_ERROR");
   }
 }
 
@@ -258,9 +247,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     if (error instanceof SyntaxError) {
       message = "문의 데이터 형식이 올바르지 않습니다. 다시 시도해주세요.";
     } else if (error instanceof Error) {
-      if (error.message === "MAILCHANNELS_AUTH_ERROR") {
+      if (error.message === "RESEND_API_KEY_MISSING" || error.message === "RESEND_AUTH_ERROR") {
         message = "메일 전송 설정 문제로 접수가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.";
-      } else if (error.message === "MAILCHANNELS_SEND_ERROR") {
+      } else if (error.message === "RESEND_SEND_ERROR") {
         message = "메일 서버 연결 문제로 접수가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.";
       } else {
         message = error.message || message;
