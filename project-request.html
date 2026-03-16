@@ -1039,6 +1039,17 @@
       return payload;
     }
 
+    async function parseInquiryResponse(response) {
+      const contentType = response.headers.get("content-type") || "";
+
+      if (contentType.includes("application/json")) {
+        return response.json().catch(() => ({}));
+      }
+
+      const text = await response.text().catch(() => "");
+      return { message: text.trim() };
+    }
+
     function handleReveal() {
       const trigger = window.innerHeight * 0.94;
       revealItems.forEach((item) => {
@@ -1064,15 +1075,16 @@
       projectRequestSubmit.textContent = "전송 중...";
 
       try {
-        const response = await fetch(projectRequestForm.action, {
+        const response = await fetch("/api/inquiry", {
           method: "POST",
           headers: {
+            Accept: "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(collectFormPayload(projectRequestForm)),
         });
 
-        const result = await response.json().catch(() => ({}));
+        const result = await parseInquiryResponse(response);
 
         if (!response.ok) {
           throw new Error(result.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
