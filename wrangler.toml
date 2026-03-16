@@ -6,4 +6,4 @@ pages_build_output_dir = "."
 MAIL_FROM_EMAIL = "no-reply@tilehub.kr"
 MAIL_FROM_NAME = "TileHub Inquiry Bot"
 MAIL_TO = "contact@tilehub.kr"
-.
+MAILCHANNELS_ENDPOINT = "https://api.mailchannels.net/tx/v1/send"

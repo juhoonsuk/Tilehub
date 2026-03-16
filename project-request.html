@@ -585,8 +585,8 @@
           <h2>프로젝트 기본 정보를 입력해 주세요</h2>
           <p>아래 항목을 남겨주시면 공급 가능 여부와 견적 범위를 더 빠르게 검토할 수 있습니다.</p>
           <div class="required-notice">
-            * 표시 항목은 필수 입력 항목입니다.<br>
-            필수 항목이 누락되거나 형식이 맞지 않으면 접수가 진행되지 않습니다.
+            간단한 기본 정보만 남겨주셔도 접수됩니다.<br>
+            상세 사양은 접수 후 담당자가 추가로 확인드립니다.
           </div>
         </div>
 
@@ -617,8 +617,8 @@
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
-                    <label for="project-name">프로젝트명<span class="required-mark">*</span></label>
-                    <input id="project-name" name="project_name" type="text" placeholder="예: 성수 복합개발 / 호텔 리모델링 / 상가 신축" required />
+                    <label for="project-name">프로젝트명</label>
+                    <input id="project-name" name="project_name" type="text" placeholder="예: 성수 복합개발 / 호텔 리모델링 / 상가 신축" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field field-full">
@@ -633,8 +633,8 @@
                 <legend>프로젝트 정보</legend>
                 <div class="field-grid">
                   <div class="field">
-                    <label for="project-type">프로젝트 유형<span class="required-mark">*</span></label>
-                    <select id="project-type" name="project_type" required>
+                    <label for="project-type">프로젝트 유형</label>
+                    <select id="project-type" name="project_type">
                       <option value="">선택해 주세요</option>
                       <option>건설사 프로젝트</option>
                       <option>자재 납품</option>
@@ -658,8 +658,8 @@
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
-                    <label for="site-location">현장 위치<span class="required-mark">*</span></label>
-                    <input id="site-location" name="site_location" type="text" placeholder="예: 서울 성동구 / 부산 해운대구" required />
+                    <label for="site-location">현장 위치</label>
+                    <input id="site-location" name="site_location" type="text" placeholder="예: 서울 성동구 / 부산 해운대구" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -668,8 +668,8 @@
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
-                    <label for="delivery-schedule">희망 납기 일정<span class="required-mark">*</span></label>
-                    <input id="delivery-schedule" name="delivery_schedule" type="text" placeholder="예: 2026년 6월 말 현장 반입" required />
+                    <label for="delivery-schedule">희망 납기 일정</label>
+                    <input id="delivery-schedule" name="delivery_schedule" type="text" placeholder="예: 2026년 6월 말 현장 반입" />
                     <div class="field-error"></div>
                   </div>
                 </div>
@@ -679,8 +679,8 @@
                 <legend>제품 요구사항</legend>
                 <div class="field-grid">
                   <div class="field">
-                    <label for="product-group">요청 제품군<span class="required-mark">*</span></label>
-                    <input id="product-group" name="product_group" type="text" placeholder="예: 바닥 포세린 / 벽 타일 / 외장 타일 / 슬랩" required />
+                    <label for="product-group">요청 제품군</label>
+                    <input id="product-group" name="product_group" type="text" placeholder="예: 바닥 포세린 / 벽 타일 / 외장 타일 / 슬랩" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field field-full">
@@ -699,8 +699,8 @@
                     </div>
                   </div>
                   <div class="field">
-                    <label for="sizes">주요 사이즈<span class="required-mark">*</span></label>
-                    <input id="sizes" name="sizes" type="text" placeholder="예: 600x600 / 600x1200 / 기타 직접입력" required />
+                    <label for="sizes">주요 사이즈</label>
+                    <input id="sizes" name="sizes" type="text" placeholder="예: 600x600 / 600x1200 / 기타 직접입력" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -714,13 +714,13 @@
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
-                    <label for="quantity">예상 수량<span class="required-mark">*</span></label>
-                    <input id="quantity" name="quantity" type="text" placeholder="예: 2,400㎡ / 160박스 / 24팔레트" required />
+                    <label for="quantity">예상 수량</label>
+                    <input id="quantity" name="quantity" type="text" placeholder="예: 2,400㎡ / 160박스 / 24팔레트" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
-                    <label for="budget-range">예산 범위<span class="required-mark">*</span></label>
-                    <select id="budget-range" name="budget_range" required>
+                    <label for="budget-range">예산 범위</label>
+                    <select id="budget-range" name="budget_range">
                       <option value="">선택해 주세요</option>
                       <option>미정</option>
                       <option>기준가 확인 필요</option>
@@ -795,7 +795,7 @@
 
               <div class="form-footer">
                 <div class="form-note">입력하신 내용은 프로젝트 견적 검토용으로 접수되며, 담당자가 확인 후 회신합니다.</div>
-                <button class="btn btn-dark" id="projectRequestSubmit" type="submit">프로젝트 견적 요청 보내기</button>
+                <button class="btn btn-dark" id="projectRequestSubmit" type="submit">문의 보내기</button>
               </div>
               <div class="submit-status" id="projectRequestStatus" aria-live="polite"></div>
             </form>
@@ -877,6 +877,7 @@
     const projectRequestDefaultText = projectRequestSubmit.textContent;
     const phoneInput = document.getElementById("phone");
     const tileTypeGroup = document.getElementById("tile-type-group");
+    let projectSuccessTimer = null;
 
     function isValidEmail(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -889,6 +890,23 @@
     function setProjectRequestStatus(message, type) {
       projectRequestStatus.textContent = message;
       projectRequestStatus.className = "submit-status" + (type ? ` is-${type}` : "");
+    }
+
+    function resetProjectButton(delay = 0) {
+      if (projectSuccessTimer) {
+        clearTimeout(projectSuccessTimer);
+      }
+
+      const applyReset = () => {
+        projectRequestSubmit.disabled = false;
+        projectRequestSubmit.textContent = projectRequestDefaultText;
+      };
+
+      if (delay > 0) {
+        projectSuccessTimer = setTimeout(applyReset, delay);
+      } else {
+        applyReset();
+      }
     }
 
     function setFieldError(field, message) {
@@ -950,15 +968,7 @@
         { id: "company-name", message: "회사명 / 업체명을 입력해 주세요." },
         { id: "manager-name", message: "담당자명을 입력해 주세요." },
         { id: "phone", message: "연락처를 입력해 주세요." },
-        { id: "project-name", message: "프로젝트명을 입력해 주세요." },
         { id: "email", message: "이메일 주소를 입력해 주세요." },
-        { id: "project-type", message: "프로젝트 유형을 선택해 주세요." },
-        { id: "site-location", message: "현장 위치를 입력해 주세요." },
-        { id: "delivery-schedule", message: "희망 납기 일정을 입력해 주세요." },
-        { id: "product-group", message: "요청 제품군을 입력해 주세요." },
-        { id: "sizes", message: "주요 사이즈를 입력해 주세요." },
-        { id: "quantity", message: "예상 수량을 입력해 주세요." },
-        { id: "budget-range", message: "예산 범위를 선택해 주세요." },
         { id: "request-note", message: "요청사항 상세 메모를 입력해 주세요." },
       ];
 
@@ -993,18 +1003,8 @@
         firstInvalid = firstInvalid || projectRequestForm.elements.phone;
       }
 
-      const tileTypeChecked = projectRequestForm.querySelectorAll('input[name="tile_type[]"]:checked').length;
-      if (!tileTypeChecked) {
-        setOptionGroupError(tileTypeGroup, "필요한 타일 종류를 최소 1개 이상 선택해 주세요.");
-        firstInvalid = firstInvalid || projectRequestForm.querySelector('input[name="tile_type[]"]');
-      } else {
-        clearOptionGroupError(tileTypeGroup);
-      }
-
       if (firstInvalid) {
-        const firstMessage = firstInvalid === projectRequestForm.querySelector('input[name="tile_type[]"]')
-          ? "필요한 타일 종류를 최소 1개 이상 선택해 주세요."
-          : firstInvalid.closest(".field").querySelector(".field-error").textContent;
+        const firstMessage = firstInvalid.closest(".field").querySelector(".field-error").textContent;
         setProjectRequestStatus(firstMessage, "error");
         firstInvalid.focus();
         return false;
@@ -1046,6 +1046,10 @@
         return;
       }
 
+      if (projectSuccessTimer) {
+        clearTimeout(projectSuccessTimer);
+      }
+
       projectRequestSubmit.disabled = true;
       projectRequestSubmit.textContent = "전송 중...";
 
@@ -1068,12 +1072,11 @@
         projectRequestForm.reset();
         clearOptionGroupError(tileTypeGroup);
         projectRequestForm.querySelectorAll(".field").forEach(clearFieldError);
-        projectRequestSubmit.disabled = false;
-        projectRequestSubmit.textContent = projectRequestDefaultText;
+        projectRequestSubmit.textContent = "접수 완료";
+        resetProjectButton(3000);
       } catch (error) {
         setProjectRequestStatus(error.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", "error");
-        projectRequestSubmit.disabled = false;
-        projectRequestSubmit.textContent = projectRequestDefaultText;
+        resetProjectButton();
       }
     });
 
@@ -1089,17 +1092,6 @@
           }
         });
       }
-    });
-
-    projectRequestForm.querySelectorAll('input[name="tile_type[]"]').forEach((checkbox) => {
-      checkbox.addEventListener("change", () => {
-        if (projectRequestForm.querySelectorAll('input[name="tile_type[]"]:checked').length) {
-          clearOptionGroupError(tileTypeGroup);
-          if (projectRequestStatus.classList.contains("is-error")) {
-            setProjectRequestStatus("", "");
-          }
-        }
-      });
     });
 
     phoneInput.addEventListener("input", () => {

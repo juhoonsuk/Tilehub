@@ -1,6 +1,7 @@
 interface Env {
   MAIL_FROM_EMAIL?: string;
   MAIL_FROM_NAME?: string;
+  MAIL_TO?: string;
   MAILCHANNELS_ENDPOINT?: string;
 }
 
@@ -75,12 +76,13 @@ function validatePayload(payload: InquiryPayload) {
   const managerName = normalizeValue(payload.manager_name);
   const phone = normalizeValue(payload.phone);
   const email = normalizeValue(payload.email);
+  const note = normalizeValue(payload.request_note || payload.custom_note || payload.note);
 
   if (!["project", "custom", "sales", "partners", "inquiry"].includes(payload.inquiryType)) {
     return "잘못된 문의 유형입니다.";
   }
 
-  if (!companyName || !managerName || !phone || !email) {
+  if (!companyName || !managerName || !phone || !email || !note) {
     return "필수 항목이 누락되었습니다.";
   }
 
@@ -90,20 +92,6 @@ function validatePayload(payload: InquiryPayload) {
 
   if (!isValidPhone(phone)) {
     return "연락처 형식을 확인해 주세요.";
-  }
-
-  if (payload.inquiryType === "project") {
-    const requiredKeys = ["project_name", "site_location", "product_group", "sizes", "quantity", "delivery_schedule", "budget_range", "request_note"];
-    if (requiredKeys.some((key) => !normalizeValue(payload[key]))) {
-      return "프로젝트 견적 요청 필수 항목을 확인해 주세요.";
-    }
-  }
-
-  if (payload.inquiryType === "custom") {
-    const requiredKeys = ["request_product_type", "desired_size", "desired_color", "quantity", "sample_production", "preferred_delivery", "custom_note"];
-    if (requiredKeys.some((key) => !normalizeValue(payload[key]))) {
-      return "커스텀 제작 요청 필수 항목을 확인해 주세요.";
-    }
   }
 
   return null;
@@ -228,7 +216,7 @@ function buildHtmlBody(payload: InquiryPayload) {
 }
 
 async function sendEmail(payload: InquiryPayload, env: Env) {
-  const toEmail = EMAIL_MAP[payload.inquiryType];
+  const toEmail = env.MAIL_TO || EMAIL_MAP[payload.inquiryType];
   const fromEmail = env.MAIL_FROM_EMAIL || "no-reply@tilehub.kr";
   const fromName = env.MAIL_FROM_NAME || "TileHub Inquiry Bot";
   const endpoint = env.MAILCHANNELS_ENDPOINT || "https://api.mailchannels.net/tx/v1/send";
