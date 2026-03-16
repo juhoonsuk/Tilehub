@@ -385,6 +385,18 @@
       margin-top:14px;
       color:var(--muted);
       font-size:.92rem;
+      line-height:1.7;
+    }
+    .submit-status.is-success{
+      color:#0f6b46;
+    }
+    .submit-status.is-error{
+      color:#b42318;
+    }
+    .btn:disabled{
+      opacity:.7;
+      cursor:not-allowed;
+      transform:none;
     }
     .checks{
       display:grid;
@@ -557,13 +569,17 @@
 
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
-            <form id="customTileForm" action="#" method="post">
+            <form id="customTileForm" action="/api/inquiry" method="post" novalidate>
               <fieldset>
                 <legend>기본 정보</legend>
                 <div class="field-grid">
                   <div class="field">
-                    <label for="custom-company">회사명 / 프로젝트명</label>
-                    <input id="custom-company" name="company_project" type="text" placeholder="예: XYZ Design / 리테일 플래그십 프로젝트" required />
+                    <label for="custom-company">회사명 / 업체명</label>
+                    <input id="custom-company" name="company_name" type="text" placeholder="예: XYZ Design / ABC Studio / OOO 건축" required />
+                  </div>
+                  <div class="field">
+                    <label for="custom-project">프로젝트명</label>
+                    <input id="custom-project" name="project_name" type="text" placeholder="예: 리테일 플래그십 프로젝트 / 호텔 로비 리뉴얼" />
                   </div>
                   <div class="field">
                     <label for="custom-manager">담당자명</label>
@@ -583,6 +599,10 @@
               <fieldset>
                 <legend>제작 목적</legend>
                 <div class="field-grid">
+                  <div class="field">
+                    <label for="request-product-type">요청 제품 유형</label>
+                    <input id="request-product-type" name="request_product_type" type="text" placeholder="예: 포세린 타일 / 벽 타일 / 슬랩 / 특수 패널" required />
+                  </div>
                   <div class="field">
                     <label for="usage">용도</label>
                     <select id="usage" name="usage">
@@ -608,7 +628,7 @@
                 <div class="field-grid">
                   <div class="field">
                     <label for="desired-size">희망 사이즈</label>
-                    <input id="desired-size" name="desired_size" type="text" placeholder="예: 750x1500 / 900x900" />
+                    <input id="desired-size" name="desired_size" type="text" placeholder="예: 750x1500 / 900x900" required />
                   </div>
                   <div class="field">
                     <label for="desired-thickness">희망 두께</label>
@@ -630,8 +650,8 @@
                     <textarea id="pattern-description" name="pattern_description" placeholder="원하는 패턴 방향, 입자감, 반복 구조, 인쇄 느낌, 브랜드 무드 등을 설명해 주세요."></textarea>
                   </div>
                   <div class="field">
-                    <label for="desired-color">희망 컬러톤</label>
-                    <input id="desired-color" name="desired_color" type="text" placeholder="예: 따뜻한 베이지 / 쿨그레이 / 짙은 차콜" />
+                    <label for="desired-color">희망 컬러 / 패턴</label>
+                    <input id="desired-color" name="desired_color" type="text" placeholder="예: 따뜻한 베이지 마블 / 쿨그레이 스톤 / 반복 패턴" required />
                   </div>
                   <div class="field">
                     <label for="reference-product">참고 이미지 또는 기존 제품명</label>
@@ -647,7 +667,7 @@
                   </div>
                   <div class="field">
                     <label for="sample-production">샘플 제작 필요 여부</label>
-                    <select id="sample-production" name="sample_production">
+                    <select id="sample-production" name="sample_production" required>
                       <option value="">선택해 주세요</option>
                       <option>필요</option>
                       <option>불필요</option>
@@ -662,7 +682,7 @@
                 <div class="field-grid">
                   <div class="field">
                     <label for="custom-quantity">예상 수량</label>
-                    <input id="custom-quantity" name="quantity" type="text" placeholder="예: 1,200㎡ / 초기 샘플 후 본생산" />
+                    <input id="custom-quantity" name="quantity" type="text" placeholder="예: 1,200㎡ / 초기 샘플 후 본생산" required />
                   </div>
                   <div class="field">
                     <label for="repeat-order">1회 발주인지 반복 발주인지</label>
@@ -678,12 +698,8 @@
                     <input id="target-budget" name="target_budget" type="text" placeholder="예: 1㎡ 기준 목표 단가 / 예산 협의 필요" />
                   </div>
                   <div class="field">
-                    <label for="production-schedule">희망 생산 일정</label>
-                    <input id="production-schedule" name="production_schedule" type="text" placeholder="예: 2026년 6월 생산 개시 희망" />
-                  </div>
-                  <div class="field">
-                    <label for="shipment-schedule">희망 선적 일정</label>
-                    <input id="shipment-schedule" name="shipment_schedule" type="text" placeholder="예: 2026년 7월 선적 희망" />
+                    <label for="production-schedule">희망 납기</label>
+                    <input id="production-schedule" name="preferred_delivery" type="text" placeholder="예: 2026년 7월 현장 반입 희망" required />
                   </div>
                 </div>
               </fieldset>
@@ -725,16 +741,19 @@
                 <div class="field-grid">
                   <div class="field field-full">
                     <label for="custom-note">상세 요청사항</label>
-                    <textarea id="custom-note" name="custom_note" placeholder="브랜드 가이드, 현장 특수조건, 패턴 반복 규칙, 샘플 협의 방식, 우선 검토 포인트를 자유롭게 남겨 주세요."></textarea>
+                    <textarea id="custom-note" name="custom_note" placeholder="브랜드 가이드, 현장 특수조건, 패턴 반복 규칙, 샘플 협의 방식, 우선 검토 포인트를 자유롭게 남겨 주세요." required></textarea>
                   </div>
                 </div>
               </fieldset>
 
-              <div class="upload-placeholder">디자인 시안, 레퍼런스 이미지, 도면 업로드 기능은 추후 연결 예정</div>
+              <div class="upload-placeholder">
+                <strong>참고 이미지 또는 도면 업로드</strong><br>
+                첨부 기능은 추후 연결 예정입니다. 현재는 참고 링크, 이미지 경로, 모델명을 상세 요청사항에 함께 남겨 주세요.
+              </div>
 
               <div class="form-footer">
-                <div class="form-note">현재는 프론트엔드 기준 제작 문의 구조만 구현되어 있으며, 제출 기능은 추후 이메일 또는 API와 연결할 수 있도록 준비되어 있습니다.</div>
-                <button class="btn btn-dark" type="submit">커스텀 제작 요청 보내기</button>
+                <div class="form-note">입력하신 내용은 공장 협의 및 커스텀 제작 가능성 검토용으로 접수됩니다.</div>
+                <button class="btn btn-dark" id="customTileSubmit" type="submit">커스텀 제작 요청 보내기</button>
               </div>
               <div class="submit-status" id="customTileStatus" aria-live="polite"></div>
             </form>
@@ -844,6 +863,37 @@
     const revealItems = document.querySelectorAll(".reveal");
     const customTileForm = document.getElementById("customTileForm");
     const customTileStatus = document.getElementById("customTileStatus");
+    const customTileSubmit = document.getElementById("customTileSubmit");
+    const customTileDefaultText = customTileSubmit.textContent;
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function isValidPhone(value) {
+      return value.replace(/\D/g, "").length >= 8;
+    }
+
+    function setCustomTileStatus(message, type) {
+      customTileStatus.textContent = message;
+      customTileStatus.className = "submit-status" + (type ? ` is-${type}` : "");
+    }
+
+    function collectFormPayload(form) {
+      const formData = new FormData(form);
+      const payload = {};
+
+      for (const [key, value] of formData.entries()) {
+        if (payload[key]) {
+          payload[key] = Array.isArray(payload[key]) ? [...payload[key], value] : [payload[key], value];
+        } else {
+          payload[key] = value;
+        }
+      }
+
+      payload.inquiryType = "custom";
+      return payload;
+    }
 
     function handleReveal() {
       const trigger = window.innerHeight * 0.94;
@@ -854,9 +904,54 @@
       });
     }
 
-    customTileForm.addEventListener("submit", (event) => {
+    customTileForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      customTileStatus.textContent = "전송 기능은 추후 연결 예정입니다. 현재는 입력 구조와 UI만 준비되어 있습니다.";
+      setCustomTileStatus("", "");
+
+      if (!customTileForm.reportValidity()) {
+        setCustomTileStatus("필수 항목을 먼저 확인해 주세요.", "error");
+        return;
+      }
+
+      const emailValue = customTileForm.elements.email.value.trim();
+      const phoneValue = customTileForm.elements.phone.value.trim();
+
+      if (!isValidEmail(emailValue)) {
+        setCustomTileStatus("이메일 형식을 확인해 주세요.", "error");
+        return;
+      }
+
+      if (!isValidPhone(phoneValue)) {
+        setCustomTileStatus("연락처 형식을 확인해 주세요.", "error");
+        return;
+      }
+
+      customTileSubmit.disabled = true;
+      customTileSubmit.textContent = "전송 중...";
+
+      try {
+        const response = await fetch(customTileForm.action, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(collectFormPayload(customTileForm)),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+        }
+
+        setCustomTileStatus("문의가 정상적으로 접수되었습니다. 담당자가 확인 후 빠르게 회신드리겠습니다.", "success");
+        customTileForm.reset();
+        customTileSubmit.textContent = "접수 완료";
+      } catch (error) {
+        setCustomTileStatus(error.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", "error");
+        customTileSubmit.disabled = false;
+        customTileSubmit.textContent = customTileDefaultText;
+      }
     });
 
     window.addEventListener("scroll", handleReveal, { passive: true });

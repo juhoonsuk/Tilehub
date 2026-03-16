@@ -378,6 +378,18 @@
       margin-top:14px;
       color:var(--muted);
       font-size:.92rem;
+      line-height:1.7;
+    }
+    .submit-status.is-success{
+      color:#0f6b46;
+    }
+    .submit-status.is-error{
+      color:#b42318;
+    }
+    .btn:disabled{
+      opacity:.7;
+      cursor:not-allowed;
+      transform:none;
     }
     .speed-grid{
       display:grid;
@@ -536,13 +548,13 @@
 
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
-            <form id="projectRequestForm" action="#" method="post">
+            <form id="projectRequestForm" action="/api/inquiry" method="post" novalidate>
               <fieldset>
                 <legend>기본 정보</legend>
                 <div class="field-grid">
                   <div class="field">
-                    <label for="company-project">회사명 / 현장명</label>
-                    <input id="company-project" name="company_project" type="text" placeholder="예: ABC건설 / 성수 복합개발 현장" required />
+                    <label for="company-name">회사명 / 업체명</label>
+                    <input id="company-name" name="company_name" type="text" placeholder="예: ABC건설 / OO자재 / OOO인테리어" required />
                   </div>
                   <div class="field">
                     <label for="manager-name">담당자명</label>
@@ -556,6 +568,10 @@
                     <label for="phone">연락처</label>
                     <input id="phone" name="phone" type="tel" placeholder="예: 010-1234-5678" required />
                   </div>
+                  <div class="field">
+                    <label for="project-name">프로젝트명</label>
+                    <input id="project-name" name="project_name" type="text" placeholder="예: 성수 복합개발 / 호텔 리모델링 / 상가 신축" required />
+                  </div>
                   <div class="field field-full">
                     <label for="email">이메일</label>
                     <input id="email" name="email" type="email" placeholder="견적 회신을 받을 이메일 주소" required />
@@ -568,7 +584,7 @@
                 <div class="field-grid">
                   <div class="field">
                     <label for="project-type">프로젝트 유형</label>
-                    <select id="project-type" name="project_type">
+                    <select id="project-type" name="project_type" required>
                       <option value="">선택해 주세요</option>
                       <option>건설사 프로젝트</option>
                       <option>자재 납품</option>
@@ -591,7 +607,7 @@
                   </div>
                   <div class="field">
                     <label for="site-location">현장 위치</label>
-                    <input id="site-location" name="site_location" type="text" placeholder="예: 서울 성동구 / 부산 해운대구" />
+                    <input id="site-location" name="site_location" type="text" placeholder="예: 서울 성동구 / 부산 해운대구" required />
                   </div>
                   <div class="field">
                     <label for="order-timing">예상 발주 시점</label>
@@ -599,7 +615,7 @@
                   </div>
                   <div class="field">
                     <label for="delivery-schedule">희망 납기 일정</label>
-                    <input id="delivery-schedule" name="delivery_schedule" type="text" placeholder="예: 2026년 6월 말 현장 반입" />
+                    <input id="delivery-schedule" name="delivery_schedule" type="text" placeholder="예: 2026년 6월 말 현장 반입" required />
                   </div>
                 </div>
               </fieldset>
@@ -607,6 +623,10 @@
               <fieldset>
                 <legend>제품 요구사항</legend>
                 <div class="field-grid">
+                  <div class="field">
+                    <label for="product-group">요청 제품군</label>
+                    <input id="product-group" name="product_group" type="text" placeholder="예: 바닥 포세린 / 벽 타일 / 외장 타일 / 슬랩" required />
+                  </div>
                   <div class="field field-full">
                     <label>필요한 타일 종류</label>
                     <div class="option-grid">
@@ -621,7 +641,7 @@
                   </div>
                   <div class="field">
                     <label for="sizes">주요 사이즈</label>
-                    <input id="sizes" name="sizes" type="text" placeholder="예: 600x600 / 600x1200 / 기타 직접입력" />
+                    <input id="sizes" name="sizes" type="text" placeholder="예: 600x600 / 600x1200 / 기타 직접입력" required />
                   </div>
                   <div class="field">
                     <label for="surface-style">표면 / 스타일</label>
@@ -633,11 +653,11 @@
                   </div>
                   <div class="field">
                     <label for="quantity">예상 수량</label>
-                    <input id="quantity" name="quantity" type="text" placeholder="예: 2,400㎡ / 160박스 / 24팔레트" />
+                    <input id="quantity" name="quantity" type="text" placeholder="예: 2,400㎡ / 160박스 / 24팔레트" required />
                   </div>
                   <div class="field">
                     <label for="budget-range">예산 범위</label>
-                    <select id="budget-range" name="budget_range">
+                    <select id="budget-range" name="budget_range" required>
                       <option value="">선택해 주세요</option>
                       <option>미정</option>
                       <option>기준가 확인 필요</option>
@@ -692,16 +712,19 @@
                   </div>
                   <div class="field field-full">
                     <label for="request-note">요청사항 상세 메모</label>
-                    <textarea id="request-note" name="request_note" placeholder="필요 규격, 현장 특이사항, 공급 우선순위, 비교 대상, 도면 기준 메모 등을 자유롭게 입력해 주세요."></textarea>
+                    <textarea id="request-note" name="request_note" placeholder="필요 규격, 현장 특이사항, 공급 우선순위, 비교 대상, 도면 기준 메모 등을 자유롭게 입력해 주세요." required></textarea>
                   </div>
                 </div>
               </fieldset>
 
-              <div class="upload-placeholder">도면, 이미지, 사양표는 추후 업로드 기능 연결 예정</div>
+              <div class="upload-placeholder">
+                <strong>도면 또는 참고자료 업로드</strong><br>
+                첨부 기능은 추후 연결 예정입니다. 현재는 도면, 이미지, 사양표 링크를 상세 요청사항에 함께 남겨 주세요.
+              </div>
 
               <div class="form-footer">
-                <div class="form-note">현재는 프론트엔드 기준 문의 구조만 구현되어 있으며, 제출 기능은 추후 이메일 또는 API와 연결할 수 있도록 준비되어 있습니다.</div>
-                <button class="btn btn-dark" type="submit">프로젝트 견적 요청 보내기</button>
+                <div class="form-note">입력하신 내용은 프로젝트 견적 검토용으로 접수되며, 담당자가 확인 후 회신합니다.</div>
+                <button class="btn btn-dark" id="projectRequestSubmit" type="submit">프로젝트 견적 요청 보내기</button>
               </div>
               <div class="submit-status" id="projectRequestStatus" aria-live="polite"></div>
             </form>
@@ -779,6 +802,37 @@
     const revealItems = document.querySelectorAll(".reveal");
     const projectRequestForm = document.getElementById("projectRequestForm");
     const projectRequestStatus = document.getElementById("projectRequestStatus");
+    const projectRequestSubmit = document.getElementById("projectRequestSubmit");
+    const projectRequestDefaultText = projectRequestSubmit.textContent;
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function isValidPhone(value) {
+      return value.replace(/\D/g, "").length >= 8;
+    }
+
+    function setProjectRequestStatus(message, type) {
+      projectRequestStatus.textContent = message;
+      projectRequestStatus.className = "submit-status" + (type ? ` is-${type}` : "");
+    }
+
+    function collectFormPayload(form) {
+      const formData = new FormData(form);
+      const payload = {};
+
+      for (const [key, value] of formData.entries()) {
+        if (payload[key]) {
+          payload[key] = Array.isArray(payload[key]) ? [...payload[key], value] : [payload[key], value];
+        } else {
+          payload[key] = value;
+        }
+      }
+
+      payload.inquiryType = "project";
+      return payload;
+    }
 
     function handleReveal() {
       const trigger = window.innerHeight * 0.94;
@@ -789,9 +843,54 @@
       });
     }
 
-    projectRequestForm.addEventListener("submit", (event) => {
+    projectRequestForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      projectRequestStatus.textContent = "전송 기능은 추후 연결 예정입니다. 현재는 입력 구조와 UI만 준비되어 있습니다.";
+      setProjectRequestStatus("", "");
+
+      if (!projectRequestForm.reportValidity()) {
+        setProjectRequestStatus("필수 항목을 먼저 확인해 주세요.", "error");
+        return;
+      }
+
+      const emailValue = projectRequestForm.elements.email.value.trim();
+      const phoneValue = projectRequestForm.elements.phone.value.trim();
+
+      if (!isValidEmail(emailValue)) {
+        setProjectRequestStatus("이메일 형식을 확인해 주세요.", "error");
+        return;
+      }
+
+      if (!isValidPhone(phoneValue)) {
+        setProjectRequestStatus("연락처 형식을 확인해 주세요.", "error");
+        return;
+      }
+
+      projectRequestSubmit.disabled = true;
+      projectRequestSubmit.textContent = "전송 중...";
+
+      try {
+        const response = await fetch(projectRequestForm.action, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(collectFormPayload(projectRequestForm)),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+        }
+
+        setProjectRequestStatus("문의가 정상적으로 접수되었습니다. 담당자가 확인 후 빠르게 회신드리겠습니다.", "success");
+        projectRequestForm.reset();
+        projectRequestSubmit.textContent = "접수 완료";
+      } catch (error) {
+        setProjectRequestStatus(error.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", "error");
+        projectRequestSubmit.disabled = false;
+        projectRequestSubmit.textContent = projectRequestDefaultText;
+      }
     });
 
     window.addEventListener("scroll", handleReveal, { passive: true });
