@@ -5,4 +5,4 @@ pages_build_output_dir = "."
 [vars]
 MAIL_FROM_EMAIL = "no-reply@tilehub.kr"
 MAIL_FROM_NAME = "TileHub Inquiry Bot"
-MAIL_TO = "contact@tilehub.kr"
+MAIL_TO = "project@tilehub.kr"

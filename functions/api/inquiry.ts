@@ -25,11 +25,11 @@ const CORS_HEADERS = {
 };
 
 const EMAIL_MAP: Record<InquiryType, string> = {
-  project: "contact@tilehub.kr",
-  custom: "contact@tilehub.kr",
-  sales: "contact@tilehub.kr",
-  partners: "contact@tilehub.kr",
-  inquiry: "contact@tilehub.kr",
+  project: "project@tilehub.kr",
+  custom: "project@tilehub.kr",
+  sales: "project@tilehub.kr",
+  partners: "project@tilehub.kr",
+  inquiry: "project@tilehub.kr",
 };
 
 function jsonResponse(body: Record<string, unknown>, status = 200) {
