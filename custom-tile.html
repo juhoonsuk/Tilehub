@@ -613,16 +613,16 @@
 
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
-            <form id="customTileForm" action="/api/inquiry" method="POST" novalidate>
-              <input type="hidden" name="name" id="custom-alias-name" />
-              <input type="hidden" name="company" id="custom-alias-company" />
-              <input type="hidden" name="message" id="custom-alias-message" />
+            <form id="customTileForm" action="https://formspree.io/f/mzdjkgop" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="TileHub 커스텀 타일 제작 문의" />
+              <input type="hidden" name="subject" value="TileHub 커스텀 타일 제작 문의" />
+              <input type="hidden" name="inquiry_type" value="custom" />
               <fieldset>
                 <legend>기본 정보</legend>
                 <div class="field-grid">
                   <div class="field">
                     <label for="custom-company">회사명 / 업체명<span class="required-mark">*</span></label>
-                    <input id="custom-company" name="company_name" type="text" placeholder="예: XYZ Design / ABC Studio / OOO 건축" required />
+                    <input id="custom-company" name="company" type="text" placeholder="예: XYZ Design / ABC Studio / OOO 건축" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -632,7 +632,7 @@
                   </div>
                   <div class="field">
                     <label for="custom-manager">담당자명<span class="required-mark">*</span></label>
-                    <input id="custom-manager" name="manager_name" type="text" placeholder="담당자명을 입력해 주세요" required />
+                    <input id="custom-manager" name="name" type="text" placeholder="담당자명을 입력해 주세요" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -683,7 +683,7 @@
                 <div class="field-grid">
                   <div class="field">
                     <label for="desired-size">희망 사이즈</label>
-                    <input id="desired-size" name="desired_size" type="text" placeholder="예: 750x1500 / 900x900" />
+                    <input id="desired-size" name="size" type="text" placeholder="예: 750x1500 / 900x900" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -695,12 +695,12 @@
                     <label>희망 마감</label>
                     <div class="option-group" id="finish-group">
                       <div class="option-grid">
-                        <label class="option"><input type="checkbox" name="finish[]" value="무광" />무광</label>
-                        <label class="option"><input type="checkbox" name="finish[]" value="유광" />유광</label>
-                        <label class="option"><input type="checkbox" name="finish[]" value="반무광" />반무광</label>
-                        <label class="option"><input type="checkbox" name="finish[]" value="텍스처" />텍스처</label>
-                        <label class="option"><input type="checkbox" name="finish[]" value="논슬립" />논슬립</label>
-                        <label class="option"><input type="checkbox" name="finish[]" value="기타" />기타</label>
+                        <label class="option"><input type="checkbox" name="finish" value="무광" />무광</label>
+                        <label class="option"><input type="checkbox" name="finish" value="유광" />유광</label>
+                        <label class="option"><input type="checkbox" name="finish" value="반무광" />반무광</label>
+                        <label class="option"><input type="checkbox" name="finish" value="텍스처" />텍스처</label>
+                        <label class="option"><input type="checkbox" name="finish" value="논슬립" />논슬립</label>
+                        <label class="option"><input type="checkbox" name="finish" value="기타" />기타</label>
                       </div>
                       <div class="option-group-error"></div>
                     </div>
@@ -815,7 +815,7 @@
                 <div class="field-grid">
                   <div class="field field-full">
                     <label for="custom-note">상세 요청사항<span class="required-mark">*</span></label>
-                    <textarea id="custom-note" name="custom_note" placeholder="브랜드 가이드, 현장 특수조건, 패턴 반복 규칙, 샘플 협의 방식, 우선 검토 포인트를 자유롭게 남겨 주세요." required></textarea>
+                    <textarea id="custom-note" name="message" placeholder="브랜드 가이드, 현장 특수조건, 패턴 반복 규칙, 샘플 협의 방식, 우선 검토 포인트를 자유롭게 남겨 주세요." required></textarea>
                     <div class="field-error"></div>
                   </div>
                 </div>
@@ -939,13 +939,8 @@
     const customTileForm = document.getElementById("customTileForm");
     const customTileStatus = document.getElementById("customTileStatus");
     const customTileSubmit = document.getElementById("customTileSubmit");
-    const customTileDefaultText = customTileSubmit.textContent;
     const customPhoneInput = document.getElementById("custom-phone");
     const finishGroup = document.getElementById("finish-group");
-    const customAliasName = document.getElementById("custom-alias-name");
-    const customAliasCompany = document.getElementById("custom-alias-company");
-    const customAliasMessage = document.getElementById("custom-alias-message");
-    let customSuccessTimer = null;
 
     function isValidEmail(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -958,23 +953,6 @@
     function setCustomTileStatus(message, type) {
       customTileStatus.textContent = message;
       customTileStatus.className = "submit-status" + (type ? ` is-${type}` : "");
-    }
-
-    function resetCustomButton(delay = 0) {
-      if (customSuccessTimer) {
-        clearTimeout(customSuccessTimer);
-      }
-
-      const applyReset = () => {
-        customTileSubmit.disabled = false;
-        customTileSubmit.textContent = customTileDefaultText;
-      };
-
-      if (delay > 0) {
-        customSuccessTimer = setTimeout(applyReset, delay);
-      } else {
-        applyReset();
-      }
     }
 
     function setFieldError(field, message) {
@@ -1081,37 +1059,6 @@
       return true;
     }
 
-    function collectFormPayload(form) {
-      customAliasName.value = form.elements.manager_name.value.trim();
-      customAliasCompany.value = form.elements.company_name.value.trim();
-      customAliasMessage.value = form.elements.custom_note.value.trim();
-
-      const formData = new FormData(form);
-      const payload = {};
-
-      for (const [key, value] of formData.entries()) {
-        if (payload[key]) {
-          payload[key] = Array.isArray(payload[key]) ? [...payload[key], value] : [payload[key], value];
-        } else {
-          payload[key] = value;
-        }
-      }
-
-      payload.inquiryType = "custom";
-      return payload;
-    }
-
-    async function parseInquiryResponse(response) {
-      const contentType = response.headers.get("content-type") || "";
-
-      if (contentType.includes("application/json")) {
-        return response.json().catch(() => ({}));
-      }
-
-      const text = await response.text().catch(() => "");
-      return { message: text.trim() };
-    }
-
     function handleReveal() {
       const trigger = window.innerHeight * 0.94;
       revealItems.forEach((item) => {
@@ -1121,47 +1068,16 @@
       });
     }
 
-    customTileForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    customTileForm.addEventListener("submit", (event) => {
       setCustomTileStatus("", "");
 
       if (!validateForm()) {
+        event.preventDefault();
         return;
-      }
-
-      if (customSuccessTimer) {
-        clearTimeout(customSuccessTimer);
       }
 
       customTileSubmit.disabled = true;
       customTileSubmit.textContent = "전송 중...";
-
-      try {
-        const response = await fetch("/api/inquiry", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(collectFormPayload(customTileForm)),
-        });
-
-        const result = await parseInquiryResponse(response);
-
-        if (!response.ok) {
-          throw new Error(result.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
-        }
-
-        setCustomTileStatus("커스텀 제작 요청이 정상적으로 접수되었습니다. 입력하신 사양을 바탕으로 제작 가능 여부와 공장 협의 범위를 검토한 뒤 회신드리겠습니다.", "success");
-        customTileForm.reset();
-        clearOptionGroupError(finishGroup);
-        customTileForm.querySelectorAll(".field").forEach(clearFieldError);
-        customTileSubmit.textContent = "접수 완료";
-        resetCustomButton(3000);
-      } catch (error) {
-        setCustomTileStatus(error.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", "error");
-        resetCustomButton();
-      }
     });
 
     customTileForm.querySelectorAll("input, select, textarea").forEach((element) => {

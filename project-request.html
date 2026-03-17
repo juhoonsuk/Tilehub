@@ -592,21 +592,21 @@
 
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
-            <form id="projectRequestForm" action="/api/inquiry" method="POST" novalidate>
-              <input type="hidden" name="name" id="project-alias-name" />
-              <input type="hidden" name="company" id="project-alias-company" />
-              <input type="hidden" name="message" id="project-alias-message" />
+            <form id="projectRequestForm" action="https://formspree.io/f/mzdjkgop" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="TileHub 프로젝트 견적 요청" />
+              <input type="hidden" name="subject" value="TileHub 프로젝트 견적 요청" />
+              <input type="hidden" name="inquiry_type" value="project" />
               <fieldset>
                 <legend>기본 정보</legend>
                 <div class="field-grid">
                   <div class="field">
                     <label for="company-name">회사명 / 업체명<span class="required-mark">*</span></label>
-                    <input id="company-name" name="company_name" type="text" placeholder="예: ABC건설 / OO자재 / OOO인테리어" required />
+                    <input id="company-name" name="company" type="text" placeholder="예: ABC건설 / OO자재 / OOO인테리어" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
                     <label for="manager-name">담당자명<span class="required-mark">*</span></label>
-                    <input id="manager-name" name="manager_name" type="text" placeholder="담당자명을 입력해 주세요" required />
+                    <input id="manager-name" name="name" type="text" placeholder="담당자명을 입력해 주세요" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -690,20 +690,20 @@
                     <label>필요한 타일 종류</label>
                     <div class="option-group" id="tile-type-group">
                       <div class="option-grid">
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="바닥 타일" />바닥 타일</label>
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="벽 타일" />벽 타일</label>
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="포세린" />포세린</label>
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="세라믹" />세라믹</label>
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="모자이크" />모자이크</label>
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="슬랩" />슬랩</label>
-                        <label class="option"><input type="checkbox" name="tile_type[]" value="기타" />기타</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="바닥 타일" />바닥 타일</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="벽 타일" />벽 타일</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="포세린" />포세린</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="세라믹" />세라믹</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="모자이크" />모자이크</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="슬랩" />슬랩</label>
+                        <label class="option"><input type="checkbox" name="tile_type" value="기타" />기타</label>
                       </div>
                       <div class="option-group-error"></div>
                     </div>
                   </div>
                   <div class="field">
                     <label for="sizes">주요 사이즈</label>
-                    <input id="sizes" name="sizes" type="text" placeholder="예: 600x600 / 600x1200 / 기타 직접입력" />
+                    <input id="sizes" name="size" type="text" placeholder="예: 600x600 / 600x1200 / 기타 직접입력" />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -785,7 +785,7 @@
                   </div>
                   <div class="field field-full">
                     <label for="request-note">요청사항 상세 메모<span class="required-mark">*</span></label>
-                    <textarea id="request-note" name="request_note" placeholder="필요 규격, 현장 특이사항, 공급 우선순위, 비교 대상, 도면 기준 메모 등을 자유롭게 입력해 주세요." required></textarea>
+                    <textarea id="request-note" name="message" placeholder="필요 규격, 현장 특이사항, 공급 우선순위, 비교 대상, 도면 기준 메모 등을 자유롭게 입력해 주세요." required></textarea>
                     <div class="field-error"></div>
                   </div>
                 </div>
@@ -877,13 +877,8 @@
     const projectRequestForm = document.getElementById("projectRequestForm");
     const projectRequestStatus = document.getElementById("projectRequestStatus");
     const projectRequestSubmit = document.getElementById("projectRequestSubmit");
-    const projectRequestDefaultText = projectRequestSubmit.textContent;
     const phoneInput = document.getElementById("phone");
     const tileTypeGroup = document.getElementById("tile-type-group");
-    const projectAliasName = document.getElementById("project-alias-name");
-    const projectAliasCompany = document.getElementById("project-alias-company");
-    const projectAliasMessage = document.getElementById("project-alias-message");
-    let projectSuccessTimer = null;
 
     function isValidEmail(value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -896,23 +891,6 @@
     function setProjectRequestStatus(message, type) {
       projectRequestStatus.textContent = message;
       projectRequestStatus.className = "submit-status" + (type ? ` is-${type}` : "");
-    }
-
-    function resetProjectButton(delay = 0) {
-      if (projectSuccessTimer) {
-        clearTimeout(projectSuccessTimer);
-      }
-
-      const applyReset = () => {
-        projectRequestSubmit.disabled = false;
-        projectRequestSubmit.textContent = projectRequestDefaultText;
-      };
-
-      if (delay > 0) {
-        projectSuccessTimer = setTimeout(applyReset, delay);
-      } else {
-        applyReset();
-      }
     }
 
     function setFieldError(field, message) {
@@ -1019,37 +997,6 @@
       return true;
     }
 
-    function collectFormPayload(form) {
-      projectAliasName.value = form.elements.manager_name.value.trim();
-      projectAliasCompany.value = form.elements.company_name.value.trim();
-      projectAliasMessage.value = form.elements.request_note.value.trim();
-
-      const formData = new FormData(form);
-      const payload = {};
-
-      for (const [key, value] of formData.entries()) {
-        if (payload[key]) {
-          payload[key] = Array.isArray(payload[key]) ? [...payload[key], value] : [payload[key], value];
-        } else {
-          payload[key] = value;
-        }
-      }
-
-      payload.inquiryType = "project";
-      return payload;
-    }
-
-    async function parseInquiryResponse(response) {
-      const contentType = response.headers.get("content-type") || "";
-
-      if (contentType.includes("application/json")) {
-        return response.json().catch(() => ({}));
-      }
-
-      const text = await response.text().catch(() => "");
-      return { message: text.trim() };
-    }
-
     function handleReveal() {
       const trigger = window.innerHeight * 0.94;
       revealItems.forEach((item) => {
@@ -1059,47 +1006,16 @@
       });
     }
 
-    projectRequestForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    projectRequestForm.addEventListener("submit", (event) => {
       setProjectRequestStatus("", "");
 
       if (!validateForm()) {
+        event.preventDefault();
         return;
-      }
-
-      if (projectSuccessTimer) {
-        clearTimeout(projectSuccessTimer);
       }
 
       projectRequestSubmit.disabled = true;
       projectRequestSubmit.textContent = "전송 중...";
-
-      try {
-        const response = await fetch("/api/inquiry", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(collectFormPayload(projectRequestForm)),
-        });
-
-        const result = await parseInquiryResponse(response);
-
-        if (!response.ok) {
-          throw new Error(result.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
-        }
-
-        setProjectRequestStatus("문의가 정상적으로 접수되었습니다. 담당자가 확인 후 빠르게 회신드리겠습니다.", "success");
-        projectRequestForm.reset();
-        clearOptionGroupError(tileTypeGroup);
-        projectRequestForm.querySelectorAll(".field").forEach(clearFieldError);
-        projectRequestSubmit.textContent = "접수 완료";
-        resetProjectButton(3000);
-      } catch (error) {
-        setProjectRequestStatus(error.message || "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", "error");
-        resetProjectButton();
-      }
     });
 
     projectRequestForm.querySelectorAll("input, select, textarea").forEach((element) => {
