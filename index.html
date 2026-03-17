@@ -1374,18 +1374,6 @@
       border-color:rgba(17,19,24,.06);
     }
 
-    .floating-consult-link.is-wechat{
-      background:#07C160;
-      color:#fff;
-      border-color:#07C160;
-    }
-
-    .floating-consult-link.is-wechat:hover{
-      background:#05a94f;
-      border-color:#05a94f;
-      color:#fff;
-    }
-
     .floating-consult-link.is-form{
       background:#111318;
       color:#fff;
@@ -2008,6 +1996,12 @@
             <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
             <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
           </div>
+          <div class="hero-consult-links">
+            <span>빠른 상담:</span>
+            <a href="/contact.html#quick-channels" target="_blank" rel="noreferrer">카카오톡</a>
+            <span aria-hidden="true">·</span>
+            <a href="/contact.html#quick-channels" target="_blank" rel="noreferrer">WeChat</a>
+          </div>
         </div>
         <div class="hero-visual reveal show reveal-delay-1">
           <img src="./images/hero-main.jpg?v=1" alt="타일허브 애플 스타일 메인 비주얼">
@@ -2357,95 +2351,123 @@
     <section class="contact-preview" id="contact-preview">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">INQUIRY</span>
-          <h2>프로젝트 성격에 맞는 전용 문의 경로만 남겼습니다</h2>
-          <p>메인에서는 실제 검토가 필요한 프로젝트 요청과 커스텀 타일 제작 두 가지 경로만 안내합니다.</p>
+          <span class="eyebrow">CONTACT</span>
+          <h2>폼과 빠른 상담 채널을 함께 운영합니다</h2>
+          <p>기본 문의는 폼으로 정리해 접수하고, 빠른 일정 확인이나 1차 상담은 카카오톡과 WeChat 채널로 이어집니다.<br>프로젝트 요청과 커스텀 제작은 전용 페이지에서 상세하게 접수할 수 있습니다.</p>
         </div>
 
-        <div class="contact-grid">
-          <a class="contact-card reveal reveal-delay-1" href="/project-request.html">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">01</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>프로젝트 견적 요청</h3>
-              <span class="contact-subtitle">대량 발주 · 현장 · 유통 프로젝트</span>
-              <span class="contact-email">Project Request Form</span>
-              <p>현장 조건, 수량, 납기, 공급 기준을 정리해 프로젝트 단위로 정확하게 검토합니다.</p>
+        <div class="section-stack">
+          <div class="quick-channel-panel reveal reveal-delay-1">
+            <div class="quick-channel-copy">
+              <span class="quick-channel-label">Quick Consultation</span>
+              <h3>빠른 상담 채널</h3>
+              <p>급하게 확인해야 하는 일정, 간단한 제품 문의, 중국 공장 커뮤니케이션은 빠른 상담 채널을 우선 활용해 주세요. 견적과 상세 요청은 문의 폼에서 접수하시면 더 정확하게 검토됩니다.</p>
+              <div class="channel-note"><strong>안내</strong> 카카오톡 및 WeChat 연결 정보는 CONTACT 페이지의 빠른 상담 채널 블록에서 함께 확인하실 수 있습니다.</div>
             </div>
-            <div class="contact-card-actions"><span class="contact-link">프로젝트 요청하기 <span aria-hidden="true">→</span></span></div>
-          </a>
-
-          <a class="contact-card reveal reveal-delay-2" href="/custom-tile.html">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">02</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>커스텀 타일 제작</h3>
-              <span class="contact-subtitle">OEM · ODM · 주문제작 · 공장 협의</span>
-              <span class="contact-email">Custom Tile Form</span>
-              <p>사이즈, 패턴, 질감, 제작 조건을 바탕으로 중국 공장 커뮤니케이션까지 이어갑니다.</p>
+            <div class="quick-channel-grid">
+              <a class="channel-card reveal reveal-delay-2" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">
+                <div>
+                  <strong>카카오톡 상담</strong>
+                  <p>빠른 일정 확인과 기본 상담이 필요한 경우에 적합합니다.</p>
+                </div>
+                <em>상담 채널 보기 <span aria-hidden="true">→</span></em>
+              </a>
+              <a class="channel-card reveal reveal-delay-3" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">
+                <div>
+                  <strong>WeChat 상담</strong>
+                  <p>해외 공장 커뮤니케이션이나 중국 측 빠른 연결이 필요한 경우에 적합합니다.</p>
+                </div>
+                <em>WeChat 안내 보기 <span aria-hidden="true">→</span></em>
+              </a>
+              <a class="channel-card is-form reveal" href="/quote-request.html">
+                <div>
+                  <strong>문의 폼 접수</strong>
+                  <p>빠른 견적 문의와 일반 문의, 프로젝트 요청을 목적에 맞는 전용 폼으로 접수할 수 있습니다.</p>
+                </div>
+                <em>문의 경로 보기 <span aria-hidden="true">→</span></em>
+              </a>
             </div>
-            <div class="contact-card-actions"><span class="contact-link">커스텀 문의하기 <span aria-hidden="true">→</span></span></div>
-          </a>
-        </div>
-
-        <div class="section-head reveal" style="margin-top:42px;max-width:720px;">
-          <span class="eyebrow">EMAIL GUIDE</span>
-          <h2>전용 이메일 안내</h2>
-          <p>기존 안내는 가장 필요한 두 가지 이메일만 유지합니다.</p>
-        </div>
-
-        <div class="email-guide-grid">
-          <article class="contact-card reveal reveal-delay-1">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">01</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>제품 · 가격 문의</h3>
-              <span class="contact-subtitle">제품 정보 · 샘플 · 기본 상담</span>
-              <span class="contact-email">sales@tilehub.kr</span>
-              <p>제품 정보와 가격, 샘플 관련 기본 상담 안내용 이메일입니다.</p>
-            </div>
-            <div class="contact-card-actions is-between">
-              <a class="contact-link" href="/contact.html">일반 문의 폼 <span aria-hidden="true">→</span></a>
-              <span class="contact-helper">안내용 유지</span>
-            </div>
-          </article>
-
-          <article class="contact-card reveal reveal-delay-2">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">02</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>제휴 · 협업 문의</h3>
-              <span class="contact-subtitle">파트너십 · 공급 제안 · 협업</span>
-              <span class="contact-email">partners@tilehub.kr</span>
-              <p>제휴와 협업, 파트너 제안 관련 안내용 이메일입니다.</p>
-            </div>
-            <div class="contact-card-actions is-between">
-              <a class="contact-link" href="/contact.html">문의하기 <span aria-hidden="true">→</span></a>
-              <span class="contact-helper">안내용 유지</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box reveal">
-          <h2>타일 유통의 새로운 기준<br>TILE<span class="brand-hub">HUB</span></h2>
-          <p>직수입 가격 공개, 프로젝트 견적 중심 거래,
-            중국 공장 공급망을 직접 연결합니다.</p>
-          <div class="hero-actions">
-            <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
-            <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
           </div>
+
+          <div class="section-head reveal">
+            <span class="eyebrow">Dedicated Email Guide</span>
+            <h2>전용 이메일 안내</h2>
+            <p>기존 전용 이메일 구조도 함께 유지합니다. 다만 실제 문의 접수는 아래 연결된 폼 경로를 우선 이용해 주세요.</p>
+          </div>
+
+          <div class="email-guide-grid">
+            <article class="contact-card reveal reveal-delay-1">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">01</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>제품 · 가격 문의</h3>
+                <span class="contact-subtitle">제품 정보 · 샘플 · 기본 상담</span>
+                <span class="contact-email">sales@tilehub.kr</span>
+                <p>제품 정보와 가격 확인, 샘플 및 기본 상담은 일반 문의 폼으로 가장 빠르게 접수할 수 있습니다.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/contact.html">일반 문의 폼 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+
+            <article class="contact-card reveal reveal-delay-2">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">02</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>프로젝트 견적 문의</h3>
+                <span class="contact-subtitle">대량 물량 · 현장 · 유통 프로젝트</span>
+                <span class="contact-email">project@tilehub.kr</span>
+                <p>건설사, 시행사, 시공사, 유통사 단위의 프로젝트 견적과 공급 요청은 전용 프로젝트 폼으로 접수됩니다.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/project-request.html">프로젝트 요청 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+
+            <article class="contact-card reveal reveal-delay-3">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">03</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>공장 · 커스텀 제작 문의</h3>
+                <span class="contact-subtitle">중국 공장 연결 · OEM · 주문제작</span>
+                <span class="contact-email">factory@tilehub.kr</span>
+                <p>스펙 협의, 주문제작, 샘플 개발, 생산 검토는 커스텀 타일 제작 전용 폼으로 접수해 주세요.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/custom-tile.html">커스텀 제작 문의 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+
+            <article class="contact-card reveal">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">04</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>제휴 · 협업 문의</h3>
+                <span class="contact-subtitle">파트너십 · 공급 제안 · 협업 문의</span>
+                <span class="contact-email">partners@tilehub.kr</span>
+                <p>제휴와 협업 제안은 일반 문의 폼에 배경과 제안 내용을 남겨주시면 담당자가 순차적으로 확인합니다.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/contact.html">문의 폼 접수 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="contact-note reveal">
+          <p>폼 접수는 기록과 검토 흐름을 가장 안정적으로 남기며, 카카오톡과 WeChat은 빠른 확인이 필요한 상담 채널로 운영합니다.</p>
         </div>
       </div>
     </section>
@@ -2490,8 +2512,8 @@
   <!-- ===== 팝업 끝 ===== -->
 
   <div class="floating-consult" aria-label="빠른 상담">
-    <a class="floating-consult-link is-kakao" href="https://pf.kakao.com/_여기채널ID" target="_blank" rel="noopener">카카오톡 상담</a>
-    <a class="floating-consult-link is-wechat" href="/contact.html#wechat-channel" target="_blank" rel="noreferrer">WeChat 상담</a>
+    <a class="floating-consult-link is-kakao" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">카카오톡 상담</a>
+    <a class="floating-consult-link" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">WeChat 상담</a>
     <a class="floating-consult-link is-form" href="#contact-preview">문의하기</a>
   </div>
 
