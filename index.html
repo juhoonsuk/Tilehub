@@ -1168,6 +1168,219 @@
       font-size:.95rem;
     }
 
+    .hero-consult-links{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.7;
+    }
+
+    .hero-consult-links a{
+      color:#111318;
+      font-weight:700;
+      transition:opacity .24s ease;
+    }
+
+    .hero-consult-links a:hover{
+      opacity:.68;
+    }
+
+    .section-stack{
+      display:grid;
+      gap:24px;
+      margin-top:34px;
+    }
+
+    .quick-channel-panel{
+      display:grid;
+      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+      gap:22px;
+      padding:32px 30px;
+      border-radius:30px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff 0%,#f8f8f7 100%);
+      box-shadow:var(--shadow);
+    }
+
+    .quick-channel-copy h3{
+      margin:10px 0 14px;
+      font-size:1.7rem;
+      line-height:1.18;
+      letter-spacing:-0.04em;
+    }
+
+    .quick-channel-copy p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.82;
+      max-width:40ch;
+    }
+
+    .quick-channel-label{
+      display:inline-flex;
+      padding:8px 14px;
+      border-radius:999px;
+      background:var(--soft-2);
+      color:#36404a;
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.04em;
+    }
+
+    .quick-channel-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .channel-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:16px;
+      min-height:100%;
+      padding:24px 22px;
+      border-radius:24px;
+      border:1px solid rgba(17,19,24,.08);
+      background:#fff;
+      box-shadow:0 14px 36px rgba(0,0,0,.05);
+      text-decoration:none;
+      color:inherit;
+      transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+    }
+
+    .channel-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow-hover);
+      border-color:rgba(17,19,24,.12);
+    }
+
+    .channel-card strong{
+      font-size:1.08rem;
+      line-height:1.35;
+      letter-spacing:-0.02em;
+    }
+
+    .channel-card span,
+    .channel-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.72;
+    }
+
+    .channel-card em{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-style:normal;
+      font-size:.92rem;
+      font-weight:700;
+      color:#111318;
+    }
+
+    .channel-card.is-form{
+      background:linear-gradient(180deg,#111318 0%,#1a1d24 100%);
+      color:#fff;
+      border-color:rgba(17,19,24,.92);
+    }
+
+    .channel-card.is-form span,
+    .channel-card.is-form p,
+    .channel-card.is-form em{
+      color:rgba(255,255,255,.84);
+    }
+
+    .channel-note{
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid rgba(17,19,24,.06);
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.72;
+    }
+
+    .channel-note strong{
+      color:#111318;
+    }
+
+    .email-guide-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .contact-card-actions.is-between{
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .contact-helper{
+      color:#9097a2;
+      font-size:.9rem;
+      line-height:1.6;
+    }
+
+    .floating-consult{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:60;
+      display:grid;
+      gap:10px;
+      pointer-events:none;
+    }
+
+    .floating-consult a,
+    .floating-consult button{
+      pointer-events:auto;
+    }
+
+    .floating-consult-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid rgba(17,19,24,.08);
+      background:rgba(255,255,255,.94);
+      color:#111318;
+      font-size:.92rem;
+      font-weight:700;
+      box-shadow:0 18px 42px rgba(0,0,0,.12);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      transition:transform .24s ease, box-shadow .24s ease, background .24s ease, color .24s ease;
+      white-space:nowrap;
+    }
+
+    .floating-consult-link:hover{
+      transform:translateY(-2px);
+      box-shadow:0 22px 52px rgba(0,0,0,.16);
+    }
+
+    .floating-consult-link.is-kakao{
+      background:#f6e24a;
+      color:#111318;
+      border-color:rgba(17,19,24,.06);
+    }
+
+    .floating-consult-link.is-form{
+      background:#111318;
+      color:#fff;
+      border-color:#111318;
+    }
+
+
     .partner-label{
       display:inline-flex;
       margin-bottom:20px;
@@ -1539,6 +1752,14 @@
         padding:0 20px;
       }
 
+      .hero-consult-links{margin-top:14px;font-size:.88rem}
+      .quick-channel-panel,.channel-card{padding:24px 22px;border-radius:24px}
+      .quick-channel-panel,.quick-channel-grid,.email-guide-grid{grid-template-columns:1fr}
+      .contact-card-actions.is-between{align-items:flex-start}
+      .floating-consult{right:16px;bottom:16px;gap:8px}
+      .floating-consult-link{min-height:42px;padding:0 14px;font-size:.82rem}
+
+
       .nav-links{
         display:none;
       }
@@ -1774,6 +1995,12 @@
           <div class="hero-actions">
             <a class="btn btn-dark" href="#prices">직수입 가격 보기</a>
             <a class="btn btn-light" href="#projects">프로젝트 견적 요청</a>
+          </div>
+          <div class="hero-consult-links">
+            <span>빠른 상담:</span>
+            <a href="/contact.html#quick-channels" target="_blank" rel="noreferrer">카카오톡</a>
+            <span aria-hidden="true">·</span>
+            <a href="/contact.html#quick-channels" target="_blank" rel="noreferrer">WeChat</a>
           </div>
         </div>
         <div class="hero-visual reveal show reveal-delay-1">
@@ -2125,42 +2352,122 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">CONTACT</span>
-          <h2>빠르게 문의하고 바로 답변받을 수 있게 정리했습니다</h2>
-          <p>견적 문의와 일반 문의를 가볍게 접수할 수 있는 폼 중심 구조로 정리했습니다.<br>프로젝트 요청과 커스텀 제작은 전용 폼에서 별도로 접수됩니다.</p>
+          <h2>폼과 빠른 상담 채널을 함께 운영합니다</h2>
+          <p>기본 문의는 폼으로 정리해 접수하고, 빠른 일정 확인이나 1차 상담은 카카오톡과 WeChat 채널로 이어집니다.<br>프로젝트 요청과 커스텀 제작은 전용 페이지에서 상세하게 접수할 수 있습니다.</p>
         </div>
 
-        <div class="contact-grid">
-          <a class="contact-card reveal reveal-delay-1" href="/quote-request.html">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">01</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>견적 문의</h3>
-              <span class="contact-subtitle">빠른 견적 · 제품 · 수량 문의</span>
-              <span class="contact-email">Quick Quote Form</span>
-              <p>제품, 사이즈, 수량 등 기본 정보만 남겨주시면 빠르게 견적을 안내드립니다.</p>
+        <div class="section-stack">
+          <div class="quick-channel-panel reveal reveal-delay-1">
+            <div class="quick-channel-copy">
+              <span class="quick-channel-label">Quick Consultation</span>
+              <h3>빠른 상담 채널</h3>
+              <p>급하게 확인해야 하는 일정, 간단한 제품 문의, 중국 공장 커뮤니케이션은 빠른 상담 채널을 우선 활용해 주세요. 견적과 상세 요청은 문의 폼에서 접수하시면 더 정확하게 검토됩니다.</p>
+              <div class="channel-note"><strong>안내</strong> 카카오톡 및 WeChat 연결 정보는 CONTACT 페이지의 빠른 상담 채널 블록에서 함께 확인하실 수 있습니다.</div>
             </div>
-            <div class="contact-card-actions"><span class="contact-link">견적 문의하기 <span aria-hidden="true">→</span></span></div>
-          </a>
+            <div class="quick-channel-grid">
+              <a class="channel-card reveal reveal-delay-2" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">
+                <div>
+                  <strong>카카오톡 상담</strong>
+                  <p>빠른 일정 확인과 기본 상담이 필요한 경우에 적합합니다.</p>
+                </div>
+                <em>상담 채널 보기 <span aria-hidden="true">→</span></em>
+              </a>
+              <a class="channel-card reveal reveal-delay-3" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">
+                <div>
+                  <strong>WeChat 상담</strong>
+                  <p>해외 공장 커뮤니케이션이나 중국 측 빠른 연결이 필요한 경우에 적합합니다.</p>
+                </div>
+                <em>WeChat 안내 보기 <span aria-hidden="true">→</span></em>
+              </a>
+              <a class="channel-card is-form reveal" href="/quote-request.html">
+                <div>
+                  <strong>문의 폼 접수</strong>
+                  <p>빠른 견적 문의와 일반 문의, 프로젝트 요청을 목적에 맞는 전용 폼으로 접수할 수 있습니다.</p>
+                </div>
+                <em>문의 경로 보기 <span aria-hidden="true">→</span></em>
+              </a>
+            </div>
+          </div>
 
-          <a class="contact-card reveal reveal-delay-2" href="/contact.html">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">02</span>
-                <span class="contact-card-arrow">→</span>
+          <div class="section-head reveal">
+            <span class="eyebrow">Dedicated Email Guide</span>
+            <h2>전용 이메일 안내</h2>
+            <p>기존 전용 이메일 구조도 함께 유지합니다. 다만 실제 문의 접수는 아래 연결된 폼 경로를 우선 이용해 주세요.</p>
+          </div>
+
+          <div class="email-guide-grid">
+            <article class="contact-card reveal reveal-delay-1">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">01</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>제품 · 가격 문의</h3>
+                <span class="contact-subtitle">제품 정보 · 샘플 · 기본 상담</span>
+                <span class="contact-email">sales@tilehub.kr</span>
+                <p>제품 정보와 가격 확인, 샘플 및 기본 상담은 일반 문의 폼으로 가장 빠르게 접수할 수 있습니다.</p>
               </div>
-              <h3>일반 문의</h3>
-              <span class="contact-subtitle">제품 · 가격 · 상담 문의</span>
-              <span class="contact-email">General Inquiry Form</span>
-              <p>제품 정보, 가격, 상담 관련 문의를 편하게 남겨주세요.</p>
-            </div>
-            <div class="contact-card-actions"><span class="contact-link">일반 문의하기 <span aria-hidden="true">→</span></span></div>
-          </a>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/contact.html">일반 문의 폼 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+
+            <article class="contact-card reveal reveal-delay-2">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">02</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>프로젝트 견적 문의</h3>
+                <span class="contact-subtitle">대량 물량 · 현장 · 유통 프로젝트</span>
+                <span class="contact-email">project@tilehub.kr</span>
+                <p>건설사, 시행사, 시공사, 유통사 단위의 프로젝트 견적과 공급 요청은 전용 프로젝트 폼으로 접수됩니다.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/project-request.html">프로젝트 요청 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+
+            <article class="contact-card reveal reveal-delay-3">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">03</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>공장 · 커스텀 제작 문의</h3>
+                <span class="contact-subtitle">중국 공장 연결 · OEM · 주문제작</span>
+                <span class="contact-email">factory@tilehub.kr</span>
+                <p>스펙 협의, 주문제작, 샘플 개발, 생산 검토는 커스텀 타일 제작 전용 폼으로 접수해 주세요.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/custom-tile.html">커스텀 제작 문의 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+
+            <article class="contact-card reveal">
+              <div>
+                <div class="contact-card-top">
+                  <span class="contact-card-label">04</span>
+                  <span class="contact-card-arrow">→</span>
+                </div>
+                <h3>제휴 · 협업 문의</h3>
+                <span class="contact-subtitle">파트너십 · 공급 제안 · 협업 문의</span>
+                <span class="contact-email">partners@tilehub.kr</span>
+                <p>제휴와 협업 제안은 일반 문의 폼에 배경과 제안 내용을 남겨주시면 담당자가 순차적으로 확인합니다.</p>
+              </div>
+              <div class="contact-card-actions is-between">
+                <a class="contact-link" href="/contact.html">문의 폼 접수 <span aria-hidden="true">→</span></a>
+                <span class="contact-helper">전용 이메일 유지</span>
+              </div>
+            </article>
+          </div>
         </div>
 
         <div class="contact-note reveal">
-          <p>프로젝트 요청과 커스텀 제작은 전용 폼으로, 견적 및 일반 문의는 간단한 문의 폼으로 빠르게 접수하실 수 있습니다.</p>
+          <p>폼 접수는 기록과 검토 흐름을 가장 안정적으로 남기며, 카카오톡과 WeChat은 빠른 확인이 필요한 상담 채널로 운영합니다.</p>
         </div>
       </div>
     </section>
@@ -2203,6 +2510,12 @@
     </div>
   </div>
   <!-- ===== 팝업 끝 ===== -->
+
+  <div class="floating-consult" aria-label="빠른 상담">
+    <a class="floating-consult-link is-kakao" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">카카오톡 상담</a>
+    <a class="floating-consult-link" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">WeChat 상담</a>
+    <a class="floating-consult-link is-form" href="#contact-preview">문의하기</a>
+  </div>
 
   <footer>
     <div class="container footer-row">
