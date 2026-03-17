@@ -222,12 +222,13 @@
     }
     .form-layout{
       display:grid;
-      grid-template-columns:minmax(0,1.55fr) minmax(320px,.85fr);
+      grid-template-columns:minmax(0,1.5fr) minmax(320px,.86fr);
       gap:24px;
       align-items:start;
     }
     .form-card{
-      padding:34px 32px;
+      padding:38px 36px;
+      background:linear-gradient(180deg,#ffffff 0%,#fcfcfb 100%);
     }
     .guide-card{
       padding:30px 28px;
@@ -280,35 +281,67 @@
     }
     form{
       display:grid;
-      gap:24px;
+      gap:22px;
+    }
+    .form-intro{
+      display:grid;
+      gap:10px;
+      padding:22px 24px;
+      border:1px solid rgba(17,19,24,.08);
+      border-radius:24px;
+      background:linear-gradient(180deg,#fbfbfa 0%,#f6f7f6 100%);
+    }
+    .form-intro strong{
+      font-size:1.06rem;
+      letter-spacing:-0.02em;
+    }
+    .required-guide{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.6;
+    }
+    .required-guide .required-mark{
+      margin-left:0;
+      font-size:1rem;
     }
     fieldset{
       margin:0;
-      padding:24px;
+      padding:28px 24px 24px;
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:26px;
       background:#fff;
     }
     legend{
       padding:0 10px;
-      font-size:1rem;
+      font-size:1.04rem;
       font-weight:800;
       letter-spacing:-0.02em;
+    }
+    .section-summary{
+      margin:2px 0 18px;
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.72;
     }
     .field-grid{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
+      gap:20px 18px;
     }
     .field{
       display:grid;
       gap:10px;
+      align-content:start;
     }
     .field-full{grid-column:1 / -1}
     label{
       font-size:.95rem;
       font-weight:700;
       letter-spacing:-0.01em;
+      line-height:1.5;
     }
     .required-mark{
       margin-left:4px;
@@ -323,40 +356,44 @@
     select,
     textarea{
       width:100%;
-      border:1px solid var(--line);
+      min-height:56px;
+      border:1px solid #dde2e7;
       border-radius:18px;
-      background:#fff;
+      background:#fcfcfc;
       color:var(--text);
-      padding:15px 16px;
-      transition:border-color .2s ease, box-shadow .2s ease;
+      padding:16px 18px;
+      transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    input::placeholder,
+    textarea::placeholder{
+      color:#9aa2ad;
     }
     textarea{
-      min-height:148px;
+      min-height:188px;
       resize:vertical;
+      line-height:1.72;
+    }
+    input:hover,
+    select:hover,
+    textarea:hover{
+      border-color:#cfd5dc;
+      background:#fff;
     }
     input:focus,
     select:focus,
     textarea:focus{
       outline:none;
-      border-color:#c7cdd4;
-      box-shadow:0 0 0 4px rgba(17,19,24,.05);
-    }
-    .required-notice{
-      margin-top:18px;
-      padding:18px 20px;
-      border-radius:20px;
-      border:1px solid rgba(229,57,53,.14);
-      background:linear-gradient(180deg, rgba(255,246,244,.96) 0%, rgba(255,251,249,.96) 100%);
-      color:#9b433d;
-      font-size:.94rem;
-      line-height:1.72;
+      border-color:#9aa4af;
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(17,19,24,.06);
     }
     .field-error,
     .option-group-error{
       display:none;
       color:#b42318;
-      font-size:.86rem;
-      line-height:1.55;
+      font-size:.88rem;
+      line-height:1.6;
+      font-weight:600;
     }
     .has-error .field-error,
     .option-group.has-error .option-group-error{
@@ -402,7 +439,7 @@
       box-shadow:none;
     }
     .upload-placeholder{
-      padding:22px;
+      padding:22px 24px;
       border:1px dashed #cfd5dc;
       border-radius:22px;
       background:linear-gradient(180deg,#fafaf9 0%,#f4f5f4 100%);
@@ -411,18 +448,24 @@
     }
     .form-footer{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
-      gap:16px;
+      gap:18px;
       flex-wrap:wrap;
+      padding-top:4px;
     }
     .form-note{
+      max-width:460px;
       color:var(--muted);
       font-size:.94rem;
-      line-height:1.7;
+      line-height:1.75;
     }
+    .submit-status:empty{display:none}
     .submit-status{
-      margin-top:14px;
+      margin-top:4px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:#f6f7f8;
       color:var(--muted);
       font-size:.92rem;
       line-height:1.7;
@@ -534,7 +577,8 @@
       .field-grid,
       .option-grid{grid-template-columns:1fr}
       .form-card,.guide-card,.cta-box,.check-item{padding:26px 22px;border-radius:24px}
-      fieldset{padding:18px 16px;border-radius:20px}
+      .form-intro{padding:18px 18px;border-radius:20px}
+      fieldset{padding:20px 16px 18px;border-radius:20px}
       .form-footer{align-items:stretch}
     }
   </style>
@@ -604,11 +648,7 @@
         <div class="section-head reveal">
           <span class="eyebrow">Custom Request</span>
           <h2>제작 요청 정보를 입력해 주세요</h2>
-          <p>아래 내용을 기준으로 제작 가능 여부와 공장 협의 범위를 검토합니다.</p>
-          <div class="required-notice">
-            간단한 기본 정보만 남겨주셔도 접수됩니다.<br>
-            상세 사양은 접수 후 담당자가 추가로 확인드립니다.
-          </div>
+          <p>문의 내용을 남겨주시면 확인 후 빠르게 안내드립니다.</p>
         </div>
 
         <div class="form-layout">
@@ -617,12 +657,18 @@
               <input type="hidden" name="_subject" value="TileHub 커스텀 타일 제작 문의" />
               <input type="hidden" name="subject" value="TileHub 커스텀 타일 제작 문의" />
               <input type="hidden" name="inquiry_type" value="custom" />
+              <input type="hidden" name="_next" value="https://tilehub.kr/thankyou.html?source=custom" />
+              <div class="form-intro">
+                <strong>문의 내용을 남겨주시면 확인 후 빠르게 안내드립니다.</strong>
+                <div class="required-guide"><span class="required-mark">*</span> 필수 입력 항목</div>
+              </div>
               <fieldset>
                 <legend>기본 정보</legend>
+                <p class="section-summary">회신에 필요한 기본 정보를 먼저 입력해 주세요. 필수 항목만 작성해도 접수됩니다.</p>
                 <div class="field-grid">
                   <div class="field">
                     <label for="custom-company">회사명 / 업체명<span class="required-mark">*</span></label>
-                    <input id="custom-company" name="company" type="text" placeholder="예: XYZ Design / ABC Studio / OOO 건축" required />
+                    <input id="custom-company" name="company" type="text" placeholder="예: XYZ Design / ABC Studio / OOO 건축" autocomplete="organization" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
@@ -632,17 +678,17 @@
                   </div>
                   <div class="field">
                     <label for="custom-manager">담당자명<span class="required-mark">*</span></label>
-                    <input id="custom-manager" name="name" type="text" placeholder="담당자명을 입력해 주세요" required />
+                    <input id="custom-manager" name="name" type="text" placeholder="담당자명을 입력해 주세요" autocomplete="name" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
                     <label for="custom-phone">연락처<span class="required-mark">*</span></label>
-                    <input id="custom-phone" name="phone" type="tel" placeholder="예: 010-1234-5678" required />
+                    <input id="custom-phone" name="phone" type="tel" placeholder="예: 010-1234-5678" autocomplete="tel" inputmode="tel" required />
                     <div class="field-error"></div>
                   </div>
                   <div class="field">
                     <label for="custom-email">이메일<span class="required-mark">*</span></label>
-                    <input id="custom-email" name="email" type="email" placeholder="도면 및 회신을 받을 이메일 주소" required />
+                    <input id="custom-email" name="email" type="email" placeholder="도면 및 회신을 받을 이메일 주소" autocomplete="email" required />
                     <div class="field-error"></div>
                   </div>
                 </div>
@@ -650,6 +696,7 @@
 
               <fieldset>
                 <legend>제작 목적</legend>
+                <p class="section-summary">프로젝트 용도와 적용 공간을 먼저 알려주시면 방향을 빠르게 잡을 수 있습니다.</p>
                 <div class="field-grid">
                   <div class="field">
                     <label for="request-product-type">요청 제품 유형</label>
@@ -680,6 +727,7 @@
 
               <fieldset>
                 <legend>커스텀 요구사항</legend>
+                <p class="section-summary">사이즈, 마감, 패턴처럼 핵심 사양부터 편하게 입력해 주세요.</p>
                 <div class="field-grid">
                   <div class="field">
                     <label for="desired-size">희망 사이즈</label>
@@ -745,6 +793,7 @@
 
               <fieldset>
                 <legend>생산 / 물량 정보</legend>
+                <p class="section-summary">선택 항목입니다. 물량과 예산이 정해져 있다면 함께 남겨 주세요.</p>
                 <div class="field-grid">
                   <div class="field">
                     <label for="custom-quantity">예상 수량</label>
@@ -776,6 +825,7 @@
 
               <fieldset>
                 <legend>공장 협의 참고 정보</legend>
+                <p class="section-summary">MOQ, 금형, 검사 기준처럼 협의가 필요한 항목만 추가해 주세요.</p>
                 <div class="field-grid">
                   <div class="field">
                     <label for="moq-check">최소 주문 수량(MOQ) 협의 필요 여부</label>
@@ -812,6 +862,7 @@
 
               <fieldset>
                 <legend>추가 메모</legend>
+                <p class="section-summary">브랜드 가이드나 우선 검토 포인트가 있다면 자유롭게 작성해 주세요.</p>
                 <div class="field-grid">
                   <div class="field field-full">
                     <label for="custom-note">상세 요청사항<span class="required-mark">*</span></label>
@@ -827,8 +878,8 @@
               </div>
 
               <div class="form-footer">
-                <div class="form-note">입력하신 내용은 공장 협의 및 커스텀 제작 가능성 검토용으로 접수됩니다.</div>
-                <button class="btn btn-dark" id="customTileSubmit" type="submit">문의 보내기</button>
+                <div class="form-note">입력하신 내용은 커스텀 제작 검토용으로만 접수되며, 확인 후 빠른 시일 내에 회신드립니다.</div>
+                <button class="btn btn-dark" id="customTileSubmit" type="submit">커스텀 제작 문의하기</button>
               </div>
               <div class="submit-status" id="customTileStatus" aria-live="polite"></div>
             </form>
