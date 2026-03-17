@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>타일허브 | 견적 문의</title>
+  <meta name="description" content="제품, 사이즈, 수량 중심으로 빠르게 견적을 문의할 수 있는 타일허브 견적 문의 페이지입니다." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --soft:#f6f6f4;
+      --soft-2:#f2f3f5;
+      --line:#e9ebee;
+      --text:#111318;
+      --muted:#68707c;
+      --accent:#111318;
+      --max:1240px;
+      --shadow:0 18px 50px rgba(0,0,0,.07);
+      --shadow-hover:0 28px 70px rgba(0,0,0,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55;letter-spacing:-0.02em}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 28px}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(255,255,255,.82);border-bottom:1px solid rgba(17,19,24,.06)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:1.1rem;font-weight:700;letter-spacing:-0.03em}
+    .brand-hub{color:#E53935}
+    .brand small{display:block;color:var(--muted);font-size:.74rem;font-weight:500;letter-spacing:0}
+    .nav-links{display:flex;gap:26px;align-items:center;color:#373c44;font-size:.96rem}
+    .nav-links a{position:relative}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#111318;border-radius:999px;transition:width .24s ease}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;border:1px solid transparent;font-weight:700;font-size:.98rem;transition:transform .24s ease, box-shadow .24s ease, background .24s ease, border-color .24s ease;white-space:nowrap;cursor:pointer}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-dark{background:#111318;color:#fff}
+    .btn-dark:hover{box-shadow:var(--shadow)}
+    .btn-light{background:#fff;color:#111318;border-color:var(--line)}
+    .btn-light:hover{background:var(--soft)}
+    section{padding:118px 0}
+    .eyebrow{display:inline-flex;padding:8px 18px;border-radius:999px;background:var(--soft-2);color:#36404a;font-size:.88rem;font-weight:700;margin-bottom:28px}
+    .hero{padding:86px 0 90px;background:radial-gradient(circle at top, rgba(17,19,24,.05) 0%, rgba(255,255,255,0) 65%)}
+    .hero-copy{max-width:860px;margin:0 auto;text-align:center}
+    .hero-copy h1{margin:0;font-size:clamp(2.7rem,6.5vw,5rem);line-height:1.08;letter-spacing:-0.06em}
+    .hero-copy p{margin:24px auto 0;max-width:700px;font-size:1.06rem;line-height:1.8;color:var(--muted)}
+    .hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px}
+    .info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .info-card,.form-card,.guide-card,.cta-box{border-radius:30px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+    .info-card{padding:28px 26px;transition:transform .26s ease, box-shadow .26s ease}
+    .info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+    .info-card span{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:15px;background:var(--soft-2);font-size:.88rem;font-weight:800;margin-bottom:16px}
+    .info-card h3{margin:0 0 10px;font-size:1.32rem;line-height:1.22;letter-spacing:-0.03em}
+    .info-card p{margin:0;color:var(--muted);line-height:1.74}
+    .form-section{background:linear-gradient(180deg,#fafaf9 0%,#ffffff 100%);border-top:1px solid var(--line);border-bottom:1px solid rgba(17,19,24,.04)}
+    .section-head{max-width:820px;margin-bottom:34px}
+    .section-head h2{margin:0 0 18px;font-size:clamp(2rem,5vw,3.8rem);line-height:1.15;letter-spacing:-0.05em}
+    .section-head p{margin:0;color:var(--muted);font-size:1.03rem;line-height:1.8}
+    .form-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,.8fr);gap:24px;align-items:start}
+    .form-card{padding:38px 36px;background:linear-gradient(180deg,#ffffff 0%,#fcfcfb 100%)}
+    .guide-card{padding:30px 28px;position:sticky;top:96px;background:linear-gradient(180deg,#ffffff 0%,#f8f8f7 100%)}
+    .guide-card h3{margin:0 0 12px;font-size:1.35rem;line-height:1.2;letter-spacing:-0.03em}
+    .guide-card p{margin:0;color:var(--muted);line-height:1.76}
+    .guide-list{display:grid;gap:14px;margin-top:24px}
+    .guide-list li{list-style:none;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:16px 18px;border-radius:20px;background:#fff;border:1px solid rgba(17,19,24,.06)}
+    .guide-list span:first-child{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:12px;background:var(--soft-2);font-weight:800;font-size:.84rem}
+    .guide-list strong{display:block;margin-bottom:4px;font-size:.98rem}
+    form{display:grid;gap:22px}
+    .form-intro{display:grid;gap:10px;padding:22px 24px;border:1px solid rgba(17,19,24,.08);border-radius:24px;background:linear-gradient(180deg,#fbfbfa 0%,#f6f7f6 100%)}
+    .form-intro strong{font-size:1.06rem;letter-spacing:-0.02em}
+    .required-guide{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:.92rem;line-height:1.6}
+    .required-mark{margin-left:4px;color:#e53935}
+    .required-guide .required-mark{margin-left:0;font-size:1rem}
+    fieldset{margin:0;padding:28px 24px 24px;border:1px solid var(--line);border-radius:26px;background:#fff}
+    legend{padding:0 10px;font-size:1.04rem;font-weight:800;letter-spacing:-0.02em}
+    .section-summary{margin:2px 0 18px;color:var(--muted);font-size:.94rem;line-height:1.72}
+    .field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px}
+    .field{display:grid;gap:10px;align-content:start}
+    .field-full{grid-column:1 / -1}
+    label{font-size:.95rem;font-weight:700;letter-spacing:-0.01em;line-height:1.5}
+    input,textarea{width:100%;min-height:56px;border:1px solid #dde2e7;border-radius:18px;background:#fcfcfc;color:var(--text);padding:16px 18px;transition:border-color .2s ease, box-shadow .2s ease, background .2s ease}
+    input::placeholder,textarea::placeholder{color:#9aa2ad}
+    textarea{min-height:176px;resize:vertical;line-height:1.72}
+    input:hover,textarea:hover{border-color:#cfd5dc;background:#fff}
+    input:focus,textarea:focus{outline:none;border-color:#9aa4af;background:#fff;box-shadow:0 0 0 4px rgba(17,19,24,.06)}
+    .field-error{display:none;color:#b42318;font-size:.88rem;line-height:1.6;font-weight:600}
+    .has-error .field-error{display:block}
+    .has-error input,.has-error textarea{border-color:rgba(229,57,53,.42);background:#fff7f6;box-shadow:none}
+    .form-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:4px}
+    .form-note{max-width:460px;color:var(--muted);font-size:.94rem;line-height:1.75}
+    .submit-status:empty{display:none}
+    .submit-status{margin-top:4px;padding:14px 16px;border-radius:18px;background:#f6f7f8;color:var(--muted);font-size:.92rem;line-height:1.7}
+    .submit-status.is-error{color:#b42318}
+    .btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
+    .cta{padding:150px 0;background:radial-gradient(circle at top, #f6f7f9 0%, #ffffff 52%);border-top:1px solid var(--line)}
+    .cta-box{max-width:940px;margin:0 auto;text-align:center;padding:68px 32px}
+    .cta-box h2{margin:0 0 16px;font-size:clamp(2rem,5vw,4rem);line-height:1.18;letter-spacing:-0.05em}
+    .cta-box p{margin:0 auto;max-width:700px;color:var(--muted);line-height:1.8}
+    footer{padding:30px 0 44px;color:var(--muted);font-size:.94rem}
+    .footer-row{display:flex;justify-content:center;gap:18px;text-align:center;flex-wrap:wrap}
+    .reveal{opacity:1;transform:none}
+    .js-motion .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+    .js-motion .reveal.show{opacity:1;transform:none}
+    .reveal-delay-1{transition-delay:.06s}
+    .reveal-delay-2{transition-delay:.12s}
+    .reveal-delay-3{transition-delay:.18s}
+    @media (max-width:1180px){.form-layout,.info-grid{grid-template-columns:1fr}.guide-card{position:static}}
+    @media (max-width:760px){.container{padding:0 20px}.nav-links{display:none}section{padding:92px 0}.hero{padding:40px 0 56px}.hero-actions,.form-footer{flex-direction:column;align-items:stretch}.btn{width:100%}.form-card,.guide-card,.cta-box,.info-card{padding:26px 22px;border-radius:24px}.form-intro{padding:18px 18px;border-radius:20px}fieldset{padding:20px 16px 18px;border-radius:20px}.field-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand">타일<span class="brand-hub">허브</span><small>The <span class="brand-hub">Hub</span> of Tile Distribution</small></a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/how-it-works.html">How it Works</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <a class="btn btn-dark" href="#quote-form">견적 문의하기</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy reveal show">
+          <span class="eyebrow">Quote Request</span>
+          <h1>가볍고 빠르게<br>견적을 문의하세요</h1>
+          <p>빠르게 견적을 확인하실 수 있도록 기본 정보만 남겨주세요.
+확인 후 빠른 시일 내에 안내드립니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#quote-form">견적 문의하기</a>
+            <a class="btn btn-light" href="/contact.html">일반 문의 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Quick Quote</span>
+          <h2>이런 경우 빠른 견적 문의가 적합합니다</h2>
+          <p>프로젝트 전용폼보다 더 가볍게, 제품과 수량 중심으로 빠르게 접수할 수 있습니다.</p>
+        </div>
+        <div class="info-grid">
+          <article class="info-card reveal reveal-delay-1"><span>01</span><h3>가격만 먼저 확인하고 싶은 경우</h3><p>관심 제품과 수량을 기준으로 빠르게 견적 방향을 확인할 수 있습니다.</p></article>
+          <article class="info-card reveal reveal-delay-2"><span>02</span><h3>제품 후보를 비교 중인 경우</h3><p>사이즈와 예상 물량 정도만 있어도 기본 견적 검토가 가능합니다.</p></article>
+          <article class="info-card reveal reveal-delay-3"><span>03</span><h3>아직 상세 조건이 확정되지 않은 경우</h3><p>핵심 정보만 먼저 남기고, 세부 조건은 이후 안내 과정에서 보완할 수 있습니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="quote-form">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Quote Form</span>
+          <h2>견적 문의 정보를 입력해 주세요</h2>
+          <p>빠르게 견적을 확인하실 수 있도록 기본 정보만 남겨주세요. 확인 후 빠른 시일 내에 안내드립니다.</p>
+        </div>
+
+        <div class="form-layout">
+          <div class="form-card reveal reveal-delay-1">
+            <form id="quoteRequestForm" action="https://formspree.io/f/mzdjkgop" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="TileHub 견적 문의" />
+              <input type="hidden" name="subject" value="TileHub 견적 문의" />
+              <input type="hidden" name="inquiry_type" value="quote" />
+              <input type="hidden" name="_next" value="https://tilehub.kr/thankyou.html?source=quote" />
+
+              <div class="form-intro">
+                <strong>문의 내용을 남겨주시면 확인 후 빠르게 안내드립니다.</strong>
+                <div class="required-guide"><span class="required-mark">*</span> 필수 입력 항목</div>
+              </div>
+
+              <fieldset>
+                <legend>기본 정보</legend>
+                <p class="section-summary">이름, 연락처, 이메일만 입력해도 접수됩니다. 회사명은 선택 항목입니다.</p>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="quote-name">이름<span class="required-mark">*</span></label>
+                    <input id="quote-name" name="name" type="text" placeholder="성함을 입력해 주세요" autocomplete="name" required />
+                    <div class="field-error"></div>
+                  </div>
+                  <div class="field">
+                    <label for="quote-company">회사명</label>
+                    <input id="quote-company" name="company" type="text" placeholder="회사명 또는 업체명을 입력해 주세요" autocomplete="organization" />
+                    <div class="field-error"></div>
+                  </div>
+                  <div class="field">
+                    <label for="quote-phone">연락처<span class="required-mark">*</span></label>
+                    <input id="quote-phone" name="phone" type="tel" placeholder="예: 010-1234-5678" autocomplete="tel" inputmode="tel" required />
+                    <div class="field-error"></div>
+                  </div>
+                  <div class="field">
+                    <label for="quote-email">이메일<span class="required-mark">*</span></label>
+                    <input id="quote-email" name="email" type="email" placeholder="회신받을 이메일 주소" autocomplete="email" required />
+                    <div class="field-error"></div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>견적 정보</legend>
+                <p class="section-summary">제품과 사이즈, 수량 중심으로 가볍게 남겨주세요.</p>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="quote-product">제품명 / 관심 품목</label>
+                    <input id="quote-product" name="product_interest" type="text" placeholder="예: 바닥 포세린 / 벽 타일 / 슬랩" />
+                    <div class="field-error"></div>
+                  </div>
+                  <div class="field">
+                    <label for="quote-size">사이즈</label>
+                    <input id="quote-size" name="size" type="text" placeholder="예: 600x600 / 600x1200" />
+                    <div class="field-error"></div>
+                  </div>
+                  <div class="field field-full">
+                    <label for="quote-quantity">대략 수량</label>
+                    <input id="quote-quantity" name="quantity" type="text" placeholder="예: 800㎡ / 120박스 / 수량 협의" />
+                    <div class="field-error"></div>
+                  </div>
+                  <div class="field field-full">
+                    <label for="quote-message">문의 내용<span class="required-mark">*</span></label>
+                    <textarea id="quote-message" name="message" placeholder="원하시는 제품, 예산, 납기 등 문의 내용을 작성해 주세요." required></textarea>
+                    <div class="field-error"></div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="form-footer">
+                <div class="form-note">입력하신 내용은 견적 문의 확인용으로만 접수되며, 확인 후 빠른 시일 내에 안내드립니다.</div>
+                <button class="btn btn-dark" id="quoteRequestSubmit" type="submit">견적 문의 접수하기</button>
+              </div>
+              <div class="submit-status" id="quoteRequestStatus" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <aside class="guide-card reveal reveal-delay-2">
+            <h3>빠른 견적 안내를 위해 이런 정보가 도움이 됩니다</h3>
+            <p>아래 정보가 있으면 검토가 더 빨라집니다. 확정되지 않은 항목은 비워두셔도 됩니다.</p>
+            <ul class="guide-list">
+              <li><span>01</span><div><strong>관심 제품</strong><div>제품군이나 원하는 타일 종류를 먼저 알려주세요.</div></div></li>
+              <li><span>02</span><div><strong>사이즈와 수량</strong><div>대략적인 규격과 물량만 있어도 기본 견적을 검토할 수 있습니다.</div></div></li>
+              <li><span>03</span><div><strong>희망 일정</strong><div>납기나 검토 일정이 있으면 함께 남겨주세요.</div></div></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>상세한 프로젝트 상담이 필요하다면
+전용 요청 폼을 이용해 주세요</h2>
+          <p>대량 발주와 현장 단위 검토는 프로젝트 요청 폼에서, 주문제작은 커스텀 전용 폼에서 더 자세히 접수하실 수 있습니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="/project-request.html">프로젝트 요청</a>
+            <a class="btn btn-light" href="/custom-tile.html">커스텀 타일 제작</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>타일<span class="brand-hub">허브</span> | The <span class="brand-hub">Hub</span> of Tile Distribution</div>
+    </div>
+  </footer>
+
+  <script>
+    document.body.classList.add("js-motion");
+    const revealItems = document.querySelectorAll(".reveal");
+    const quoteRequestForm = document.getElementById("quoteRequestForm");
+    const quoteRequestStatus = document.getElementById("quoteRequestStatus");
+    const quoteRequestSubmit = document.getElementById("quoteRequestSubmit");
+    const quotePhoneInput = document.getElementById("quote-phone");
+
+    function handleReveal() {
+      const trigger = window.innerHeight * 0.94;
+      revealItems.forEach((item) => {
+        if (item.getBoundingClientRect().top < trigger) {
+          item.classList.add("show");
+        }
+      });
+    }
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function isValidPhone(value) {
+      return value.replace(/\D/g, "").length >= 8;
+    }
+
+    function setQuoteStatus(message, type) {
+      quoteRequestStatus.textContent = message;
+      quoteRequestStatus.className = "submit-status" + (type ? ` is-${type}` : "");
+    }
+
+    function setFieldError(field, message) {
+      const error = field.querySelector(".field-error");
+      field.classList.add("has-error");
+      if (error) error.textContent = message;
+    }
+
+    function clearFieldError(field) {
+      field.classList.remove("has-error");
+      const error = field.querySelector(".field-error");
+      if (error) error.textContent = "";
+    }
+
+    function getField(inputId) {
+      return quoteRequestForm.querySelector(`#${inputId}`).closest(".field");
+    }
+
+    function formatPhoneNumber(value) {
+      const digits = value.replace(/\D/g, "").slice(0, 11);
+      if (digits.length < 4) return digits;
+      if (digits.length < 8) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+      if (digits.length < 11) return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+      return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+    }
+
+    function validateQuoteForm() {
+      const checks = [
+        { id: "quote-name", message: "이름을 입력해 주세요." },
+        { id: "quote-phone", message: "연락처를 입력해 주세요." },
+        { id: "quote-email", message: "이메일 주소를 입력해 주세요." },
+        { id: "quote-message", message: "문의 내용을 입력해 주세요." },
+      ];
+      let firstInvalid = null;
+      checks.forEach(({ id, message }) => {
+        const input = quoteRequestForm.querySelector(`#${id}`);
+        const field = input.closest(".field");
+        if (!input.value.trim()) {
+          setFieldError(field, message);
+          firstInvalid = firstInvalid || input;
+        } else {
+          clearFieldError(field);
+        }
+      });
+
+      const emailValue = quoteRequestForm.elements.email.value.trim();
+      if (emailValue && !isValidEmail(emailValue)) {
+        setFieldError(getField("quote-email"), "이메일 주소 형식이 올바르지 않습니다.");
+        firstInvalid = firstInvalid || quoteRequestForm.elements.email;
+      }
+
+      const phoneValue = quoteRequestForm.elements.phone.value.trim();
+      if (phoneValue && !isValidPhone(phoneValue)) {
+        setFieldError(getField("quote-phone"), "연락처는 숫자 기준 8자리 이상 입력해 주세요.");
+        firstInvalid = firstInvalid || quoteRequestForm.elements.phone;
+      }
+
+      if (firstInvalid) {
+        const firstMessage = firstInvalid.closest(".field").querySelector(".field-error").textContent;
+        setQuoteStatus(firstMessage, "error");
+        firstInvalid.focus();
+        return false;
+      }
+      return true;
+    }
+
+    quoteRequestForm.addEventListener("submit", (event) => {
+      setQuoteStatus("", "");
+      if (!validateQuoteForm()) {
+        event.preventDefault();
+        return;
+      }
+      quoteRequestSubmit.disabled = true;
+      quoteRequestSubmit.textContent = "전송 중...";
+    });
+
+    quoteRequestForm.querySelectorAll("input, textarea").forEach((element) => {
+      const field = element.closest(".field");
+      if (!field) return;
+      element.addEventListener("input", () => {
+        clearFieldError(field);
+        if (quoteRequestStatus.classList.contains("is-error")) setQuoteStatus("", "");
+      });
+    });
+
+    quotePhoneInput.addEventListener("input", () => {
+      quotePhoneInput.value = formatPhoneNumber(quotePhoneInput.value);
+    });
+
+    window.addEventListener("scroll", handleReveal, { passive: true });
+    window.addEventListener("load", handleReveal);
+    handleReveal();
+  </script>
+</body>
+</html>
