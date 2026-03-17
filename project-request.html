@@ -522,219 +522,6 @@
       color:var(--muted);
       line-height:1.8;
     }
-
-    .hero-consult-links{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:18px;
-      color:var(--muted);
-      font-size:.94rem;
-      line-height:1.7;
-    }
-
-    .hero-consult-links a{
-      color:#111318;
-      font-weight:700;
-      transition:opacity .24s ease;
-    }
-
-    .hero-consult-links a:hover{
-      opacity:.68;
-    }
-
-    .section-stack{
-      display:grid;
-      gap:24px;
-      margin-top:34px;
-    }
-
-    .quick-channel-panel{
-      display:grid;
-      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-      gap:22px;
-      padding:32px 30px;
-      border-radius:30px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg,#ffffff 0%,#f8f8f7 100%);
-      box-shadow:var(--shadow);
-    }
-
-    .quick-channel-copy h3{
-      margin:10px 0 14px;
-      font-size:1.7rem;
-      line-height:1.18;
-      letter-spacing:-0.04em;
-    }
-
-    .quick-channel-copy p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.82;
-      max-width:40ch;
-    }
-
-    .quick-channel-label{
-      display:inline-flex;
-      padding:8px 14px;
-      border-radius:999px;
-      background:var(--soft-2);
-      color:#36404a;
-      font-size:.82rem;
-      font-weight:700;
-      letter-spacing:.04em;
-    }
-
-    .quick-channel-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:16px;
-    }
-
-    .channel-card{
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:16px;
-      min-height:100%;
-      padding:24px 22px;
-      border-radius:24px;
-      border:1px solid rgba(17,19,24,.08);
-      background:#fff;
-      box-shadow:0 14px 36px rgba(0,0,0,.05);
-      text-decoration:none;
-      color:inherit;
-      transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
-    }
-
-    .channel-card:hover{
-      transform:translateY(-3px);
-      box-shadow:var(--shadow-hover);
-      border-color:rgba(17,19,24,.12);
-    }
-
-    .channel-card strong{
-      font-size:1.08rem;
-      line-height:1.35;
-      letter-spacing:-0.02em;
-    }
-
-    .channel-card span,
-    .channel-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:.94rem;
-      line-height:1.72;
-    }
-
-    .channel-card em{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      font-style:normal;
-      font-size:.92rem;
-      font-weight:700;
-      color:#111318;
-    }
-
-    .channel-card.is-form{
-      background:linear-gradient(180deg,#111318 0%,#1a1d24 100%);
-      color:#fff;
-      border-color:rgba(17,19,24,.92);
-    }
-
-    .channel-card.is-form span,
-    .channel-card.is-form p,
-    .channel-card.is-form em{
-      color:rgba(255,255,255,.84);
-    }
-
-    .channel-note{
-      margin-top:18px;
-      padding:18px 20px;
-      border-radius:22px;
-      background:#fff;
-      border:1px solid rgba(17,19,24,.06);
-      color:var(--muted);
-      font-size:.92rem;
-      line-height:1.72;
-    }
-
-    .channel-note strong{
-      color:#111318;
-    }
-
-    .email-guide-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:22px;
-    }
-
-    .contact-card-actions.is-between{
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .contact-helper{
-      color:#9097a2;
-      font-size:.9rem;
-      line-height:1.6;
-    }
-
-    .floating-consult{
-      position:fixed;
-      right:24px;
-      bottom:24px;
-      z-index:60;
-      display:grid;
-      gap:10px;
-      pointer-events:none;
-    }
-
-    .floating-consult a,
-    .floating-consult button{
-      pointer-events:auto;
-    }
-
-    .floating-consult-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid rgba(17,19,24,.08);
-      background:rgba(255,255,255,.94);
-      color:#111318;
-      font-size:.92rem;
-      font-weight:700;
-      box-shadow:0 18px 42px rgba(0,0,0,.12);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-      transition:transform .24s ease, box-shadow .24s ease, background .24s ease, color .24s ease;
-      white-space:nowrap;
-    }
-
-    .floating-consult-link:hover{
-      transform:translateY(-2px);
-      box-shadow:0 22px 52px rgba(0,0,0,.16);
-    }
-
-    .floating-consult-link.is-kakao{
-      background:#f6e24a;
-      color:#111318;
-      border-color:rgba(17,19,24,.06);
-    }
-
-    .floating-consult-link.is-form{
-      background:#111318;
-      color:#fff;
-      border-color:#111318;
-    }
-
     footer{
       padding:30px 0 44px;
       color:var(--muted);
@@ -764,14 +551,6 @@
       .speed-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
     @media (max-width:760px){
-
-      .hero-consult-links{margin-top:14px;font-size:.88rem}
-      .quick-channel-panel,.channel-card{padding:24px 22px;border-radius:24px}
-      .quick-channel-panel,.quick-channel-grid,.email-guide-grid{grid-template-columns:1fr}
-      .contact-card-actions.is-between{align-items:flex-start}
-      .floating-consult{right:16px;bottom:16px;gap:8px}
-      .floating-consult-link{min-height:42px;padding:0 14px;font-size:.82rem}
-
       .container{padding:0 20px}
       .nav-links{display:none}
       section{padding:92px 0}
@@ -854,8 +633,8 @@
         <div class="form-layout">
           <div class="form-card reveal reveal-delay-1">
             <form id="projectRequestForm" action="https://formspree.io/f/mzdjkgop" method="POST" novalidate>
-              <input type="hidden" name="_subject" value="TileHub 프로젝트 요청" />
-              <input type="hidden" name="subject" value="TileHub 프로젝트 요청" />
+              <input type="hidden" name="_subject" value="TileHub 프로젝트 견적 요청" />
+              <input type="hidden" name="subject" value="TileHub 프로젝트 견적 요청" />
               <input type="hidden" name="inquiry_type" value="project" />
               <input type="hidden" name="_next" value="https://tilehub.kr/thankyou.html?source=project" />
               <div class="form-intro">
@@ -1135,12 +914,6 @@
       </div>
     </section>
   </main>
-
-  <div class="floating-consult" aria-label="빠른 상담">
-    <a class="floating-consult-link is-kakao" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">카카오톡 상담</a>
-    <a class="floating-consult-link" href="/contact.html#quick-channels" target="_blank" rel="noreferrer">WeChat 상담</a>
-    <a class="floating-consult-link is-form" href="#request-form">문의하기</a>
-  </div>
 
   <footer>
     <div class="container footer-row">
