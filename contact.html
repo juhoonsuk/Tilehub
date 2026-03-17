@@ -151,7 +151,7 @@
     }
     .contact-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:22px;
       margin-top:34px;
     }
@@ -165,6 +165,7 @@
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      gap:22px;
       transition:transform .26s ease, box-shadow .26s ease;
     }
     .contact-card:hover{
@@ -181,6 +182,31 @@
       margin:0;
       color:var(--muted);
       line-height:1.76;
+      max-width:34ch;
+      text-wrap:pretty;
+    }
+    .contact-kicker{
+      display:inline-flex;
+      margin:0 0 14px;
+      color:#7b8490;
+      font-size:.92rem;
+      font-weight:700;
+      letter-spacing:.03em;
+    }
+    .contact-card-actions{
+      margin-top:auto;
+      display:flex;
+      justify-content:flex-start;
+    }
+    .contact-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#111318;
+      font-size:1rem;
+      font-weight:700;
+      line-height:1.4;
+      text-decoration:none;
     }
     .contact-list{
       display:grid;
@@ -346,8 +372,9 @@
       <div class="container">
         <div class="hero-copy reveal show">
           <span class="eyebrow">Contact</span>
-          <h1>문의 채널을 한곳에 모았습니다</h1>
-          <p>프로젝트 견적, 플랫폼 제휴, 중국 공장 연결,<br>커스텀 타일 요청까지 목적에 맞는 채널로 바로 문의할 수 있습니다.</p>
+          <h1>문의 경로를 더 단순하게 정리했습니다</h1>
+          <p>프로젝트 견적과 일반 문의를 두 가지 경로로 나눠
+실제 발주와 상담 흐름에 맞게 바로 연결할 수 있습니다.</p>
         </div>
       </div>
     </section>
@@ -356,48 +383,46 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Contact Channels</span>
-          <h2>프로젝트 성격에 맞는 채널로<br>바로 연결할 수 있습니다</h2>
-          <p>플랫폼 협업, 대량 프로젝트, 중국 공장 연결 요청을 빠르게 분류하고 응답할 수 있도록 기본 채널을 나눠두었습니다.</p>
+          <h2>구매 목적에 맞는 경로로
+바로 문의할 수 있습니다</h2>
+          <p>프로젝트 견적은 전용 폼으로, 일반 문의는 대표 메일로 연결해
+응답 흐름을 더 짧고 명확하게 정리했습니다.</p>
         </div>
 
         <div class="contact-grid">
           <article class="contact-card reveal reveal-delay-1">
             <div>
-              <h3>Platform Inquiry</h3>
-              <p>플랫폼 협업 / 프로젝트 견적 / 공장 연결 문의</p>
+              <h3>PROJECT / 견적 문의</h3>
+              <span class="contact-kicker">대량 발주 · 공사 · 유통 견적</span>
+              <p>중국 공장 직연결로 프로젝트 단위 견적을 빠르게 받아보세요.
+사이즈, 수량, 납기까지 실제 공급 기준으로 정확하게 안내드립니다.</p>
               <div class="contact-list">
-                <a class="contact-item" href="mailto:project@tilehub.kr">
+                <a class="contact-item" href="mailto:project@tilehub.kr?subject=[TileHub] 프로젝트 견적 문의">
                   <strong>Email</strong>
                   <span>project@tilehub.kr</span>
                 </a>
-                <a class="contact-item" id="kakaotalk-channel" href="#">
-                  <strong>KakaoTalk</strong>
-                  <span>상담 채널 연결 예정</span>
-                </a>
-                <a class="contact-item" id="wechat-channel" href="#">
-                  <strong>WeChat</strong>
-                  <span>중국 공장 연결 예정</span>
-                </a>
               </div>
+            </div>
+            <div class="contact-card-actions">
+              <a class="contact-link" href="/project-request.html">견적 요청하기 <span aria-hidden="true">→</span></a>
             </div>
           </article>
 
           <article class="contact-card reveal reveal-delay-2">
             <div>
-              <h3>Project Request</h3>
-              <p>컨테이너 단위 물량, 프로젝트 납품, 맞춤 제작 요청</p>
+              <h3>CONTACT / 일반 문의</h3>
+              <span class="contact-kicker">제품 · 협업 · 상담 문의</span>
+              <p>제품 정보, 샘플, 협업 등 궁금한 내용을 편하게 문의하세요.
+빠르게 확인 후 안내드립니다.</p>
+              <div class="contact-list">
+                <a class="contact-item" href="mailto:contact@tilehub.kr?subject=[TileHub] 일반 문의">
+                  <strong>Email</strong>
+                  <span>contact@tilehub.kr</span>
+                </a>
+              </div>
             </div>
-            <div class="hero-actions" style="justify-content:flex-start">
-              <a class="btn btn-dark" href="/project-request.html">프로젝트 견적 요청</a>
-            </div>
-          </article>
-
-          <article class="contact-card reveal reveal-delay-3">
-            <div>
-              <span class="partner-label">Founding Partner</span>
-              <h3 class="partner-name">ZEAL CERAMIC</h3>
-              <p class="partner-meta">Busan, Korea</p>
-              <p class="partner-note">TileHub의 초기 공급·유통 파트너</p>
+            <div class="contact-card-actions">
+              <a class="contact-link" href="mailto:contact@tilehub.kr?subject=[TileHub] 일반 문의">문의하기 <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
