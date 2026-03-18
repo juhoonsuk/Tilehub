@@ -1690,88 +1690,6 @@
         transform:none !important;
       }
     }
-  
-    .header-tools{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-shrink:0;
-    }
-
-    .header-tools .btn{
-      width:auto;
-    }
-
-    .lang-switcher-wrap{
-      position:relative;
-    }
-
-    .lang-switcher{
-      appearance:none;
-      -webkit-appearance:none;
-      min-width:106px;
-      height:48px;
-      padding:0 36px 0 14px;
-      border-radius:999px;
-      border:1px solid rgba(17,19,24,.12);
-      background:#fff;
-      color:#111318;
-      font-size:.9rem;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      cursor:pointer;
-      outline:none;
-    }
-
-    .lang-switcher-wrap::after{
-      content:"▾";
-      position:absolute;
-      right:15px;
-      top:50%;
-      transform:translateY(-52%);
-      font-size:12px;
-      color:#111318;
-      pointer-events:none;
-      opacity:.7;
-    }
-
-    .translate-anchor{
-      position:absolute;
-      left:-9999px;
-      width:1px;
-      height:1px;
-      overflow:hidden;
-    }
-
-    .goog-te-banner-frame.skiptranslate{
-      display:none !important;
-    }
-
-    body{
-      top:0 !important;
-    }
-
-    @media (max-width:760px){
-      .header-tools{
-        margin-left:auto;
-      }
-
-      .header-tools .btn{
-        width:auto;
-      }
-
-      .lang-switcher{
-        min-width:98px;
-        height:44px;
-      }
-    }
-
-
-    @media (max-width: 768px) {
-      .inquiry-choice-grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
   </style>
 </head>
 <body>
@@ -1786,15 +1704,8 @@
         <a href="/contact.html">Contact</a>
         <a href="#projects">프로젝트</a>
       </nav>
-      <div class="nav-cta header-tools">
+      <div class="nav-cta">
         <a class="btn btn-light" href="#projects">견적 요청</a>
-        <div class="lang-switcher-wrap">
-          <select class="lang-switcher" data-lang-switcher aria-label="언어 선택">
-            <option value="ko">한국어</option>
-            <option value="en">English</option>
-            <option value="zh-CN">中文</option>
-          </select>
-        </div>
       </div>
     </div>
   </header>
@@ -2160,7 +2071,7 @@
       <div class="container">
         <div class="section-head reference-head reveal">
           <span class="eyebrow">Reference</span>
-          <h2>프로젝트는 끝나도 <span class="brand-hub">신뢰</span>는 현장에 남습니다.</h2>
+          <h2>프로젝트는 끝나도<br>신뢰는 현장에 남습니다.</h2>
           <p>실제 프로젝트 적용 사례와 납품 구조가 다음 프로젝트의 기준이 됩니다.</p>
         </div>
 
@@ -2192,56 +2103,48 @@
       </div>
     </section>
 
-    <section style="padding:96px 20px; background:#f7f7f5;">
-      <div style="max-width:1200px; margin:0 auto;">
-        <p style="margin:0 0 10px; font-size:13px; font-weight:700; letter-spacing:.12em; color:#8a8f98; text-align:center;">
-          CONTACT
-        </p>
+    <section class="contact-preview" id="contact-preview">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">CONTACT</span>
+          <h2>구매 목적에 맞는 문의 경로로 바로 연결하세요</h2>
+          <p>프로젝트 견적과 일반 문의를 두 가지 경로로 단순화했습니다.<br>실제 발주와 상담 흐름에 맞춰 가장 빠르게 연결되는 방식으로 안내합니다.</p>
+        </div>
 
-        <h2 style="margin:0; font-size:clamp(32px, 4vw, 46px); line-height:1.2; color:#111; text-align:center;">
-          어떤 문의이신가요?
-        </h2>
+        <div class="contact-grid">
+          <a class="contact-card reveal reveal-delay-1" href="/project-request.html">
+            <div>
+              <div class="contact-card-top">
+                <span class="contact-card-label">01</span>
+                <span class="contact-card-arrow">→</span>
+              </div>
+              <h3>PROJECT / 견적 문의</h3>
+              <span class="contact-subtitle">대량 발주 · 공사 · 유통 견적</span>
+              <span class="contact-email">project@tilehub.kr</span>
+              <p>중국 공장 직연결로 프로젝트 단위 견적을 빠르게 받아보세요.
+사이즈, 수량, 납기까지 실제 공급 기준으로 정확하게 안내드립니다.</p>
+            </div>
+            <div class="contact-card-actions"><span class="contact-link">견적 요청하기 <span aria-hidden="true">→</span></span></div>
+          </a>
 
-        <p style="margin:14px 0 0; font-size:17px; line-height:1.7; color:#666; text-align:center;">
-          문의 유형을 선택하시면 바로 연결됩니다.
-        </p>
+          <a class="contact-card reveal reveal-delay-2" href="mailto:contact@tilehub.kr?subject=[TileHub] 일반 문의">
+            <div>
+              <div class="contact-card-top">
+                <span class="contact-card-label">02</span>
+                <span class="contact-card-arrow">→</span>
+              </div>
+              <h3>CONTACT / 일반 문의</h3>
+              <span class="contact-subtitle">제품 · 협업 · 상담 문의</span>
+              <span class="contact-email">contact@tilehub.kr</span>
+              <p>제품 정보, 샘플, 협업 등 궁금한 내용을 편하게 문의하세요.
+빠르게 확인 후 안내드립니다.</p>
+            </div>
+            <div class="contact-card-actions"><span class="contact-link">문의하기 <span aria-hidden="true">→</span></span></div>
+          </a>
+        </div>
 
-        <div class="inquiry-choice-grid" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:42px;">
-          <article style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:32px; min-height:240px; border-radius:24px; background:#fff; border:1px solid #e8e8e3; box-shadow:0 10px 30px rgba(0,0,0,.04);">
-            <span style="display:inline-flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:999px; background:#f1f2ee; color:#6f7680; font-size:12px; font-weight:700; letter-spacing:.08em;">
-              QUOTE
-            </span>
-
-            <h3 style="margin:0; font-size:28px; line-height:1.3; color:#111;">
-              견적 요청
-            </h3>
-
-            <p style="margin:0; color:#666; font-size:16px; line-height:1.75;">
-              견적이 필요한 문의를 빠르게 접수하세요.
-            </p>
-
-            <a href="/project.html" style="margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 22px; border-radius:999px; text-decoration:none; font-size:15px; font-weight:700; color:#fff; background:#111;">
-              견적 요청하기 →
-            </a>
-          </article>
-
-          <article style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:32px; min-height:240px; border-radius:24px; background:#fff; border:1px solid #e8e8e3; box-shadow:0 10px 30px rgba(0,0,0,.04);">
-            <span style="display:inline-flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:999px; background:#f1f2ee; color:#6f7680; font-size:12px; font-weight:700; letter-spacing:.08em;">
-              CONTACT
-            </span>
-
-            <h3 style="margin:0; font-size:28px; line-height:1.3; color:#111;">
-              일반 문의
-            </h3>
-
-            <p style="margin:0; color:#666; font-size:16px; line-height:1.75;">
-              제품 및 상담 관련 일반 문의를 확인하세요.
-            </p>
-
-            <a href="/contact.html" style="margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 22px; border-radius:999px; text-decoration:none; font-size:15px; font-weight:700; color:#111; background:#f3f3ef;">
-              일반 문의하기 →
-            </a>
-          </article>
+        <div class="contact-note reveal">
+          <p>대량 발주와 프로젝트 견적은 전용 요청 폼으로, 일반 상담과 제품 문의는 contact@tilehub.kr 메일로 가장 빠르게 연결됩니다.</p>
         </div>
       </div>
     </section>
@@ -2532,7 +2435,7 @@
 
     <a
       class="floating-consult-link is-wechat"
-      href="/wechat.html"
+      href="contact.html"
     >
       WeChat
     </a>
@@ -2544,76 +2447,5 @@
       문의하기
     </a>
   </div>
-
-<div id="google_translate_element" class="translate-anchor" aria-hidden="true"></div>
-<script>
-  (function () {
-    const STORAGE_KEY = "tilehub_lang";
-    const COOKIE_NAME = "googtrans";
-
-    function setCookie(value) {
-      document.cookie = COOKIE_NAME + "=" + value + ";path=/";
-      const host = window.location.hostname;
-      if (host && host.includes(".")) {
-        const parts = host.split(".");
-        const baseDomain = "." + parts.slice(-2).join(".");
-        document.cookie = COOKIE_NAME + "=" + value + ";path=/;domain=" + baseDomain;
-      }
-    }
-
-    function applyStoredLanguage() {
-      let saved = "ko";
-      try {
-        saved = window.localStorage.getItem(STORAGE_KEY) || "ko";
-      } catch (error) {}
-
-      if (saved === "en" || saved === "zh-CN") {
-        setCookie("/ko/" + saved);
-      } else {
-        setCookie("/ko/ko");
-      }
-
-      return saved;
-    }
-
-    function bindSwitchers(saved) {
-      const switchers = document.querySelectorAll("[data-lang-switcher]");
-      switchers.forEach((switcher) => {
-        switcher.value = saved;
-        switcher.addEventListener("change", () => {
-          const lang = switcher.value;
-          try {
-            window.localStorage.setItem(STORAGE_KEY, lang);
-          } catch (error) {}
-
-          if (lang === "en" || lang === "zh-CN") {
-            setCookie("/ko/" + lang);
-          } else {
-            setCookie("/ko/ko");
-          }
-
-          window.location.reload();
-        });
-      });
-    }
-
-    const savedLanguage = applyStoredLanguage();
-
-    window.googleTranslateElementInit = function () {
-      if (window.google && window.google.translate) {
-        new window.google.translate.TranslateElement({
-          pageLanguage: "ko",
-          autoDisplay: false,
-          includedLanguages: "ko,en,zh-CN",
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, "google_translate_element");
-      }
-
-      bindSwitchers(savedLanguage);
-    };
-  })();
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </body>
 </html>
