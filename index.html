@@ -156,7 +156,7 @@
 
     .nav-cta{
       display:flex;
-      gap:12px;
+      gap:6px;
       align-items:center;
     }
 
@@ -597,7 +597,7 @@
 
     .feature-panel h3{
       margin:0 0 16px;
-      font-size:2rem;
+      font-size:1rem;
       line-height:1.08;
       letter-spacing:-0.045em;
     }
@@ -839,7 +839,7 @@
     }
 
     .reference-card h4{
-      margin:0 0 10px;
+      margin:0 0 4px;
       font-size:1.12rem;
       letter-spacing:-0.02em;
     }
@@ -1182,7 +1182,7 @@
 
     .partner-card h4{
       margin:0;
-      font-size:2rem;
+      font-size:1rem;
       line-height:1.04;
       letter-spacing:-0.05em;
     }
@@ -1690,6 +1690,12 @@
         transform:none !important;
       }
     }
+
+    @media (max-width: 768px) {
+      .inquiry-choice-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2103,48 +2109,56 @@
       </div>
     </section>
 
-    <section class="contact-preview" id="contact-preview">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">CONTACT</span>
-          <h2>구매 목적에 맞는 문의 경로로 바로 연결하세요</h2>
-          <p>프로젝트 견적과 일반 문의를 두 가지 경로로 단순화했습니다.<br>실제 발주와 상담 흐름에 맞춰 가장 빠르게 연결되는 방식으로 안내합니다.</p>
-        </div>
+    <section style="padding:96px 20px; background:#f7f7f5;">
+      <div style="max-width:1200px; margin:0 auto;">
+        <p style="margin:0 0 10px; font-size:13px; font-weight:700; letter-spacing:.12em; color:#8a8f98; text-align:center;">
+          CONTACT
+        </p>
 
-        <div class="contact-grid">
-          <a class="contact-card reveal reveal-delay-1" href="/project-request.html">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">01</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>PROJECT / 견적 문의</h3>
-              <span class="contact-subtitle">대량 발주 · 공사 · 유통 견적</span>
-              <span class="contact-email">project@tilehub.kr</span>
-              <p>중국 공장 직연결로 프로젝트 단위 견적을 빠르게 받아보세요.
-사이즈, 수량, 납기까지 실제 공급 기준으로 정확하게 안내드립니다.</p>
-            </div>
-            <div class="contact-card-actions"><span class="contact-link">견적 요청하기 <span aria-hidden="true">→</span></span></div>
-          </a>
+        <h2 style="margin:0; font-size:clamp(32px, 4vw, 46px); line-height:1.2; color:#111; text-align:center;">
+          어떤 문의이신가요?
+        </h2>
 
-          <a class="contact-card reveal reveal-delay-2" href="mailto:contact@tilehub.kr?subject=[TileHub] 일반 문의">
-            <div>
-              <div class="contact-card-top">
-                <span class="contact-card-label">02</span>
-                <span class="contact-card-arrow">→</span>
-              </div>
-              <h3>CONTACT / 일반 문의</h3>
-              <span class="contact-subtitle">제품 · 협업 · 상담 문의</span>
-              <span class="contact-email">contact@tilehub.kr</span>
-              <p>제품 정보, 샘플, 협업 등 궁금한 내용을 편하게 문의하세요.
-빠르게 확인 후 안내드립니다.</p>
-            </div>
-            <div class="contact-card-actions"><span class="contact-link">문의하기 <span aria-hidden="true">→</span></span></div>
-          </a>
-        </div>
+        <p style="margin:14px 0 0; font-size:17px; line-height:1.7; color:#666; text-align:center;">
+          문의 유형을 선택하시면 바로 연결됩니다.
+        </p>
 
-        <div class="contact-note reveal">
-          <p>대량 발주와 프로젝트 견적은 전용 요청 폼으로, 일반 상담과 제품 문의는 contact@tilehub.kr 메일로 가장 빠르게 연결됩니다.</p>
+        <div class="inquiry-choice-grid" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:42px;">
+          <article style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:32px; min-height:240px; border-radius:24px; background:#fff; border:1px solid #e8e8e3; box-shadow:0 10px 30px rgba(0,0,0,.04);">
+            <span style="display:inline-flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:999px; background:#f1f2ee; color:#6f7680; font-size:12px; font-weight:700; letter-spacing:.08em;">
+              QUOTE
+            </span>
+
+            <h3 style="margin:0; font-size:28px; line-height:1.3; color:#111;">
+              견적 요청
+            </h3>
+
+            <p style="margin:0; color:#666; font-size:16px; line-height:1.75;">
+              견적이 필요한 문의를 빠르게 접수하세요.
+            </p>
+
+            <a href="/project.html" style="margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 22px; border-radius:999px; text-decoration:none; font-size:15px; font-weight:700; color:#fff; background:#111;">
+              견적 요청하기 →
+            </a>
+          </article>
+
+          <article style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; padding:32px; min-height:240px; border-radius:24px; background:#fff; border:1px solid #e8e8e3; box-shadow:0 10px 30px rgba(0,0,0,.04);">
+            <span style="display:inline-flex; align-items:center; justify-content:center; padding:6px 10px; border-radius:999px; background:#f1f2ee; color:#6f7680; font-size:12px; font-weight:700; letter-spacing:.08em;">
+              CONTACT
+            </span>
+
+            <h3 style="margin:0; font-size:28px; line-height:1.3; color:#111;">
+              일반 문의
+            </h3>
+
+            <p style="margin:0; color:#666; font-size:16px; line-height:1.75;">
+              제품 및 상담 관련 일반 문의를 확인하세요.
+            </p>
+
+            <a href="/contact.html" style="margin-top:auto; display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 22px; border-radius:999px; text-decoration:none; font-size:15px; font-weight:700; color:#111; background:#f3f3ef;">
+              일반 문의하기 →
+            </a>
+          </article>
         </div>
       </div>
     </section>
@@ -2156,11 +2170,6 @@
       <div class="site-footer-fixed__copy">
         <p class="site-footer-fixed__eyebrow">타일 유통의 새로운 기준</p>
         <h2>TILE<span class="brand-hub">HUB</span></h2>
-        <p class="site-footer-fixed__description">직수입 가격 공개, 프로젝트 견적 중심 거래, 중국 공장 공급망을 직접 연결합니다.</p>
-      </div>
-      <div class="site-footer-fixed__actions">
-        <a class="btn btn-light" href="#prices">직수입 가격 보기</a>
-        <a class="btn btn-dark" href="#projects">프로젝트 견적 요청</a>
       </div>
     </div>
   </footer>
@@ -2331,7 +2340,7 @@
     .site-footer-fixed{
       background:#111318;
       color:#ffffff;
-      padding:44px 0;
+      padding:7px 0;
       border-top:1px solid rgba(255,255,255,.08);
     }
 
@@ -2340,84 +2349,45 @@
       margin:0 auto;
       padding:0 28px;
       display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:24px;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
       flex-wrap:wrap;
+      text-align:center;
     }
 
     .site-footer-fixed__copy{
       max-width:760px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
     }
 
     .site-footer-fixed__eyebrow{
-      margin:0 0 12px;
-      color:rgba(255,255,255,.62);
+      margin:0 0 4px;
+      color:rgba(255,255,255,.82);
       font-size:.9rem;
-      font-weight:700;
+      font-weight:800;
       letter-spacing:-0.02em;
+      line-height:1.1;
     }
 
     .site-footer-fixed h2{
       margin:0;
-      font-size:clamp(2.1rem,4vw,3.6rem);
-      line-height:1.05;
+      font-size:clamp(1rem,1.9vw,1.65rem);
+      line-height:1.08;
       letter-spacing:-0.06em;
-    }
-
-    .site-footer-fixed__description{
-      margin:18px 0 0;
-      color:rgba(255,255,255,.72);
-      font-size:1rem;
-      line-height:1.8;
-      letter-spacing:-0.02em;
-    }
-
-    .site-footer-fixed__actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .site-footer-fixed__actions .btn-light{
-      background:transparent;
-      color:#ffffff;
-      border-color:rgba(255,255,255,.18);
-    }
-
-    .site-footer-fixed__actions .btn-light:hover{
-      background:rgba(255,255,255,.08);
-      color:#ffffff;
-      box-shadow:none;
-    }
-
-    .site-footer-fixed__actions .btn-dark{
-      background:#ffffff;
-      color:#111318;
-    }
-
-    .site-footer-fixed__actions .btn-dark:hover{
-      background:#f2f3f5;
-      box-shadow:none;
+      text-align:center;
     }
 
     @media (max-width:760px){
       .site-footer-fixed{
-        padding:32px 0;
+        padding:7px 0;
       }
 
       .site-footer-fixed__inner{
         padding:0 20px;
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .site-footer-fixed__actions{
-        width:100%;
-      }
-
-      .site-footer-fixed__actions .btn{
-        width:100%;
       }
     }
 
