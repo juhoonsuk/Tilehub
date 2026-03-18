@@ -1690,6 +1690,82 @@
         transform:none !important;
       }
     }
+  
+    .header-tools{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .header-tools .btn{
+      width:auto;
+    }
+
+    .lang-switcher-wrap{
+      position:relative;
+    }
+
+    .lang-switcher{
+      appearance:none;
+      -webkit-appearance:none;
+      min-width:106px;
+      height:48px;
+      padding:0 36px 0 14px;
+      border-radius:999px;
+      border:1px solid rgba(17,19,24,.12);
+      background:#fff;
+      color:#111318;
+      font-size:.9rem;
+      font-weight:700;
+      letter-spacing:-0.02em;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .lang-switcher-wrap::after{
+      content:"▾";
+      position:absolute;
+      right:15px;
+      top:50%;
+      transform:translateY(-52%);
+      font-size:12px;
+      color:#111318;
+      pointer-events:none;
+      opacity:.7;
+    }
+
+    .translate-anchor{
+      position:absolute;
+      left:-9999px;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+
+    .goog-te-banner-frame.skiptranslate{
+      display:none !important;
+    }
+
+    body{
+      top:0 !important;
+    }
+
+    @media (max-width:760px){
+      .header-tools{
+        margin-left:auto;
+      }
+
+      .header-tools .btn{
+        width:auto;
+      }
+
+      .lang-switcher{
+        min-width:98px;
+        height:44px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1704,8 +1780,15 @@
         <a href="/contact.html">Contact</a>
         <a href="#projects">프로젝트</a>
       </nav>
-      <div class="nav-cta">
+      <div class="nav-cta header-tools">
         <a class="btn btn-light" href="#projects">견적 요청</a>
+        <div class="lang-switcher-wrap">
+          <select class="lang-switcher" data-lang-switcher aria-label="언어 선택">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="zh-CN">中文</option>
+          </select>
+        </div>
       </div>
     </div>
   </header>
@@ -2447,5 +2530,76 @@
       문의하기
     </a>
   </div>
+
+<div id="google_translate_element" class="translate-anchor" aria-hidden="true"></div>
+<script>
+  (function () {
+    const STORAGE_KEY = "tilehub_lang";
+    const COOKIE_NAME = "googtrans";
+
+    function setCookie(value) {
+      document.cookie = COOKIE_NAME + "=" + value + ";path=/";
+      const host = window.location.hostname;
+      if (host && host.includes(".")) {
+        const parts = host.split(".");
+        const baseDomain = "." + parts.slice(-2).join(".");
+        document.cookie = COOKIE_NAME + "=" + value + ";path=/;domain=" + baseDomain;
+      }
+    }
+
+    function applyStoredLanguage() {
+      let saved = "ko";
+      try {
+        saved = window.localStorage.getItem(STORAGE_KEY) || "ko";
+      } catch (error) {}
+
+      if (saved === "en" || saved === "zh-CN") {
+        setCookie("/ko/" + saved);
+      } else {
+        setCookie("/ko/ko");
+      }
+
+      return saved;
+    }
+
+    function bindSwitchers(saved) {
+      const switchers = document.querySelectorAll("[data-lang-switcher]");
+      switchers.forEach((switcher) => {
+        switcher.value = saved;
+        switcher.addEventListener("change", () => {
+          const lang = switcher.value;
+          try {
+            window.localStorage.setItem(STORAGE_KEY, lang);
+          } catch (error) {}
+
+          if (lang === "en" || lang === "zh-CN") {
+            setCookie("/ko/" + lang);
+          } else {
+            setCookie("/ko/ko");
+          }
+
+          window.location.reload();
+        });
+      });
+    }
+
+    const savedLanguage = applyStoredLanguage();
+
+    window.googleTranslateElementInit = function () {
+      if (window.google && window.google.translate) {
+        new window.google.translate.TranslateElement({
+          pageLanguage: "ko",
+          autoDisplay: false,
+          includedLanguages: "ko,en,zh-CN",
+          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, "google_translate_element");
+      }
+
+      bindSwitchers(savedLanguage);
+    };
+  })();
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
