@@ -2151,14 +2151,14 @@
 
   </main>
 
-  <footer style="display:block !important; visibility:visible !important; opacity:1 !important; position:relative !important; z-index:99999 !important; width:100% !important; min-height:88px !important; height:auto !important; overflow:visible !important; background:#111318 !important; color:#ffffff !important; padding:28px 0 !important; margin:0 !important; clear:both !important;">
-    <div style="max-width:1440px; margin:0 auto; padding:0 28px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
-      <div style="color:#ffffff !important; font-size:15px; line-height:1.6;">
-        타일<span style="color:#E53935 !important;">허브</span> | The <span style="color:#E53935 !important;">Hub</span> of Tile Distribution
+  <footer class="site-footer-fixed">
+    <div class="site-footer-fixed__inner">
+      <div class="site-footer-fixed__brand">
+        타일<span class="brand-hub">허브</span> | The <span class="brand-hub">Hub</span> of Tile Distribution
       </div>
-      <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
-        <a href="#supply" style="color:#ffffff !important; text-decoration:none !important; font-size:15px; font-weight:600;">How it Works</a>
-        <a href="#contact-preview" style="color:#ffffff !important; text-decoration:none !important; font-size:15px; font-weight:600;">Contact</a>
+      <div class="site-footer-fixed__links">
+        <a href="#supply">How it Works</a>
+        <a href="#contact-preview">Contact</a>
       </div>
     </div>
   </footer>
@@ -2326,6 +2326,70 @@
         font-size: 12px;
       }
     }
+    .site-footer-fixed{
+      display:block !important;
+      visibility:visible !important;
+      opacity:1 !important;
+      position:relative !important;
+      z-index:9999 !important;
+      width:100% !important;
+      min-height:88px !important;
+      height:auto !important;
+      overflow:visible !important;
+      background:#111318 !important;
+      color:#ffffff !important;
+      padding:28px 0 !important;
+      margin:0 !important;
+      clear:both !important;
+    }
+
+    .site-footer-fixed__inner{
+      max-width:1440px;
+      margin:0 auto;
+      padding:0 28px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .site-footer-fixed__brand{
+      color:#ffffff !important;
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .site-footer-fixed__links{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .site-footer-fixed__links a{
+      color:#ffffff !important;
+      text-decoration:none !important;
+      font-size:15px;
+      font-weight:600;
+    }
+
+    .site-footer-fixed__links a:hover{
+      text-decoration:underline !important;
+    }
+
+    @media (max-width:760px){
+      .site-footer-fixed{
+        padding:24px 0 !important;
+      }
+
+      .site-footer-fixed__inner{
+        padding:0 20px;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
   </style>
 
   <div class="floating-consult" aria-label="Quick Consultation">
